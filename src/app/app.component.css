@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    justify-content: space-around; /* Centra los elementos con espacio entre ellos */
+    align-items: center; /* Alinea verticalmente en el centro */
+    background-color: #007BFF; /* Azul */
+    color: #ffffff; /* Blanco */
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px; /* Añade espacio alrededor del contenido */
+  }
+  
+  /* Estilos para los enlaces de navegación */
+  .nav-link {
+    color: #ffffff; /* Blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+  }
+  
+  /* Cambia el color del enlace al pasar el ratón sobre él */
+  .nav-link:hover {
+    color: #66B2FF; /* Azul claro */
+  }

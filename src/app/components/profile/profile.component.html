@@ -1,0 +1,62 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Listado de Dietas para Geriatrico</title>
+   
+</head>
+
+<body>
+  <div class="profile-info">
+    <div class="profile-picture">
+      <img id="perfil" src="../../../assets/profile/profile.png" alt="Imagen de perfil" />
+      <div class="additional-images">
+        <img src="../../../assets/profile/editar.png" alt="Editar perfil" />
+        <img src="../../../assets/profile/delete.png" alt="Eliminar perfil" />
+      </div>
+    </div>
+
+    <div class="user-details">
+      <label>DATOS DEL USUARIO:</label>
+      <div class="message-container">
+        <div *ngFor="let u of us" class="user-detail-container">
+
+          <div class="user-column">
+            <div class="user-detail">
+              <label class="label">Nombre de Usuario:</label>
+              <label id="data">{{ u.user_name }}</label>
+            </div>
+
+            <div class="user-detail">
+              <label class="label">Contraseña:</label>
+              <label id="data">******</label>
+            </div>
+
+            <div class="user-detail">
+              <label class="label">Tipo de usuario:</label>
+              <label id="data">{{ u.type ? 'Estudiante' : 'Profesor' }}</label>
+            </div>
+          </div>
+
+          <div class="user-column"> 
+            <div *ngFor="let per of pers" class="user-detail">
+              <label class="label">Nombre:</label>
+              <label id="data">{{ per.name }}</label>
+            </div>
+
+            <div *ngFor="let per of personData" class="user-detail">
+              <label class="label">Apellido:</label>
+              <label id="data">{{ per.last_name }}</label>
+            </div>
+
+            <div *ngFor="let per of personData" class="user-detail">
+              <label class="label">Edad:</label>
+              <label id="data">{{ per.age }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
