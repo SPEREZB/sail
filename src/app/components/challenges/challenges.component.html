@@ -1,13 +1,17 @@
-<div class="challenge-module">
-    <h1>Desafíos para Estudiantes</h1>
-    <div class="challenge-list">
-      <div class="challenge-item">
-        <h2>Desafío 1: Implementa un algoritmo de ordenamiento eficiente desde cero</h2> 
-        <button>Ver Detalles</button>
-      </div>
-      <div class="challenge-item">
-        <h2>Desafío 2: Construye una API REST para una aplicación de catálogo de productos</h2> 
-        <button>Ver Detalles</button>
-      </div> 
+<div *ngIf="retosCargados" class="challenge-module">
+  <h1>Desafíos para Estudiantes</h1>
+  <div class="challenge-list">
+    <div class="challenge-item">
+      <h2>Desafío 1: {{ reto1 }}</h2> 
     </div>
+    <div class="challenge-item">
+      <h2>Desafío 2: {{ reto2 }}</h2> 
+    </div>
+    <div class="challenge-item">
+      <h2>Desafío 3: {{ reto3 }}</h2> 
+    </div>
+    <div class="challenge-item">
+      <h2>Desafío 4: {{ reto4 }}</h2> 
+    </div>
+  </div>
 </div>

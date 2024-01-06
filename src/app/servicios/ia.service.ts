@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
-import { OpenAI} from 'openai'; 
-import { environment } from '../../environments/environment';
+import axios from 'axios'; 
  
-const apiKey = environment.API_KEY; 
+const url = 'https://api.bard.com/'; 
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +11,7 @@ export class IaService {
   }
 
  
-  private apiUrl = 'https://api.openai.com/v1/engines/text-davinci-002/completions';
+  private apiUrl = 'http://127.0.0.1:5000/api/get_result';
   
    
   generateChallenge(prompt: string): Promise<string> { 
@@ -27,15 +25,15 @@ export class IaService {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': `Bearer ${url}`,
       },
     })
     .then((response) => {
-      console.log('Después de llamar a la API de GPT-3');
-      return response.data.choices[0].text;
+      console.log('Después de llamar a la API de FLASK');
+      return response.data.message;
     })
     .catch((error) => {
-      console.error('Error al llamar a la API de GPT-3:', error);
+      console.error('Error al llamar a la API de FLASK:', error);
       throw error;
     });
   }
