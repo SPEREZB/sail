@@ -1,7 +1,6 @@
 .common-styles {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    margin: 0; 
     background-color: #f4f4f4;
   }
   
@@ -12,11 +11,12 @@
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-left: 15%;
+    padding-top: 5%;
+    margin-left: 5%;
   }
   
   .grid-item {

@@ -29,7 +29,7 @@
 
             <div class="user-detail">
               <label class="label">Contraseña:</label>
-              <label id="data">******</label>
+              <input id="data" type="password" [value]="u.password" readonly>
             </div>
 
             <div class="user-detail">
@@ -44,12 +44,12 @@
               <label id="data">{{ per.name }}</label>
             </div>
 
-            <div *ngFor="let per of personData" class="user-detail">
+            <div *ngFor="let per of pers" class="user-detail">
               <label class="label">Apellido:</label>
               <label id="data">{{ per.last_name }}</label>
             </div>
 
-            <div *ngFor="let per of personData" class="user-detail">
+            <div *ngFor="let per of pers" class="user-detail">
               <label class="label">Edad:</label>
               <label id="data">{{ per.age }}</label>
             </div>

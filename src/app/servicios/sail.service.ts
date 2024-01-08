@@ -15,12 +15,16 @@ export class SailService {
 
  
  
-  getUs():Observable<any>{  
+  getAllUs():Observable<any>{  
     return this.clientehttp.get(this.api+"api/user");
   } 
 
+  getUs(body:any):Observable<any>{  
+    return this.clientehttp.post<any>(this.api+"verificar",body);
+  } 
 
-  getPerson():Observable<any>{  
-    return this.clientehttp.get(this.api+"api/person/student/");
+
+  getPerson(id_person: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/person/student/"+id_person);
   } 
 }

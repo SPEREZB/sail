@@ -1,10 +1,68 @@
+<div  *ngIf="!isLogin" class="wrapper fadeInDown">
+  <div id="formContent"> 
+      <h2 *ngIf="!isRegistro" class="active"> INGRESO </h2>
+      <h2 *ngIf="isRegistro" class="inactive underlineHover">REGISTRO </h2>
+  
+      <div class="fadeIn first">
+        <img *ngIf="userType === '' || userType === 'estudiante'" src="../assets/login/estudiante.png" id="icon" alt="User Icon" />
+        <img *ngIf="userType === 'profesor'" src="../assets/login/profe.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <form *ngIf="!isRegistro"  [formGroup]="form"  (ngSubmit)="enviarDatos()"> 
+        <div class="select-wrapper">
+          <select (change)="updateImage()" class="fadeIn second" name="userType" id="tipous">
+              <option value="" disabled selected hidden>Tipo de usuario</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesor">Profesor</option>
+          </select>
+        </div>
+        <input type="text" formControlName="user_name" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
+        <input type="password" formControlName="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <input type="submit" class="fadeIn fourth" value="INGRESAR">
+      </form>
+  
+      <form *ngIf="isRegistro"> 
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
+        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
+        <input type="text" id="apellido" class="fadeIn third" name="apellido" placeholder="Apellido">
+        <input type="text" id="edad" class="fadeIn third" name="edad" placeholder="Edad"> 
+        <div class="select-wrapper">
+          <select [(ngModel)]="userType" (change)="updateImage()" class="fadeIn second" name="userType">
+           <option value="" disabled selected hidden>Tipo de usuario</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="profesor">Profesor</option>
+          </select>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="REGISTRAR">
+      </form>
+  
+      <div id="formFooter">
+        <a (click)="toggleRegistro()" class="underlineHover" href="javascript:void(0)">
+          {{ isRegistro ? '¿Ya tienes una cuenta? Ingresa aquí' : '¿No tienes una cuenta? Regístrate aquí' }}
+        </a>
+      </div>
+  
+    </div>
+</div> 
+
+
+
+
  
-  <nav class="nav justify-content-center|justify-content-end" 
-  style="color: rgb(136, 37, 136); background-color: rgb(34, 34, 80); font-style: italic;font-family: 'Times New Roman', Times, serif;">
-      <a class="nav-link" routerLink="home">HOME</a> 
-      <a class="nav-link" routerLink="login">LOGIN</a> 
-      <a class="nav-link" routerLink="profile">PERFIL</a>
-      <a class="nav-link" routerLink="cursos">CURSOS</a> 
-      <a class="nav-link" routerLink="retos">RETOS</a> 
+<div  *ngIf="isLogin" id="main-menu" [class.open]="openMenu" (click)="handleDrawerClose()">
+  <h1 >SAIL</h1>
+  <nav class="nav flex-column" style="color: rgb(56, 169, 230); background-color: rgb(56, 169, 230);font-style: italic; font-family: 'Times New Roman', Times, serif;">
+    <a class="nav-link" routerLink="home">HOME</a> 
+    <a class="nav-link" routerLink="profile">PERFIL</a>
+    <a class="nav-link" routerLink="cursos">CURSOS</a>
+    <a class="nav-link" routerLink="retos">RETOS</a>
   </nav>
-   <router-outlet></router-outlet>  
+</div> 
+
+<div *ngIf="isLogin">
+  <router-outlet></router-outlet>  
+</div>
+ 
+
+ 

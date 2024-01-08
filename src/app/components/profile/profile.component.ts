@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SailService } from '../../servicios/sail.service';
  
 import { Router } from '@angular/router';  
+import { switchMap } from 'rxjs';
 
 interface UserProfile {
   id_us: number;
@@ -36,13 +37,20 @@ export class ProfileComponent {
     public servicio: SailService) { this.ngOnInit(); }
 
   ngOnInit(): void {
-    this.servicio.getUs().subscribe(respuesta => { 
-      this.us = respuesta;
+    this.servicio.getAllUs().subscribe(us => {
+      this.us = us;
+  
+      if (us.length > 0) {
+        const id_person = us[0].id_person;
+        if (id_person) {
+          this.servicio.getPerson(id_person).subscribe(pers => {
+            this.pers = pers;
+          });
+        }
+      }
     });
 
-    this.servicio.getPerson().subscribe(respuesta => { 
-      this.pers = respuesta;
-    });
+    
   }
  
 } 
