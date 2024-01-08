@@ -37,7 +37,7 @@
   .inicio-picture img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Para que la imagen mantenga su relación de aspecto y se ajuste al contenedor */
+    object-fit: cover;  
   }
   
   .presentacion-texto {
@@ -49,7 +49,7 @@
 }
 
 .cta h2 {
-  font-size: 2.5rem; /* Aumenté el tamaño del h2 */
+  font-size: 2.5rem;  
 }
   
   .boton-cta {
@@ -64,4 +64,4 @@
   
   .boton-cta:hover {
     background-color: #2980b9;
-  }
+  } 

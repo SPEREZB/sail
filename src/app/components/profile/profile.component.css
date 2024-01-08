@@ -4,6 +4,7 @@
     max-width: 80%;
     height: 80%;
     margin: 20px auto;
+    margin-top: 5%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -31,10 +32,10 @@
 .user-details {
     display: flex;
     flex-direction: column;
-    margin-left: 20%;  
+    margin-left: 10%;  
+    width: 70%; 
     font-size: 1.5rem;
-    font-weight: bold;
-    padding: 3%;
+    font-weight: bold; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,30 +45,44 @@
 .user-detail {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  
+    align-items: flex-start;   
   }
-
+ 
 
 
   .message-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding-left: 3%;
+    padding-top: 3%;
   }
   
   .user-column {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: 10px;
+    align-items: flex-start; 
   }
   
   .user-detail-container {
     display: flex;
     justify-content: space-between;
+    margin-right: 40%;
+    width: 100%;
   }
   
-  
+  #usuario
+  {
+     margin-left: 20%;
+  }
+
+
+  #persona
+  {
+     margin-left: 20%;
+  }
+
+
   .label {
     font-weight: bold;
     margin-bottom: 5px;
@@ -108,16 +123,16 @@ label {
   }
   
   label#data {
-    font-weight: normal; /* Si deseas que el texto de los datos no esté en negrita */
+    font-weight: normal;  
   }
 
 input {
     padding: 10px;
-    width: 100%; /* Haz que el ancho del cuadro de texto ocupe todo el contenedor disponible */
+    width: 100%;  
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 1rem; /* Ajusta el tamaño de la fuente según tu preferencia */
+    font-size: 1rem;  
 }
 
 button {
@@ -127,7 +142,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1.2rem; /* Ajusta el tamaño de la fuente según tu preferencia */
+    font-size: 1.2rem;  
 }
 
 button:hover {
@@ -137,12 +152,24 @@ button:hover {
 
 .additional-images {
     display: flex;
-    justify-content: center; /* Alinea las imágenes al centro horizontalmente */
-    margin-top: 10px; /* Ajuste para separar las imágenes de los detalles del usuario */
+    justify-content: center;  
+    margin-top: 10px;  
 }
 
 .additional-images img {
-    width: 20%; /* Ajusta el tamaño de las imágenes según tu preferencia */
-    height: 15%; /* Ajusta el tamaño de las imágenes según tu preferencia */
-    margin-right: 20px; /* Espaciado entre las imágenes */
+    width: 20%;  
+    height: 15%;  
+    margin-right: 20px;  
+} 
+
+
+@media screen and (max-width: 768px) {
+  .profile-info {
+    flex-direction: column;
+  }
+
+  .user-column {
+    margin-right: 0;  
+  }
+ 
 }

@@ -49,6 +49,11 @@ export class AppComponent {
   toggleRegistro() {
     this.isRegistro = !this.isRegistro;
   }
+
+  salir() {
+    this.isRegistro = false;
+    this.isLogin=false;
+  }
   enviarDatos() { 
     this.respuesta= this.servicio.getUs(this.form.value).subscribe(
       response => {

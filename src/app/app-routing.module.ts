@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},  
   {path:"cursos",component:CourseMenuComponent},  
   {path:"retos",component:ChallengesComponent},  
+  {path:"salir",redirectTo:"login",pathMatch:"full"},  
 ];
 
 @NgModule({
