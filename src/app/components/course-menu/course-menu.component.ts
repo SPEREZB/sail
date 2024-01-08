@@ -34,8 +34,8 @@ export class CourseMenuComponent implements OnInit {
   constructor() {  
      this.cursos = [
       { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
-      { id: 2, nombre: 'Deportes', icono: './../../../assets/course/deportes.png' },
-      { id: 3, nombre: 'Informática', icono: './../../../assets/course/informatica.png' },
+      { id: 2, nombre: 'Historia', icono: './../../../assets/course/historia.png' },
+      { id: 3, nombre: 'Informactica', icono: './../../../assets/course/informatica.png' },
       { id: 4, nombre: 'Ciencias', icono: './../../../assets/course/ciencias.png' },
     ];
    }   

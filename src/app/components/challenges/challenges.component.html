@@ -1,17 +1,51 @@
 <div *ngIf="retosCargados" class="challenge-module">
   <h1>Desafíos para Estudiantes</h1>
+ 
   <div class="challenge-list">
-    <div class="challenge-item">
-      <h2>Desafío 1: {{ reto1 }}</h2> 
+
+    <div class="challenge-item">  
+      <img src="../../../assets/challenges/ciencias.png" alt="Imagen 1">
+      <h2>Desafío de Ciencias:</h2>  
+      <p>{{ reto1 }}</p>  
+      <div class="file-upload-section">
+        <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+        <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+        <button (click)="uploadPDF()">Subir PDF</button>
+      </div>
     </div>
-    <div class="challenge-item">
-      <h2>Desafío 2: {{ reto2 }}</h2> 
-    </div>
-    <div class="challenge-item">
-      <h2>Desafío 3: {{ reto3 }}</h2> 
-    </div>
-    <div class="challenge-item">
-      <h2>Desafío 4: {{ reto4 }}</h2> 
+  
+    <div class="challenge-item">  
+      <img src="../../../assets/challenges/matematicas.png" alt="Imagen 2">
+      <h2>Desafío de Matematicas:</h2>   
+    <p>{{ reto2 }}</p>
+    <div class="file-upload-section">
+      <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+      <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+      <button (click)="uploadPDF()">Subir PDF</button>
     </div>
   </div>
+    <div class="challenge-item"> 
+      <img src="../../../assets/challenges/historia.png" alt="Imagen 3"> 
+      <h2>Desafío de Historia:</h2> 
+     
+      <p>{{ reto3 }}</p>
+      <div class="file-upload-section">
+        <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+        <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+        <button (click)="uploadPDF()">Subir PDF</button>
+      </div>
+  </div>
+    <div class="challenge-item"> 
+      <img src="../../../assets/challenges/informatica.png" alt="Imagen 4"> 
+      <h2>Desafío de Informatica:</h2> 
+    
+      <p>{{ reto4 }}</p>
+      <div class="file-upload-section">
+        <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+        <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+        <button class="boton" (click)="uploadPDF()">Subir PDF</button>
+      </div>
+  </div>
+ 
 </div>
+ 

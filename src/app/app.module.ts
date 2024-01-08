@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CourseMenuComponent } from './components/course-menu/course-menu.component';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     ChallengesComponent,
     CourseMenuComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
