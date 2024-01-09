@@ -13,6 +13,7 @@ export class ChallengesComponent {
   reto4:string="";
   cont:any=0;
   retosCargados: boolean = false;
+  selectedFile: any;
 
   constructor(private openaiService: IaService) {}
 
@@ -95,13 +96,30 @@ export class ChallengesComponent {
   }
  
   onFileSelected(event: any) {
-    // Aquí puedes manejar la lógica cuando se selecciona un archivo
-    const selectedFile = event.target.files[0];
-    // Puedes almacenar el archivo seleccionado en una variable o realizar otras operaciones necesarias
+    
+    this.selectedFile = event.target.files[0];
+    this.uploadPDF();
   }
 
   uploadPDF() {
-    // Aquí puedes implementar la lógica para subir el archivo PDF
-    // Puedes usar la variable que contiene el archivo seleccionado (si la has almacenado) y enviarla al servidor, por ejemplo
+    if (this.selectedFile) { 
+      const formData = new FormData();
+      formData.append('pdf', this.selectedFile);
+ 
+      this.openaiService.revisarChallenge(formData).then((result) => {
+        console.log('Resultado de revisarChallenge:', result);
+ 
+        if (result === '1') {
+          alert('¡Está bien!');  
+        } else { 
+          alert('No está bien');
+        }
+      }).catch((error) => {
+        console.error('Error en revisarChallenge:', error);
+        alert('Error al revisar el desafío');
+      });
+    } else {
+      alert('Selecciona un archivo PDF primero');
+    }
   }
 }
