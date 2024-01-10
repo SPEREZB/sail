@@ -48,8 +48,7 @@
 
 
 
-
- 
+<app-custom-alert></app-custom-alert>  
 <div  *ngIf="isLogin" id="main-menu" [class.open]="openMenu" (click)="handleDrawerClose()">
   <h1 >SAIL</h1>
   <nav class="nav flex-column" style="color: rgb(56, 169, 230); background-color: rgb(56, 169, 230);font-style: italic; font-family: 'Times New Roman', Times, serif;">
@@ -64,6 +63,5 @@
 <div *ngIf="isLogin">
   <router-outlet></router-outlet>  
 </div>
- 
-
+  
  

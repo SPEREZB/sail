@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/servicios/alert.service';
 import { IaService } from './../../servicios/ia.service';
 import { Component } from '@angular/core'; 
 @Component({
@@ -15,7 +16,7 @@ export class ChallengesComponent {
   retosCargados: boolean = false;
   selectedFile: any;
 
-  constructor(private openaiService: IaService) {}
+  constructor(private openaiService: IaService,private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.generateChallenge();
@@ -110,9 +111,9 @@ export class ChallengesComponent {
         console.log('Resultado de revisarChallenge:', result);
  
         if (result === '1') {
-          alert('¡Está bien!');  
+          this.showSuccessAlert(); 
         } else { 
-          alert('No está bien');
+          this.showErrorAlert(); 
         }
       }).catch((error) => {
         console.error('Error en revisarChallenge:', error);
@@ -121,5 +122,14 @@ export class ChallengesComponent {
     } else {
       alert('Selecciona un archivo PDF primero');
     }
+  }
+
+
+  showSuccessAlert() {
+    this.alertService.showAlert('¡DESAFIO COMPLETADO EXITOSAMENTE!');
+  }
+
+  showErrorAlert() {
+    this.alertService.showAlert('¡HAS FALLADO EL DESAFIO!');
   }
 }

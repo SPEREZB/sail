@@ -12,7 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CourseMenuComponent } from './components/course-menu/course-menu.component';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+import { CustomAlertComponent } from './components/custom-alert/custom-alert.component'; 
+import { AlertService } from './servicios/alert.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { CommonModule } from '@angular/common';
     ChallengesComponent,
     CourseMenuComponent,
     ProfileComponent,
-    HomeComponent 
+    HomeComponent,
+    CustomAlertComponent 
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

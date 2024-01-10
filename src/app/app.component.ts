@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SailService } from './servicios/sail.service';
+import { AlertService } from './servicios/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,12 @@ export class AppComponent {
   userType:any="";
   isRegistro: boolean = false; 
   isLogin: boolean = false; 
+  isAlertVisible: boolean = false;
   respuesta:any=""; 
   form: FormGroup; 
-
+  fondo:boolean=false;
   openMenu: boolean = false;
+  isVisible: boolean = false;
  
  
   handleDrawerOpen() {
@@ -32,6 +35,7 @@ export class AppComponent {
 
   constructor(private router: Router,  
     public formulario:FormBuilder,
+    public alert:AlertService,
     public servicio:SailService ) {
     this.form = this.formulario.group({
       user_name: [''], password: ['']
@@ -39,6 +43,15 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    this.alert.alertVisibility$.subscribe((message) => { 
+      this.isAlertVisible = !!message;
+  
+      if (this.isAlertVisible) {
+        setTimeout(() => {
+          this.isAlertVisible = false; 
+        }, 4000);
+      }
+    });
   }
 
   updateImage() {
@@ -70,7 +83,7 @@ export class AppComponent {
         console.error('Error en la solicitud:', error);
         this.router.navigate(['/']);
       }
-    );
- 
+    ); 
 }
+ 
 }

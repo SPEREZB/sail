@@ -74,7 +74,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 200px;
+  width: 12%;
   background-color: rgb(56, 169, 230);
   box-shadow: 0 0 10px rgb(56, 169, 230);
   transition: transform 0.3s ease-in-out;
@@ -112,10 +112,7 @@
   background-color: #f22828;
   color: #0d0d0d;
 }
-
-
-
-
+ 
 
 h1{
   text-align: center;
@@ -123,10 +120,7 @@ h1{
   font-size: 3rem;
   margin-top: 25%;
 }
-
-
-
-
+  
 /* login */
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
