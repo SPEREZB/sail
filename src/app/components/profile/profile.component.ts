@@ -1,6 +1,6 @@
  
 import { Component, OnInit } from '@angular/core'; 
-import { SailService } from '../../servicios/sail.service';
+import { SailService } from '../../services/sail/sail.service';
  
 import { Router } from '@angular/router';  
 import { switchMap } from 'rxjs';

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
-import { AlertService } from 'src/app/servicios/alert.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-custom-alert',

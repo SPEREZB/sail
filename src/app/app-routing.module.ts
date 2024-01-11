@@ -5,11 +5,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ChallengesComponent } from './components/challenges/challenges.component';
 import { CourseMenuComponent } from './components/course-menu/course-menu.component'; 
 import { AppComponent } from './app.component';
+import { GuardGuard } from './services/guard/guard.guard';  
 
-const routes: Routes = [
-  {path:"", redirectTo:"login",pathMatch:"full"}, 
+const routes: Routes = [ 
+  {path:"", redirectTo:"login",pathMatch:"full"},  
   {path:"login",component:AppComponent}, 
-  {path:"home",component:HomeComponent},
+  {path:"home",component:HomeComponent, canActivate: [GuardGuard] },
   {path:"profile",component:ProfileComponent},  
   {path:"cursos",component:CourseMenuComponent},  
   {path:"retos",component:ChallengesComponent},  

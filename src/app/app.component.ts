@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SailService } from './servicios/sail.service';
-import { AlertService } from './servicios/alert.service';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { SailService } from './services/sail/sail.service';
+import { AlertService } from './services/alert/alert.service';
+import { LoginService } from './services/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -29,11 +30,9 @@ export class AppComponent {
   handleDrawerClose() {
     this.openMenu = false;
   }
-
-    
  
-
   constructor(private router: Router,  
+    private authService: LoginService,
     public formulario:FormBuilder,
     public alert:AlertService,
     public servicio:SailService ) {
@@ -52,7 +51,12 @@ export class AppComponent {
         }, 4000);
       }
     });
-  }
+
+    this.isLogin = this.authService.isAuthenticated();
+
+    if(localStorage.getItem("userLoggedIn")=="true") this.router.navigate(['/home']);
+    else this.router.navigate(['']);
+  } 
 
   updateImage() {
     const tipous = document.getElementById('tipous') as HTMLSelectElement;
@@ -64,26 +68,36 @@ export class AppComponent {
   }
 
   salir() {
-    this.isRegistro = false;
-    this.isLogin=false;
+    this.authService.logout();
+    this.isRegistro = this.authService.isAuthenticated();
+    this.isLogin=this.authService.isAuthenticated();
   }
+  
   enviarDatos() { 
     this.respuesta= this.servicio.getUs(this.form.value).subscribe(
       response => {
         console.log('Respuesta del servidor:', response); 
         if(response.result.length >0)
         {
-          this.isLogin=true;
+          
+          this.authService.login();
+          this.isLogin=this.authService.isAuthenticated();
           this.router.navigate(['/home']);
         }
-         else  this.router.navigate(['/']);
+         else  
+         {
+          this.authService.logout();
+          this.authService.isAuthenticated();
+          this.router.navigate(['']);
+        }
+
 
       },
       error => {
         console.error('Error en la solicitud:', error);
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       }
     ); 
-}
+  }
  
 }

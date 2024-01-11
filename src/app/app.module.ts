@@ -14,7 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CourseMenuComponent } from './components/course-menu/course-menu.component';
 import { CommonModule } from '@angular/common';
 import { CustomAlertComponent } from './components/custom-alert/custom-alert.component'; 
-import { AlertService } from './servicios/alert.service';
+import { AlertService } from './services/alert/alert.service';
 
 @NgModule({
   declarations: [

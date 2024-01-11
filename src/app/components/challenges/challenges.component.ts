@@ -1,5 +1,5 @@
-import { AlertService } from 'src/app/servicios/alert.service';
-import { IaService } from './../../servicios/ia.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { IaService } from '../../services/ia/ia.service';
 import { Component } from '@angular/core'; 
 @Component({
   selector: 'app-challenges',  
