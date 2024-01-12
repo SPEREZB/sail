@@ -15,6 +15,10 @@ import { CourseMenuComponent } from './components/course-menu/course-menu.compon
 import { CommonModule } from '@angular/common';
 import { CustomAlertComponent } from './components/custom-alert/custom-alert.component'; 
 import { AlertService } from './services/alert/alert.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,9 @@ import { AlertService } from './services/alert/alert.service';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     MatListModule,
     MatGridListModule, 
     ReactiveFormsModule,

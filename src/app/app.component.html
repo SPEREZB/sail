@@ -56,11 +56,12 @@
     <a class="nav-link" routerLink="profile">PERFIL</a>
     <a class="nav-link" routerLink="cursos">CURSOS</a>
     <a class="nav-link" routerLink="retos">RETOS</a>
+    <a class="nav-link" routerLink="idiomas">IDIOMAS</a>
     <a class="nav-link" (click)="salir()" routerLink="salir" id="salir">SALIR</a>
   </nav>
 </div> 
 
-<div *ngIf="isLogin">
+<div class="panel" *ngIf="isLogin">
   <router-outlet></router-outlet>  
 </div>
   

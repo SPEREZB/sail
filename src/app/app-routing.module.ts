@@ -1,3 +1,4 @@
+import { SupportLanguageComponent } from './components/support-language/support-language.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},  
   {path:"cursos",component:CourseMenuComponent},  
   {path:"retos",component:ChallengesComponent},  
+  {path:"idiomas",component:SupportLanguageComponent}, 
   {path:"salir",redirectTo:"login",pathMatch:"full"},  
 ];
 
