@@ -12,17 +12,24 @@ import { LoginService } from './services/login/login.service';
 })
 export class AppComponent {
   title = 'sail'; 
+
+  //VARIABLES PARA EL LOGIN 
   userType:any="";
   usName:any ="";
   passw:any ="";
   isRegistro: boolean = false; 
   isLogin: boolean = false; 
+  openMenu: boolean = false; 
+
+  //ALERT
   isAlertVisible: boolean = false;
+
+  //VARIABLES PARA LOS SERVICIOS
   respuesta:any=""; 
-  form: FormGroup; 
-  fondo:boolean=false;
-  openMenu: boolean = false;
-  isVisible: boolean = false;
+  person:any="";
+  form: FormGroup;   
+  idUs:any=0;
+  idPerson:any=0;
  
  
   handleDrawerOpen() {
@@ -60,7 +67,7 @@ export class AppComponent {
 
     if(localStorage.getItem("userLoggedIn")=="true") this.router.navigate(['/home']);
     else this.router.navigate(['']);
-  } 
+  }  
 
   updateUserName() {
     const usname = document.getElementById('login') as HTMLSelectElement;
@@ -84,20 +91,28 @@ export class AppComponent {
 
   salir() {
     this.authService.logout();
+    this.authService.logoutuserType();
+
     this.isRegistro = this.authService.isAuthenticated();
     this.isLogin=this.authService.isAuthenticated();
+    this.userType= this.authService.isUserType();
   }
   
   enviarDatos() { 
     this.respuesta= this.servicio.getUs(this.form.value).subscribe(
       response => {
         console.log('Respuesta del servidor:', response); 
+        
         if(response.result.length >0)
         {
-          
+          const firstUser = response.result[0];
+          this.idUs= firstUser.id_us; 
+
           this.authService.login();
           this.isLogin=this.authService.isAuthenticated();
           this.authService.userType(this.userType);
+          this.authService.idUs(this.idUs);
+          this.getPerson();
           this.router.navigate(['/home']);
         }
          else  
@@ -113,6 +128,25 @@ export class AppComponent {
         this.router.navigate(['']);
       }
     ); 
+    
+    
+  
+  }
+
+  getPerson()
+  {
+    this.person= this.servicio.getIDPerson(this.idUs).subscribe(
+      response => { 
+        const firstUser = response.result[0];
+        this.idPerson = firstUser.id_person;
+        this.authService.idPerson(this.idPerson); 
+
+      },
+      error => {
+        console.error('Error en la solicitud:', error);
+        this.router.navigate(['']);
+      }
+    );
   }
  
 }

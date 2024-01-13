@@ -27,4 +27,14 @@ export class SailService {
   getPerson(id_person: number):Observable<any>{  
     return this.clientehttp.get(this.api+"api/person/student/"+id_person);
   } 
+
+  getIDPerson(id_person: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/person/id_student/"+id_person);
+  } 
+
+
+  updateUs(body: any):Observable<any>
+  {
+    return this.clientehttp.post(this.api+"update/user",body);
+  }
 }

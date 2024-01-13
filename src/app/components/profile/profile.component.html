@@ -1,52 +1,84 @@
- 
-  <div class="profile-info">
-    <div class="profile-picture">
-      <img id="perfil" src="../../../assets/profile/profile.png" alt="Imagen de perfil" />
-      <div class="additional-images">
-        <img src="../../../assets/profile/editar.png" alt="Editar perfil" />
-        <img src="../../../assets/profile/delete.png" alt="Eliminar perfil" />
-      </div>
-    </div>
-
-    <div class="user-details">
-      <label id="title">DATOS DEL USUARIO:</label>
-      <div class="message-container">
-        <div *ngFor="let u of us" class="user-detail-container">
-
-          <div class="user-column">
-            <div class="user-detail">
-              <label class="label">Nombre de Usuario:</label>
-              <label id="data">{{ u.user_name }}</label>
-            </div>
-
-            <div class="user-detail">
-              <label class="label">Contraseña:</label>
-              <input id="data" type="password" [value]="u.password" readonly>
-            </div>
-
-            <div class="user-detail">
-              <label class="label">Tipo de usuario:</label>
-              <label id="data">{{ u.type ? 'Estudiante' : 'Profesor' }}</label>
-            </div>
+<div class="profile-info">
+  <div style="flex-grow: 8;" class="user-details">
+    <label id="title">DATOS DEL USUARIO:</label>
+    <div class="message-container">
+      <div *ngFor="let u of us" class="user-detail-container">
+        <div class="user-column">
+          <div class="user-detail">
+            <label class="label">Nombre de Usuario:</label>
+            <input id="data" [(ngModel)]="u.user_name" />
           </div>
-
-          <div class="user-column" id="persona"> 
-            <div *ngFor="let per of pers" class="user-detail">
-              <label class="label">Nombre:</label>
-              <label id="data">{{ per.name }}</label>
-            </div>
-
-            <div *ngFor="let per of pers" class="user-detail">
-              <label class="label">Apellido:</label>
-              <label id="data">{{ per.last_name }}</label>
-            </div>
-
-            <div *ngFor="let per of pers" class="user-detail">
-              <label class="label">Edad:</label>
-              <label id="data">{{ per.age }}</label>
-            </div>
+          <div class="user-detail">
+            <label class="label">Contraseña:</label>
+            <input id="data" [(ngModel)]="u.password" />
+          </div>
+          <div class="user-detail">
+            <label class="label">Tipo de usuario:</label>
+            <label id="data">{{ u.type ? "Estudiante" : "Profesor" }}</label>
           </div>
         </div>
+        <div class="user-column" id="persona">
+
+          <form [formGroup]="form" (ngSubmit)="onAcceptClick()">
+            <input type="hidden" formControlName="id_person" />
+
+          <div *ngFor="let per of pers" class="user-detail">
+            <label class="label">Nombre:</label>
+            <input formControlName="name" id="data" [(ngModel)]="per.name" />
+          </div>
+          <div *ngFor="let per of pers" class="user-detail">
+            <label class="label">Apellido:</label>
+            <input formControlName="last_name" id="data" [(ngModel)]="per.last_name" />
+          </div>
+          <div *ngFor="let per of pers" class="user-detail">
+            <label class="label">Edad:</label>
+            <input formControlName="age" id="data" [(ngModel)]="per.age" />
+          </div>
+
+          <div class="button-container">
+            <!-- Botón Aceptar -->
+            <button type="submit" class="accept-button">
+              ACTUALIZAR
+            </button>
+            <!-- Botón Eliminar -->
+            <button class="delete-button" (click)="onDeleteClick()">
+              ELIMINAR PERFIL
+            </button>
+          </div>
+        </form>
+        </div>
+        
       </div>
     </div>
-  </div> 
+    <div class="user-notes">
+      <img
+      src="../../../assets/profile/barras.png"
+      alt="Editar perfil"
+    />
+    </div>
+  </div>
+  <div style="flex-grow: 2;" class="grafic">
+    <div class="image-row">
+      <div class="image-container">
+        <img
+          src="../../../assets/profile/calificacion.png"
+          alt="Editar perfil"
+        />
+      </div>
+      <div class="image-container">
+        <img src="../../../assets/profile/retos.png" alt="Editar perfil" />
+      </div>
+    </div>
+    <div class="image-row">
+      <div class="image-container">
+        <img
+          src="../../../assets/profile/asistencia.png"
+          alt="Editar perfil"
+        />
+      </div>
+      <div class="image-container">
+        <img src="../../../assets/profile/feddback.png" alt="Editar perfil" />
+      </div>
+    </div>
+  </div>
+</div>
