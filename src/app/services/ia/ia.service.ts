@@ -10,7 +10,12 @@ export class IaService {
   constructor() { 
   }
 
- 
+  public readonly storageReto1 = 'reto1'; 
+  public readonly storageReto2 = 'reto2'; 
+  public readonly storageReto3 = 'reto3'; 
+  public readonly storageReto4 = 'reto4'; 
+  private reto:string| null = null;
+
   private apiUrl = 'http://127.0.0.1:5000/';
   
    
@@ -56,4 +61,55 @@ export class IaService {
         throw error;
       });
   }
+
+
+  //storage
+  setReto1(result:any)
+  {
+    localStorage.setItem(this.storageReto1, result);
+  }
+
+  setReto2(result:any)
+  {
+    localStorage.setItem(this.storageReto2,result);
+  }
+
+  setReto3(result:any)
+  {
+    localStorage.setItem(this.storageReto3, result);
+  }
+
+  setReto4(result:any)
+  {
+    localStorage.setItem(this.storageReto4, result);
+  }
+
+
+
+  getReto1()
+  {
+    this.reto= localStorage.getItem('reto1');
+    return this.reto;
+  }
+
+  getReto2()
+  {
+    this.reto= localStorage.getItem('reto2');
+    return this.reto;
+  }
+
+  getReto3()
+  {
+    this.reto= localStorage.getItem('reto3');
+    return this.reto;
+  }
+
+  getReto4()
+  {
+    this.reto= localStorage.getItem('reto4');
+    return this.reto;
+  }
+
+
+ 
 }

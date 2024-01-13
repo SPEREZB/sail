@@ -8,10 +8,18 @@ import { Component } from '@angular/core';
 })
 export class ChallengesComponent {
   challengeDescription: string = '';
+  result:any;
   reto1:string="";
   reto2:string="";
   reto3:string="";
   reto4:string="";
+
+  isReto1:string| null = null;
+  isReto2:string| null = null;
+  isReto3:string| null = null;
+  isReto4:string| null = null;
+
+  alertType:string="";
   cont:any=0;
   retosCargados: boolean = false;
   selectedFile: any;
@@ -19,7 +27,9 @@ export class ChallengesComponent {
   constructor(private openaiService: IaService,private alertService: AlertService) {}
 
   ngOnInit(): void {
+
     this.generateChallenge();
+    this.openaiService.setReto1("true"); 
   }
 
   async generateChallenge():  Promise<void> {
@@ -87,33 +97,50 @@ export class ChallengesComponent {
     
       cont = cont - 1;
     } 
-
-
-    console.log(this.reto1);
-    console.log(this.reto2);
-    console.log(this.reto3);
-    console.log(this.reto4);
-  
+ 
   }
  
-  onFileSelected(event: any) {
+  onFileSelected(event: any, challengeFunction: string) {
     
     this.selectedFile = event.target.files[0];
-    this.uploadPDF();
+    this.uploadPDF(challengeFunction); 
   }
 
-  uploadPDF() {
+  uploadPDF(challengeFunction: string) {
     if (this.selectedFile) { 
       const formData = new FormData();
       formData.append('pdf', this.selectedFile);
  
       this.openaiService.revisarChallenge(formData).then((result) => {
         console.log('Resultado de revisarChallenge:', result);
- 
+        this.result=result;
+        
         if (result === '1') {
           this.showSuccessAlert(); 
+
+          if (challengeFunction === 'challenge1') {
+            this.challenge1();
+          } else  if (challengeFunction === 'challenge2') {
+            this.challenge2();
+          } else  if (challengeFunction === 'challenge3') {
+            this.challenge3();
+          } else  {
+            this.challenge4();
+          } 
+ 
+
         } else { 
           this.showErrorAlert(); 
+
+          if (challengeFunction === 'challenge1') {
+            this.challenge1();
+          } else  if (challengeFunction === 'challenge2') {
+            this.challenge2();
+          } else  if (challengeFunction === 'challenge3') {
+            this.challenge3();
+          } else  {
+            this.challenge4();
+          } 
         }
       }).catch((error) => {
         console.error('Error en revisarChallenge:', error);
@@ -121,15 +148,45 @@ export class ChallengesComponent {
       });
     } else {
       alert('Selecciona un archivo PDF primero');
-    }
+    } 
+  }
+
+  challenge1()
+  {
+    if(this.result=="1")  this.openaiService.setReto1("true"); 
+    else  this.openaiService.setReto1("false"); 
+    this.isReto1=this.openaiService.getReto1(); 
+  }
+
+  challenge2()
+  {
+    if(this.result=="1")  this.openaiService.setReto2("true"); 
+    else  this.openaiService.setReto2("false");  
+    this.isReto2=this.openaiService.getReto2(); 
+  }
+
+  challenge3()
+  {
+    if(this.result=="1")  this.openaiService.setReto3("true"); 
+    else  this.openaiService.setReto3("false");  
+    this.isReto3=this.openaiService.getReto3(); 
+  }
+
+  challenge4()
+  {
+    if(this.result=="1")  this.openaiService.setReto4("true"); 
+    else  this.openaiService.setReto4("false");  
+    this.isReto4=this.openaiService.getReto4(); 
   }
 
 
   showSuccessAlert() {
+    this.alertType="true";  
     this.alertService.showAlert('¡DESAFIO COMPLETADO EXITOSAMENTE!');
   }
 
   showErrorAlert() {
+    this.alertType="false"; 
     this.alertService.showAlert('¡HAS FALLADO EL DESAFIO!');
   }
-}
+} 

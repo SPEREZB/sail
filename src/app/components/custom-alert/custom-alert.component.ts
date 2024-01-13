@@ -51,6 +51,9 @@ export class CustomAlertComponent implements OnInit {
   ngOnInit() {
     this.alertService.alert$.subscribe((message) => {
       this.message = message;
+
+      if(message=="¡DESAFIO COMPLETADO EXITOSAMENTE!") this.isSuccess=true;
+      else this.isSuccess=false;
       this.isVisible = !!message;
       this.cambiarFondo();
       if (this.isVisible) {
