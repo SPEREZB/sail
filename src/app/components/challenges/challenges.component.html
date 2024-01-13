@@ -1,52 +1,56 @@
-<div *ngIf="retosCargados" class="challenge-module">
  
-  <h1>Desafíos para Estudiantes</h1>
- 
-  <div class="challenge-list">
 
-    <div class="challenge-item">  
-      <img src="../../../assets/challenges/ciencias.png" alt="Imagen 1">
-      <h2>Desafío de Ciencias:</h2>  
-      <p>{{ reto1 }}</p>  
-      <div class="file-upload-section">
-        <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-        <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
-        <button>Subir PDF</button>
-      </div>
-    </div>
+<div class="challenges">
+  <div *ngIf="retosCargados" class="challenge-module">
+ 
+    <h1>Desafíos para Estudiantes</h1>
+   
+    <div class="challenge-list">
   
-    <div class="challenge-item">  
-      <img src="../../../assets/challenges/matematicas.png" alt="Imagen 2">
-      <h2>Desafío de Matematicas:</h2>   
-    <p>{{ reto2 }}</p>
-    <div class="file-upload-section">
-      <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-      <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
-      <button (click)="uploadPDF()">Subir PDF</button>
-    </div>
-  </div>
-    <div class="challenge-item"> 
-      <img src="../../../assets/challenges/historia.png" alt="Imagen 3"> 
-      <h2>Desafío de Historia:</h2> 
-     
-      <p>{{ reto3 }}</p>
+      <div class="challenge-item">  
+        <img src="../../../assets/challenges/ciencias.png" alt="Imagen 1">
+        <h2>Desafío de Ciencias:</h2>  
+        <p>{{ reto1 }}</p>  
+        <div class="file-upload-section">
+          <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+          <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+          <button>Subir PDF</button>
+        </div>
+      </div>
+    
+      <div class="challenge-item">  
+        <img src="../../../assets/challenges/matematicas.png" alt="Imagen 2">
+        <h2>Desafío de Matematicas:</h2>   
+      <p>{{ reto2 }}</p>
       <div class="file-upload-section">
         <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
         <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
         <button (click)="uploadPDF()">Subir PDF</button>
       </div>
+    </div>
+      <div class="challenge-item"> 
+        <img src="../../../assets/challenges/historia.png" alt="Imagen 3"> 
+        <h2>Desafío de Historia:</h2> 
+       
+        <p>{{ reto3 }}</p>
+        <div class="file-upload-section">
+          <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+          <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+          <button (click)="uploadPDF()">Subir PDF</button>
+        </div>
+    </div>
+      <div class="challenge-item"> 
+        <img src="../../../assets/challenges/informatica.png" alt="Imagen 4"> 
+        <h2>Desafío de Informatica:</h2> 
+      
+        <p>{{ reto4 }}</p>
+        <div class="file-upload-section">
+          <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
+          <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
+          <button class="boton" (click)="uploadPDF()">Subir PDF</button>
+        </div>
+    </div>
+   
   </div>
-    <div class="challenge-item"> 
-      <img src="../../../assets/challenges/informatica.png" alt="Imagen 4"> 
-      <h2>Desafío de Informatica:</h2> 
-    
-      <p>{{ reto4 }}</p>
-      <div class="file-upload-section">
-        <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-        <input type="file" id="pdfInput" (change)="onFileSelected($event)" accept=".pdf" class="hidden-input">
-        <button class="boton" (click)="uploadPDF()">Subir PDF</button>
-      </div>
-  </div>
- 
+   
 </div>
- 

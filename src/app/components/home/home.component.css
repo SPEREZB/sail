@@ -1,16 +1,22 @@
-.inicio-container {
-    max-width: 60%;
-    margin: 0 auto;
-    
+ 
+.inicio{
+  background-color: #eef2f6;
+  height: 100%;
+}
+
+.inicio-container { 
+    margin: 0 auto; 
     padding: 20px;
     text-align: center; 
     max-width: 80%;
-    height: 80%;
-    margin: 20px auto;
+    height: 80%; 
+     margin-top: 1%;
+    margin-left: 11%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+    align-items: center; 
   }
   
   .inicio-header {

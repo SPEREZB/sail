@@ -1,8 +1,12 @@
-<ul class="grid-container common-styles">
-  <li class="grid-item" (click)="onItemClick(curso)" *ngFor="let curso of cursos">
-    <div class="grid-item-content">
-      <img src="{{ curso.icono }}" alt="Curso Icon">
-      <h3>{{ curso.nombre }}</h3>
-    </div>
-  </li>
-</ul>
+ 
+
+<div class="cursos">
+  <ul class="grid-container common-styles">
+    <li class="grid-item" (click)="onItemClick(curso)" *ngFor="let curso of cursos">
+      <div class="grid-item-content">
+        <img src="{{ curso.icono }}" alt="Curso Icon">
+        <h3>{{ curso.nombre }}</h3>
+      </div>
+    </li>
+  </ul>
+</div>

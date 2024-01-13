@@ -4,27 +4,28 @@
     display: flex;
     justify-content: space-around;  
     flex-direction: column; 
-    align-items: center;  
+    align-items: left;  
     background-color: #007BFF;  
-    color: #ffffff; 
+    color: #000000; 
     font-style: italic;
-    font-family: 'Times New Roman', Times, serif;  
-    flex-direction: column; 
+    font-family: 'Times New Roman', Times, serif;   
     margin-top: 30%;
+    border-radius: 20%; /* Ajusta según sea necesario */
+    padding: 2%;
   }
    
   .nav-link {
-    color: #fff;
+    color: #000000;
     font-weight: bold;
     padding-top: 10%;
     padding-bottom: 10%;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     width: 100%; 
     padding-left: 0%;
     transition: background-color 0.3s ease-in-out; 
-    font-size: 16px;  
-    transition: color 0.3s;  
+    font-size: 16px;   
+    border-radius: 20%;
   }
    
   .nav-link:hover {
@@ -50,42 +51,18 @@
     width: 30px;
     background-color: #333;
     margin: 5px 0;
-  }
-  
-  #sup-menu {
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-button {
-    cursor: pointer;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .bar {
-    height: 5px;
-    width: 30px;
-    background-color:rgb(56, 169, 230);
-    margin: 5px 0;
-  }
+  } 
+   
+ 
 
-
-
-  #sup-menu {
-  display: flex;
-  align-items: center;
-}
-
-#main-menu {
+.main-menu {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  width: 12%;
-  background-color: rgb(56, 169, 230);
-  box-shadow: 0 0 10px rgb(56, 169, 230);
+  width: 10%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
 }
@@ -93,20 +70,39 @@
 #main-menu.open {
   transform: translateX(0);
 } 
+ 
+.menu-item {
+  display: flex;
+  align-items: left;
+  width: 90%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-left: 5%;
+  padding-right: 20%;
+  border-radius: 15%;
+  margin: 2% 0;
+}
+img{
+  margin-right: 8%;
+}
 
-.nav-link:hover {
-  background-color: #ffffff;
-  color: #333;
+.menu-item:hover{
+  background-color: #ede7f6;
+  color: #5e35ba;
+}
+.nav-link:hover { 
+  color: #5e35ba;
 }
  
 #salir:hover{
-  background-color: #f22828;
+  background-color: #ede7f6;
   color: #0d0d0d;
 }
  /* PANEL */
 
 .panel{
   height: 100%;
+  background-color: #eef2f6;
 }
 
 h1{
@@ -114,6 +110,8 @@ h1{
   font-family: 'Times New Roman', Times, serif;
   font-size: 3rem;
   margin-top: 25%;
+  font-weight: bold;
+  font-style: italic;
 }
   
 /* login */

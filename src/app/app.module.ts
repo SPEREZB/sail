@@ -18,7 +18,7 @@ import { AlertService } from './services/alert/alert.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment'; 
 
 @NgModule({
   declarations: [

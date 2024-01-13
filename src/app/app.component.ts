@@ -13,6 +13,8 @@ import { LoginService } from './services/login/login.service';
 export class AppComponent {
   title = 'sail'; 
   userType:any="";
+  usName:any ="";
+  passw:any ="";
   isRegistro: boolean = false; 
   isLogin: boolean = false; 
   isAlertVisible: boolean = false;
@@ -54,12 +56,25 @@ export class AppComponent {
 
     this.isLogin = this.authService.isAuthenticated();
 
+    this.userType= localStorage.getItem("userType");
+
     if(localStorage.getItem("userLoggedIn")=="true") this.router.navigate(['/home']);
     else this.router.navigate(['']);
   } 
 
+  updateUserName() {
+    const usname = document.getElementById('login') as HTMLSelectElement;
+    this.usName = usname.value;  
+  }
+
+  updatePassword() {
+    const password = document.getElementById('password') as HTMLSelectElement;
+    this.passw = password.value;
+  }
+
   updateImage() {
     const tipous = document.getElementById('tipous') as HTMLSelectElement;
+    console.log(tipous.value);
     this.userType = tipous.value;
   }
 
@@ -82,12 +97,12 @@ export class AppComponent {
           
           this.authService.login();
           this.isLogin=this.authService.isAuthenticated();
+          this.authService.userType(this.userType);
           this.router.navigate(['/home']);
         }
          else  
          {
-          this.authService.logout();
-          this.authService.isAuthenticated();
+          this.authService.logout(); 
           this.router.navigate(['']);
         }
 

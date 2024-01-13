@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 export class LoginService { 
   
   public readonly storageKey = 'userLoggedIn';
+  public readonly storageKeyUSTYPE = 'userType'; 
   private isLoggedIn: boolean = false;
   private local:string | null = null;
 
@@ -29,5 +30,9 @@ export class LoginService {
     else this.isLoggedIn=false;
     return this.isLoggedIn;
   }
- 
+
+  userType(ustype:string)
+  {
+    localStorage.setItem(this.storageKeyUSTYPE, ustype);
+  } 
 }
