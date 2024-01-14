@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 import { SailService } from './services/sail/sail.service';
 import { AlertService } from './services/alert/alert.service';
 import { LoginService } from './services/login/login.service';
+import { Dates } from './dates/dates';
 
 @Component({
   selector: 'app-root',
@@ -12,139 +13,159 @@ import { LoginService } from './services/login/login.service';
 })
 export class AppComponent {
   title = 'sail'; 
-
-  //VARIABLES PARA EL LOGIN 
-  userType:any="";
-  usName:any ="";
-  passw:any ="";
-  isRegistro: boolean = false; 
-  isLogin: boolean = false; 
-  openMenu: boolean = false; 
-
-  //ALERT
-  isAlertVisible: boolean = false;
-
-  //VARIABLES PARA LOS SERVICIOS
-  respuesta:any=""; 
-  person:any="";
-  form: FormGroup;   
-  idUs:any=0;
-  idPerson:any=0;
- 
+  
+  loginInfo:any;
+  appComponentInfo:any;   
+  services:any;
  
   handleDrawerOpen() {
-    this.openMenu = true;
+    this.loginInfo.openMenu = true;
   }
 
   handleDrawerClose() {
-    this.openMenu = false;
+    this.loginInfo.openMenu = false;
   }
  
-  constructor(private router: Router,  
-    private authService: LoginService,
-    public formulario:FormBuilder,
-    public alert:AlertService,
-    public servicio:SailService ) {
-    this.form = this.formulario.group({
+  constructor(public dates:Dates) 
+    { 
+    this.services = dates.getServices(); 
+    this.loginInfo = dates.loginInfo;
+    this.appComponentInfo = dates.appComponentInfo; 
+    this.appComponentInfo.form = this.services.formulario.group({
       user_name: [''], password: ['']
    });
+
+   this.appComponentInfo.form_reg = this.services.formulario.group({
+    user_name_reg: [''],
+    password_reg: [''],
+    userType_reg:[''],
+    name_reg: [''],
+    last_name_reg: [''],
+    age_reg: [''], 
+ });
   }
 
-  ngOnInit(): void {
-    this.alert.alertVisibility$.subscribe((message) => { 
-      this.isAlertVisible = !!message;
+  ngOnInit(): void {  
+    this.dates.getServices().alert.alertVisibility$.subscribe((message) => { 
+      this.appComponentInfo.isAlertVisible = !!message;
   
-      if (this.isAlertVisible) {
+      if (this.appComponentInfo.isAlertVisible) {
         setTimeout(() => {
-          this.isAlertVisible = false; 
+          this.appComponentInfo.isAlertVisible = false; 
         }, 4000);
       }
     });
 
-    this.isLogin = this.authService.isAuthenticated();
+    this.loginInfo.isLogin = this.services.authService.isAuthenticated();
 
-    this.userType= localStorage.getItem("userType");
+    this.loginInfo.userType = localStorage.getItem("userType") ?? "";
 
-    if(localStorage.getItem("userLoggedIn")=="true") this.router.navigate(['/home']);
-    else this.router.navigate(['']);
+    if(localStorage.getItem("userLoggedIn")=="true") this.services.router.navigate(['/home']);
+    else this.services.router.navigate(['']);
   }  
 
   updateUserName() {
     const usname = document.getElementById('login') as HTMLSelectElement;
-    this.usName = usname.value;  
+    this.loginInfo.usName = usname.value;  
   }
 
   updatePassword() {
     const password = document.getElementById('password') as HTMLSelectElement;
-    this.passw = password.value;
+    this.loginInfo.passw = password.value;
   }
 
   updateImage() {
     const tipous = document.getElementById('tipous') as HTMLSelectElement;
     console.log(tipous.value);
-    this.userType = tipous.value;
+    this.loginInfo.userType = tipous.value;
   }
 
   toggleRegistro() {
-    this.isRegistro = !this.isRegistro;
+    this.loginInfo.isRegistro = !this.loginInfo.isRegistro;
   }
 
   salir() {
-    this.authService.logout();
-    this.authService.logoutuserType();
+    this.services.authService.logout();
+    this.services.authService.logoutuserType();
 
-    this.isRegistro = this.authService.isAuthenticated();
-    this.isLogin=this.authService.isAuthenticated();
-    this.userType= this.authService.isUserType();
+    this.loginInfo.isRegistro =   this.services.authService.isAuthenticated();
+    this.loginInfo.isLogin=  this.services.authService.isAuthenticated();
+    this.loginInfo.userType =   this.services.authService.isUserType()?? "";
   }
   
   enviarDatos() { 
-    this.respuesta= this.servicio.getUs(this.form.value).subscribe(
+    this.dates.getServices().servicio.getVerify(this.appComponentInfo.form.value).subscribe(
       response => {
         console.log('Respuesta del servidor:', response); 
         
         if(response.result.length >0)
         {
           const firstUser = response.result[0];
-          this.idUs= firstUser.id_us; 
+          this.appComponentInfo.idUs= firstUser.id_us; 
 
-          this.authService.login();
-          this.isLogin=this.authService.isAuthenticated();
-          this.authService.userType(this.userType);
-          this.authService.idUs(this.idUs);
+          this.services.authService.login();
+          this.loginInfo.isLogin=this.services.authService.isAuthenticated();
+          this.services.authService.userType(this.loginInfo.userType);
+          this.services.authService.idUs(this.appComponentInfo.idUs);
           this.getPerson();
-          this.router.navigate(['/home']);
+          this.dates.getServices().router.navigate(['/home']);
         }
          else  
          {
-          this.authService.logout(); 
-          this.router.navigate(['']);
-        }
-
-
+          this.services.authService.logout(); 
+          this.services.router.navigate(['']);
+        } 
       },
       error => {
         console.error('Error en la solicitud:', error);
-        this.router.navigate(['']);
+        this.services.router.navigate(['']);
       }
-    ); 
-    
-    
-  
+    );  
+  }
+
+  crearUs()
+  {
+    this.dates.getServices().servicio.createUs(this.appComponentInfo.form_reg.value).subscribe(
+      response => {
+        console.log('Respuesta del servidor:', response); 
+        
+        if(response.result.length >0)
+        {
+          const firstUser = response.result[0];
+          this.appComponentInfo.idUs= firstUser.id_us; 
+
+          this.services.authService.login();
+          this.loginInfo.isLogin=this.dates.getServices().authService.isAuthenticated();
+          this.services.authService.userType(this.loginInfo.userType);
+          this.services.authService.idUs(this.appComponentInfo.idUs);
+          this.getPerson();
+          this.dates.getServices().router.navigate(['/home']);
+        }
+         else  
+         {
+          this.services.authService.logout(); 
+          this.services.router.navigate(['']);
+        } 
+      },
+      error => {
+        console.error('Error en la solicitud:', error);
+        this.services.router.navigate(['']);
+      }
+    );  
   }
 
   getPerson()
   {
-    this.person= this.servicio.getIDPerson(this.idUs).subscribe(
+    this.appComponentInfo.person= this.dates.getServices().servicio.getPerson(this.appComponentInfo.idUs).subscribe(
       response => { 
-        const firstUser = response.result[0];
-        this.idPerson = firstUser.id_person;
-        this.authService.idPerson(this.idPerson); 
+        const firstUser = response[0];
+        this.appComponentInfo.idPerson = firstUser.id_person;
+        this.services.authService.idPerson(this.appComponentInfo.idPerson); 
 
       },
       error => {
         console.error('Error en la solicitud:', error);
-        this.router.navigate(['']);
+        this.services.router.navigate(['']);
       }
     );
   }

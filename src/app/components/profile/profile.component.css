@@ -68,7 +68,7 @@
   margin-top: 15%;
   background-color: #fff;
   overflow: hidden;  
-  width: 80%;
+  width: 60%;
 }
 
 .user-notes img {
@@ -97,7 +97,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     padding-left: 3%;
-    padding-top: 3%; 
+    padding-top: 3%;  
   }
   
   .user-column {
@@ -109,7 +109,8 @@
   .user-detail-container {
     display: flex;
     justify-content: space-between;
-    margin-right: 40%;
+    margin-left: 25%;
+    padding-right: 20%;
     width: 100%;
   }
   
@@ -190,19 +191,7 @@ button {
 button:hover {
     background-color: #45a049;
 }
- 
-
-.additional-images {
-    display: flex;
-    justify-content: center;  
-    margin-top: 10px;  
-}
-
-.additional-images img {
-    width: 20%;  
-    height: 15%;  
-    margin-right: 20px;  
-} 
+  
 
 .button-container {
   display: flex;
@@ -229,7 +218,7 @@ button:hover {
 }
 
 .delete-button {
-  background-color: #FF6347;
+  background-color: #d01515d5;
   transition: background-color 0.3s ease;
 }
 
