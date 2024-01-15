@@ -1,0 +1,23 @@
+/* Estilos personalizados para el componente Home */
+body {
+    background-color: #f7f7f7;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  /* Estilos personalizados para el componente Portfolio */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  
+  .gallery-item {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+  

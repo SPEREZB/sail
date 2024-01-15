@@ -60,7 +60,7 @@ export class AppComponent {
 
     this.loginInfo.userType = localStorage.getItem("userType") ?? "";
 
-    if(localStorage.getItem("userLoggedIn")=="true") this.services.router.navigate(['/home']);
+    if(localStorage.getItem("userLoggedIn")=="true") this.services.router.navigate(['/dashboard']);
     else this.services.router.navigate(['']);
   }  
 
@@ -108,7 +108,7 @@ export class AppComponent {
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
           this.getPerson();
-          this.dates.getServices().router.navigate(['/home']);
+          this.dates.getServices().router.navigate(['/dashboard']);
         }
          else  
          {
@@ -139,7 +139,7 @@ export class AppComponent {
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
           this.getPerson();
-          this.dates.getServices().router.navigate(['/home']);
+          this.dates.getServices().router.navigate(['/dashboard']);
         }
          else  
          {

@@ -50,42 +50,8 @@
 
 
 <app-custom-alert></app-custom-alert>  
-<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'estudiante'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
-  <h1 >SAIL</h1>
-  <nav class="nav flex-column" style="color: rgb(255, 255, 255); background-color: rgb(255, 255, 255);font-style: italic; font-family: 'Times New Roman', Times, serif;">
-    <div class="menu-item">
-      <img src="../assets/menu/home.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="home"> 
-        HOME</a> 
-    </div>
 
-    <div class="menu-item">
-      <img src="../assets/menu/perfil.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="profile">PERFIL</a>
-    </div>
-
-    <div class="menu-item">
-      <img src="../assets/menu/cursos.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="cursos">CURSOS</a>
-    </div>
-
-    <div class="menu-item">
-      <img src="../assets/menu/retos.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="retos">RETOS</a>
-    </div>
-
-    <div class="menu-item">
-      <img src="../assets/menu/idiomas.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="idiomas">IDIOMAS</a>
-    </div> 
-
-    <div class="menu-item">
-      <img src="../assets/menu/salir.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" (click)="salir()" routerLink="salir" id="salir">SALIR</a>
-    </div> 
  
-  </nav>
-</div> 
 
 <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'profesor'" class="main-menu" [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
   <h1 >SAIL</h1>
@@ -98,12 +64,12 @@
 
     <div class="menu-item">
       <img src="../assets/menu/perfil.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="profile">PERFIL</a>
+      <a class="nav-link" routerLink="perfilestudiante/profile">PERFIL</a>
     </div>
 
     <div class="menu-item">
       <img src="../assets/menu/cursos.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
-      <a class="nav-link" routerLink="cursos">CURSOS</a>
+      <a class="nav-link" routerLink="perfilestudiante/cursos">CURSOS</a>
     </div> 
     <div class="menu-item">
       <img src="../assets/menu/salir.png"  style="width: 40px; height: 40px; margin-top: 0%;"  alt="Home">
@@ -113,8 +79,16 @@
   </nav>
 </div> 
 
+
+<section id="sidebar">
+<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'estudiante'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+  <app-perfilestudiante></app-perfilestudiante>
+  </div> 
+</section>
+
+  <section id="content">
 <div class="panel" *ngIf="loginInfo.isLogin">
   <router-outlet></router-outlet>  
 </div>
   
- 
+ </section>

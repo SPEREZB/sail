@@ -19,7 +19,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment'; 
-
+import { PerfiladminComponent } from './components/perfiles/perfiladmin/perfiladmin.component';
+import { PerfilestudianteComponent } from './components/perfiles/perfilestudiante/perfilestudiante.component';
+import { PerfilprofesorComponent } from './components/perfiles/perfilprofesor/perfilprofesor.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,10 @@ import { environment } from '../environments/environment';
     CourseMenuComponent,
     ProfileComponent,
     HomeComponent,
-    CustomAlertComponent 
+    PerfiladminComponent,
+    CustomAlertComponent, 
+    PerfilestudianteComponent,
+    PerfilprofesorComponent 
   ],
   imports: [
     BrowserModule,

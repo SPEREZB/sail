@@ -1,78 +1,110 @@
 <div class="profile-info">
-  <div style="flex-grow: 8;" class="user-details">
-    <label id="title">DATOS DEL USUARIO:</label>
+  <div class="user-details">
+    <div class="greeting-container">
+      <div class="greeting">
+        <h2>Saludos, Sebastian</h2>
+        <div class="motivational-paragraph">
+          <p>¡Bienvenido al sistema de SAIL! Estamos emocionados de tenerte aquí. 🚀📚✨</p>
+        </div>
+      </div>
+      <div class="profile-image">
+        <img src="../../../assets/profile/student.png" alt="Profile Image">
+      </div>
+    </div>
+
+
+    <section id="content"> 
+    <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Dashboard</h1>
+        <ul class="breadcrumb">
+          <li><a href="#">Dashboard</a></li>
+          <li><i class='bx bx-chevron-right'></i></li>
+          <li><a class="active" href="dashboard">PERFIL</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="box-info">
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <h3>1220</h3>
+          <p>Alumnos</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-group'></i>
+        <span class="text">
+          <h3>200</h3>
+          <p>Docentes</p>
+        </span>
+      </li>
+      <li>
+        <i class='bx bxs-doughnut-chart'></i>
+        <span class="text">
+          <h3>100</h3>
+          <p>Materias</p>
+        </span>
+      </li>
+    </ul>
+  </main>
+</section>
+ 
     <div class="message-container">
+      <label id="title">DATOS DEL USUARIO:</label>
       <div *ngFor="let u of us" class="user-detail-container">
         <div class="user-column">
           <div class="user-detail">
             <label class="label">Nombre de Usuario:</label>
-            <input id="data" [(ngModel)]="u.user_name" />
+            <input class="form-control" [(ngModel)]="u.user_name" />
           </div>
           <div class="user-detail">
             <label class="label">Contraseña:</label>
-            <input id="data" [(ngModel)]="u.password" />
+            <input class="form-control" [(ngModel)]="u.password" />
           </div>
           <div class="user-detail">
             <label class="label">Tipo de usuario:</label>
             <label id="data">{{ u.type ? "Estudiante" : "Profesor" }}</label>
           </div>
         </div>
-        <div class="user-column" id="persona">
 
-          <form [formGroup]="form" (ngSubmit)="onAcceptClick()">
+        <div class="container-fluid" id="persona">
+          <form [formGroup]="form" (ngSubmit)="onAcceptClick()" class="row">
             <input type="hidden" formControlName="id_person" />
+            <div *ngFor="let per of pers" class="user-detail col-md-6 offset-md-3">
+              <div class="form-group">
+                <label class="label">Nombre:</label>
+                <input class="form-control" formControlName="name" placeholder="Nombre" [(ngModel)]="per.name" />
+              </div>
+              <div class="form-group">
+                <label class="label">Apellido:</label>
+                <input class="form-control" formControlName="last_name" placeholder="Apellido" [(ngModel)]="per.last_name" />
+              </div>
+              <div class="form-group">
+                <label class="label">Edad:</label>
+                <input class="form-control" formControlName="age" placeholder="Edad" [(ngModel)]="per.age" />
+              </div>
+            </div>
 
-          <div *ngFor="let per of pers" class="user-detail">
-            <label class="label">Nombre:</label>
-            <input formControlName="name" id="data" [(ngModel)]="per.name" />
-   
-            <label class="label">Apellido:</label>
-            <input formControlName="last_name" id="data" [(ngModel)]="per.last_name" />
-        
-            <label class="label">Edad:</label>
-            <input formControlName="age" id="data" [(ngModel)]="per.age" />
-          </div>
-
-          <div class="button-container">
-            <!-- Botón Aceptar -->
-            <button type="submit" class="accept-button">
-              ACTUALIZAR
-            </button>
-            <!-- Botón Eliminar -->
-            <button class="delete-button" (click)="onDeleteClick()">
-              ELIMINAR PERFIL
-            </button>
-          </div>
-        </form>
+            <div class="button-container col-md-6 offset-md-3">
+              <button type="submit" class="btn btn-success form-control">ACTUALIZAR</button>
+              <button type="submit" class="btn btn-danger form-control mt-2" (click)="onDeleteClick()">ELIMINAR</button>
+            </div>
+          </form>
         </div>
-        
       </div>
     </div>
-    <div class="user-notes">
-      <img
-      src="../../../assets/profile/barras.png"
-      alt="Editar perfil"
-    />
-    </div>
   </div>
-  <div style="flex-grow: 2;" class="grafic">
+
+  <div class="grafic">
     <div class="image-row">
       <div class="image-container">
-        <img
-          src="../../../assets/profile/calificacion.png"
-          alt="Editar perfil"
-        />
+        <img src="../../../assets/profile/calificacion.png" alt="Editar perfil">
       </div>
       <div class="image-container">
         <img src="../../../assets/profile/retos.png" alt="Editar perfil" />
-      </div>
-    </div>
-    <div class="image-row">
-      <div class="image-container">
-        <img
-          src="../../../assets/profile/asistencia.png"
-          alt="Editar perfil"
-        />
       </div>
       <div class="image-container">
         <img src="../../../assets/profile/feddback.png" alt="Editar perfil" />
