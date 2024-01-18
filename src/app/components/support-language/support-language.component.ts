@@ -1,43 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
+import { ChatService } from 'src/app/services/chat/chat.service';
+import { IaService } from 'src/app/services/ia/ia.service';
 
 @Component({
   selector: 'app-support-language', 
   templateUrl: './support-language.component.html', 
   styleUrls: ['./support-language.component.css'],
 })
-export class SupportLanguageComponent {  
+export class SupportLanguageComponent implements OnInit {  
   messages: string[] = [];
-  language: string = 'es'; 
-  constructor(private storage: AngularFireStorage) {}
+  storeMessage: string = '';
+  userMessage: string = '';
+  selectedLanguage: string = 'es';
+  jsonData: string="";
+  responseia:any;
 
-  sendMessage() {
-    const messageTextarea = document.querySelector('.message-display') as HTMLTextAreaElement;
-    const userMessageTextarea = document.querySelector('.user-input textarea') as HTMLTextAreaElement;
-
-    const message = userMessageTextarea.value;
-    const timestamp = new Date().toLocaleString();
-
-    const formattedMessage = `${message}\n`;
-    this.messages.push(formattedMessage);
+  constructor(private storage: AngularFireStorage, private chatService: ChatService,
+    private ia: IaService) {}
  
-    messageTextarea.value = this.messages.join('');
- 
-    this.generateAndUploadPDF();
+
+  ngOnInit(): void {
+    const chatId = 'chat1'; // Ajusta esto según tu lógica para identificar el chat
+    
+    this.chatService.getPDF(chatId).subscribe((data: string[]) => {
+      // Remover comas después de saltos de línea en cada cadena
+      const cleanedData = data.map((message: string) => message.replace(/\n,/g, '\n'));
+      this.jsonData = cleanedData.join('\n');
+    });
   }
 
-  generateAndUploadPDF() {
-    const doc = new jsPDF();
- 
-    this.messages.forEach((message, index) => {
-      doc.text(message, 10, 10 + index * 10);
-    });
- 
-    const pdfBlob = doc.output('blob');  
-    saveAs(pdfBlob, 'mensajes.pdf');
+  sendMessage(): void {
+    const formattedMessage = `${this.userMessage}\n`;
+    this.messages.push(formattedMessage);
 
-    }
+
+    const fakeTextareaContent = document.querySelector('.fake-textarea')?.textContent || '';
+    this.messages.unshift(fakeTextareaContent); 
+ 
+  this.jsonData = this.messages.join('\n');
+   
+  this.someFunction(formattedMessage); 
+
+ 
+ } 
+
+
+ someFunction(prompt:string) { 
+  this.ia.getResponseIA(prompt)
+    .then((response) => {
+      this.responseia = response;
+      this.messages.push(this.responseia);
+ 
+      this.jsonData = this.messages.join('\n');
+
+      const chatId = 'chat1';
+      this.chatService.saveChat(this.messages, chatId); 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
+ 
+} 

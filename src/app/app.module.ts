@@ -22,6 +22,8 @@ import { environment } from '../environments/environment';
 import { PerfiladminComponent } from './components/perfiles/perfiladmin/perfiladmin.component';
 import { PerfilestudianteComponent } from './components/perfiles/perfilestudiante/perfilestudiante.component';
 import { PerfilprofesorComponent } from './components/perfiles/perfilprofesor/perfilprofesor.component';
+import { SupportLanguageComponent } from './components/support-language/support-language.component';
+import { SafeHtmlPipe } from './components/support-language/safe-html.pipe';
  
 @NgModule({
   declarations: [
@@ -31,8 +33,10 @@ import { PerfilprofesorComponent } from './components/perfiles/perfilprofesor/pe
     ProfileComponent,
     HomeComponent,
     PerfiladminComponent,
+    SafeHtmlPipe,
     CustomAlertComponent, 
     PerfilestudianteComponent,
+    SupportLanguageComponent,
     PerfilprofesorComponent 
   ],
   imports: [

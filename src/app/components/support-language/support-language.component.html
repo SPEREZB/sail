@@ -1,24 +1,26 @@
- 
 <div class="chat">
-    <div class="chat-container">
-        <div class="chat-messages">
-          <textarea class="message-display" readonly>
-          
-          </textarea>
-        </div>
+  <div class="chat-container">
+     <div class="chat-messages">
+      <div class="chat-messages">
+         <div class="fake-textarea" [innerHTML]="jsonData | safeHtml">
+           <div *ngFor="let message of messages">    {{ message.replace(',', '') }}</div>
+         </div>
+       </div>
       
-        <div class="user-input">
-          <textarea placeholder="Escribe tu mensaje"></textarea>
-          <button (click)="sendMessage()">Enviar</button>
-        </div>
-      
-        <div class="language-selector">
-          <label for="language">Seleccionar idioma:</label>
-          <select id="language">
-            <option value="es">Español</option>
-            <option value="en">Inglés</option>
-            <option value="fr">Francés</option> 
-          </select>
-        </div>
-      </div>
+     </div>
+  
+     <div class="user-input">
+        <textarea placeholder="Escribe tu mensaje" [(ngModel)]="userMessage"></textarea>
+        <button (click)="sendMessage()">Enviar</button>
+     </div>
+  
+     <div class="language-selector">
+        <label for="language">Seleccionar idioma:</label>
+        <select id="language" [(ngModel)]="selectedLanguage">
+           <option value="es">Español</option>
+           <option value="en">Inglés</option>
+           <option value="fr">Francés</option> 
+        </select>
+     </div>
+  </div>
 </div>
