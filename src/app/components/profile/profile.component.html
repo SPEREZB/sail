@@ -54,8 +54,8 @@
  
     <div class="message-container">
       <label id="title">DATOS DEL USUARIO:</label>
-      <div *ngFor="let u of us" class="user-detail-container">
-        <div class="user-column">
+      <div class="user-detail-container">
+        <div *ngFor="let u of us"  class="user-column">
           <div class="user-detail">
             <label class="label">Nombre de Usuario:</label>
             <input class="form-control" [(ngModel)]="u.user_name" />

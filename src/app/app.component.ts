@@ -1,11 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { SailService } from './services/sail/sail.service';
-import { AlertService } from './services/alert/alert.service';
-import { LoginService } from './services/login/login.service';
+import { Component, HostListener  } from '@angular/core'; 
 import { Dates } from './dates/dates';
-
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -42,6 +37,9 @@ export class AppComponent {
     name_reg: [''],
     last_name_reg: [''],
     age_reg: [''], 
+    academic_degree_reg: [''], 
+    specialization_reg: [''],
+    work_experience_reg: ['']
  });
   }
 
@@ -60,7 +58,13 @@ export class AppComponent {
 
     this.loginInfo.userType = localStorage.getItem("userType") ?? "";
 
-    if(localStorage.getItem("userLoggedIn")=="true") this.services.router.navigate(['/dashboard']);
+    if(localStorage.getItem("userLoggedIn")=="true")
+     {
+      if(localStorage.getItem("userType")=="admin") this.services.router.navigate(['/admin']);
+      else if(localStorage.getItem("userType")=="profesor") this.services.router.navigate(['/profesor']);
+      else    this.services.router.navigate(['/dashboard']); 
+     }
+     
     else this.services.router.navigate(['']);
   }  
 
@@ -107,8 +111,11 @@ export class AppComponent {
           this.loginInfo.isLogin=this.services.authService.isAuthenticated();
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
-          this.getPerson();
-          this.dates.getServices().router.navigate(['/dashboard']);
+     
+
+          if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
+          else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesores']);
+          else this.dates.getServices().router.navigate(['/dashboard']);
         }
          else  
          {
@@ -133,12 +140,13 @@ export class AppComponent {
         {
           const firstUser = response.result[0];
           this.appComponentInfo.idUs= firstUser.id_us; 
+          this.appComponentInfo.idPerson= firstUser.id_person; 
 
           this.services.authService.login();
           this.loginInfo.isLogin=this.dates.getServices().authService.isAuthenticated();
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
-          this.getPerson();
+       
           this.dates.getServices().router.navigate(['/dashboard']);
         }
          else  
@@ -153,21 +161,6 @@ export class AppComponent {
       }
     );  
   }
-
-  getPerson()
-  {
-    this.appComponentInfo.person= this.dates.getServices().servicio.getPerson(this.appComponentInfo.idUs).subscribe(
-      response => { 
-        const firstUser = response[0];
-        this.appComponentInfo.idPerson = firstUser.id_person;
-        this.services.authService.idPerson(this.appComponentInfo.idPerson); 
-
-      },
-      error => {
-        console.error('Error en la solicitud:', error);
-        this.services.router.navigate(['']);
-      }
-    );
-  }
  
+   
 }

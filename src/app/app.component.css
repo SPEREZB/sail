@@ -32,6 +32,10 @@
     color: #66B2FF;  
   }
 
+.dates
+{
+  display: flex;
+}
 
   #sup-menu {
     display: flex;

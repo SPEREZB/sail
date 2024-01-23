@@ -14,6 +14,7 @@
               <option value="" disabled selected hidden>Tipo de usuario</option>
             <option value="estudiante">Estudiante</option>
             <option value="profesor">Profesor</option>
+            <option value="admin">Admin</option>
           </select>
         </div>
         <input type="text" formControlName="user_name" (change)="updateUserName()" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
@@ -23,11 +24,21 @@
       </form>
   
       <form *ngIf="loginInfo.isRegistro"  [formGroup]="appComponentInfo.form_reg"  (ngSubmit)="crearUs()"> 
-        <input type="text" formControlName="user_name_reg" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
-        <input type="text" formControlName="password_reg" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-        <input type="text" formControlName="name_reg" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
-        <input type="text" formControlName="last_name_reg" id="apellido" class="fadeIn third" name="apellido" placeholder="Apellido">
-        <input type="text" formControlName="age_reg" id="edad" class="fadeIn third" name="edad" placeholder="Edad"> 
+        <div class="dates">
+          <div class="user_person"> 
+            <input type="text" formControlName="user_name_reg" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
+            <input type="text" formControlName="password_reg" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+            <input type="text" formControlName="name_reg" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
+            <input type="text" formControlName="last_name_reg" id="apellido" class="fadeIn third" name="apellido" placeholder="Apellido">
+            <input type="text" formControlName="age_reg" id="edad" class="fadeIn third" name="edad" placeholder="Edad"> 
+          </div>
+            <div class="teacher">
+              <input type="text" formControlName="academic_degree_reg"  class="fadeIn third" name="titulo_academico" placeholder="Titulo"> 
+              <input type="text" formControlName="specialization_reg" class="fadeIn third" name="especialidad" placeholder="Especialidad"> 
+              <input type="text" formControlName="work_experience_reg"  class="fadeIn third" name="experiencia" placeholder="Experiencia"> 
+            </div>
+        </div>
+       
         <div class="select-wrapper">
           <select  formControlName="userType_reg" (change)="updateImage()" class="fadeIn second" name="userType"  id="tipous">
            <option value="" disabled selected hidden>Tipo de usuario</option>
@@ -84,6 +95,11 @@
 <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'estudiante'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
   <app-perfilestudiante></app-perfilestudiante>
   </div> 
+
+
+  <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'admin'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+    <app-perfiladmin></app-perfiladmin>
+    </div> 
 </section>
 
   <section id="content">

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core'; 
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Observable, from, throwError } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators'; 
-import { HttpClient } from '@angular/common/http';  
+import { Observable, from, throwError } from 'rxjs'; 
+import { HttpClient } from '@angular/common/http';   
+import { apiUrl, apiIa } from 'src/config';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class ChatService {
   descarga: any;
-  api = "http://localhost:3000/";
+  api = apiUrl;
 
-  apiIa="http://127.0.0.1:5000/"
+  apiIa=apiIa;
 
   constructor( 
     private storage: AngularFireStorage,

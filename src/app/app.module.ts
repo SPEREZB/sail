@@ -1,3 +1,4 @@
+ 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,12 +19,14 @@ import { AlertService } from './services/alert/alert.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { environment } from '../environments/environment'; 
+import { firebase } from '../config/index'; 
 import { PerfiladminComponent } from './components/perfiles/perfiladmin/perfiladmin.component';
 import { PerfilestudianteComponent } from './components/perfiles/perfilestudiante/perfilestudiante.component';
 import { PerfilprofesorComponent } from './components/perfiles/perfilprofesor/perfilprofesor.component';
 import { SupportLanguageComponent } from './components/support-language/support-language.component';
 import { SafeHtmlPipe } from './components/support-language/safe-html.pipe';
+import { AdminTeacherListComponent } from './components/admin/admin-teacher-list/admin-teacher-list.component';
+import { AdminStudentListComponent } from './components/admin/admin-student-list/admin-student-list.component';
  
 @NgModule({
   declarations: [
@@ -37,11 +40,13 @@ import { SafeHtmlPipe } from './components/support-language/safe-html.pipe';
     CustomAlertComponent, 
     PerfilestudianteComponent,
     SupportLanguageComponent,
-    PerfilprofesorComponent 
+    PerfilprofesorComponent,
+    AdminTeacherListComponent,
+    AdminStudentListComponent 
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     MatListModule,
