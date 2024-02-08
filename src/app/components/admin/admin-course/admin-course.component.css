@@ -428,8 +428,8 @@ button {
     cursor: pointer;
 }
 
-.add-button {
-    background-color: #4CAF50; /* Verde */
+.add-button { 
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
