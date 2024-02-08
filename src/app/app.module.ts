@@ -27,6 +27,7 @@ import { SupportLanguageComponent } from './components/support-language/support-
 import { SafeHtmlPipe } from './components/support-language/safe-html.pipe';
 import { AdminTeacherListComponent } from './components/admin/admin-teacher-list/admin-teacher-list.component';
 import { AdminStudentListComponent } from './components/admin/admin-student-list/admin-student-list.component';
+import { AdminCourseComponent } from './components/admin/admin-course/admin-course.component';
  
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminStudentListComponent } from './components/admin/admin-student-list
     SupportLanguageComponent,
     PerfilprofesorComponent,
     AdminTeacherListComponent,
-    AdminStudentListComponent 
+    AdminStudentListComponent,
+    AdminCourseComponent 
   ],
   imports: [
     BrowserModule,

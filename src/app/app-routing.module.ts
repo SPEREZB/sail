@@ -12,6 +12,7 @@ import { PerfilestudianteComponent } from './components/perfiles/perfilestudiant
 import { PerfilprofesorComponent } from './components/perfiles/perfilprofesor/perfilprofesor.component';
 import { AdminTeacherListComponent } from './components/admin/admin-teacher-list/admin-teacher-list.component';
 import { AdminStudentListComponent } from './components/admin/admin-student-list/admin-student-list.component';
+import { AdminCourseComponent } from './components/admin/admin-course/admin-course.component';
 
 const routes: Routes = [ 
   {path:"", redirectTo:"login",pathMatch:"full"},  
@@ -20,9 +21,12 @@ const routes: Routes = [
   {path:"admin/profile",component:ProfileComponent},  
   {path:"admin/profesores",component:AdminTeacherListComponent},  
   {path:"admin/estudiantes",component:AdminStudentListComponent}, 
+  {path:"admin/cursosagg",component:AdminCourseComponent}, 
 
 
   {path:"profesor",component:PerfilprofesorComponent, canActivate: [GuardGuard]}, 
+  {path:"profesor/cursos",component:CourseMenuComponent, canActivate: [GuardGuard]}, 
+  {path:"profesor/profile",component:ProfileComponent, canActivate: [GuardGuard]}, 
 
   
   {path:"dashboard",component:PerfilestudianteComponent, canActivate: [GuardGuard]},  
@@ -39,6 +43,7 @@ const routes: Routes = [
   {path:"admin",component:PerfiladminComponent}, 
   {path:"profesores",component:AdminTeacherListComponent},  
   {path:"estudiantes",component:AdminStudentListComponent},  
+  {path:"cursosagg",component:AdminCourseComponent},  
   {path:"salir",redirectTo:"login",pathMatch:"full"},  
 ];
 

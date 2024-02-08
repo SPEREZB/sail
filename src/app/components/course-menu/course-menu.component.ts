@@ -1,5 +1,6 @@
  
 import { Component, OnInit } from '@angular/core'; 
+import { SailService } from 'src/app/services/sail/sail.service';
 
 interface UserProfile {
   id_us: number;
@@ -29,9 +30,11 @@ export class CourseMenuComponent implements OnInit {
   personData: PersonProfile[] = [];
   id_person: number | undefined; 
 
+  id_us: any;
   cursos: any[]=[];
+  subj:any;
 
-  constructor() {  
+  constructor(public servicio: SailService) {  
      this.cursos = [
       { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
       { id: 2, nombre: 'Historia', icono: './../../../assets/course/historia.png' },
@@ -41,7 +44,12 @@ export class CourseMenuComponent implements OnInit {
    }   
 
   ngOnInit(): void {
+    this.id_us= localStorage.getItem("userID");  
     
+    this.servicio.getSubjectTeacher({ id_us: this.id_us }).subscribe(subj=>{
+      this.subj=subj;
+     });
+
   }
   
   onItemClick(curso: any): void {

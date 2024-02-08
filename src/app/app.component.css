@@ -447,8 +447,10 @@ input[type=text]:placeholder {
 #content {
 	position: relative;
 	width: calc(100% - 280px);
+  height: 95%;
 	left: 280px;
 	transition: .3s ease;
+  background-color: #f8f9fa; 
 }
 #sidebar.hide ~ #content {
 	width: calc(100% - 60px);

@@ -46,6 +46,12 @@ body {
 	overflow-x: hidden;
 }
  
+h2 {
+    font-size: 24px;  
+    font-weight: bold;  
+    color:#007bff;
+    margin-bottom: 16px;  
+  }
 
 
 /* SIDEBAR */
@@ -163,7 +169,7 @@ body {
 
 /* CONTENT */
 #content { 
-	width: calc(100% - 280px);
+	width: 100% ;
 	left: 280px;
 	transition: .3s ease;
 }
@@ -418,6 +424,40 @@ body {
 	color: var(--dark);	
 }
 
+
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Estilo específico para el botón de eliminar */
+.delete-button {
+    background-color: #f44336; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Alinea los botones horizontalmente */
+button {
+    display: inline-block;
+}
+
+/* Alinea los botones verticalmente */
+.delete-button {
+    display: block;
+    margin-top: 5px; /* Espacio superior entre los botones */
+}
 
 
 

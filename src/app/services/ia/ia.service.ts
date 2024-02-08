@@ -114,20 +114,25 @@ export class IaService {
  
 
   //chat
-  getResponseIA(message: any): Promise<string> {
-    return axios.post(this.apiUrl + 'api/chat', { message: message }, {
+  getResponseIA(message: any, idioma: any): Promise<string> {
+    const requestData = {
+      message: message,
+      idioma: idioma
+    };
+    
+    return axios.post(this.apiUrl + 'api/chat', requestData, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${url}`, 
+        'Authorization': `Bearer ${url}`, // Asegúrate de definir y proporcionar el valor de url
       },
     })
-      .then((response) => {
-        console.log('Después de llamar a la API de Flask para revisar el desafío');
-        return response.data.message;
-      })
-      .catch((error) => {
-        console.error('Error al llamar a la API de Flask para revisar el desafío:', error);
-        throw error;
-      });
+    .then((response) => {
+      console.log('Después de llamar a la API de Flask para revisar el desafío');
+      return response.data.message;
+    })
+    .catch((error) => {
+      console.error('Error al llamar a la API de Flask para revisar el desafío:', error);
+      throw error;
+    });
   }
 }

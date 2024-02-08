@@ -14,11 +14,10 @@ import { IaService } from 'src/app/services/ia/ia.service';
 export class SupportLanguageComponent implements OnInit {  
   messages: string[] = [];
   storeMessage: string = '';
-  userMessage: string = '';
-  selectedLanguage: string = 'es';
+  userMessage: string = ''; 
   jsonData: string="";
   responseia:any;
-
+  selectedLanguage: string= '';
   constructor(private storage: AngularFireStorage, private chatService: ChatService,
     private ia: IaService) {}
  
@@ -33,11 +32,22 @@ export class SupportLanguageComponent implements OnInit {
     });
   }
 
+  onLanguageChange(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement)?.value;
+
+    if (selectedValue !== undefined) {
+      this.selectedLanguage = selectedValue; 
+    }
+  }
+
+
   sendMessage(): void {
+    this.messages = [];
+
     const formattedMessage = `${this.userMessage}\n`;
     this.messages.push(formattedMessage);
 
-
+    this.userMessage = '';
     const fakeTextareaContent = document.querySelector('.fake-textarea')?.textContent || '';
     this.messages.unshift(fakeTextareaContent); 
  
@@ -50,7 +60,7 @@ export class SupportLanguageComponent implements OnInit {
 
 
  someFunction(prompt:string) { 
-  this.ia.getResponseIA(prompt)
+  this.ia.getResponseIA(prompt,this.selectedLanguage)
     .then((response) => {
       this.responseia = response;
       this.messages.push(this.responseia);

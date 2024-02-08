@@ -114,7 +114,7 @@ export class AppComponent {
      
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
-          else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesores']);
+          else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesor']);
           else this.dates.getServices().router.navigate(['/dashboard']);
         }
          else  

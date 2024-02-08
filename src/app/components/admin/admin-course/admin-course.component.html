@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>AdminHub</title>
+  </head>
+  <body>
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- MAIN -->
+      <main>
+        <h2>DATOS DEL USUARIO:</h2>
+
+        <div class="head-title">
+          <form class="head-title" [formGroup]="form" (ngSubmit)="onAcceptClick()"> 
+          <div class="left">
+   
+            <div class="user">
+              <div class="user-detail">
+                <label class="label">Nombre de Usuario:</label>
+                <input formControlName="user_name"  class="form-control" />
+              </div>
+              <div class="user-detail">
+                <label class="label">ASIGNATURA:</label>
+                <input formControlName="name"  class="form-control" />
+              </div> 
+            </div> 
+      
+          </div> 
+
+
+          <div class="right">
+          <button class="add-button" (click)="onAcceptClick()">AGREGAR</button>
+          <button class="delete-button">ELIMINAR</button> 
+        </div>
+        </form>
+        </div>
+
+        <div class="table-data">
+            <div class="order">
+              <div class="table-container">
+                <!-- Tabla de Cursos -->
+                <div class="head">
+                  <h3>CURSOS</h3>
+                  <i class="bx bx-search"></i>
+                  <i class="bx bx-filter"></i>
+                </div>
+                <table class="course-table">
+                  <thead>
+                    <tr>
+                      <th>CURSO</th>  
+                      <th>ESTUDIANTES</th> 
+                      <th>ASIGNATURA</th> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let c of curs; let i = index">
+                    <tr *ngIf="i < 6">
+                      <td>{{ c.name }}</td> 
+                      <td class="with-margin">20</td>
+                      <td class="with-margin">{{ asig[i]?.name }}</td> 
+                    </tr>
+                </ng-container>
+                  </tbody>
+                </table>
+              </div>
+          
+              <div class="table-container">
+                <!-- Tabla de Docentes -->
+                <div class="head">
+                  <h3>DOCENTES</h3>
+                  <i class="bx bx-search"></i>
+                  <i class="bx bx-filter"></i>
+                </div>
+                <table class="teacher-table">
+                  <thead>
+                    <tr>
+                      <th>DOCENTE</th> 
+                      <th>USER_NAME</th>
+                      <th>ASIGNATURAS</th>  
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let p of pers; let i = index">
+                    <tr *ngIf="i < 6">
+                      <td>{{ p.name + ' ' + p.last_name }}</td> 
+                      <td class="with-margin">{{ usteach[i]?.user_name }}</td>
+                      <td class="with-margin">{{ teachsubject[i]?.name }}</td> 
+                    </tr>
+                </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+  </body>
+</html>

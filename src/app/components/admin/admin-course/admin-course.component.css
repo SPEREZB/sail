@@ -44,15 +44,14 @@ body.dark {
 body {
 	background: var(--grey);
 	overflow-x: hidden;
-}
- 
+} 
+
 h2 {
     font-size: 24px;  
     font-weight: bold;  
     color:#007bff;
     margin-bottom: 16px;  
   }
-
 
 /* SIDEBAR */
 #sidebar {
@@ -327,21 +326,16 @@ h2 {
 #content main .head-title {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     grid-gap: 16px;
     flex-wrap: wrap;
   } 
 
   #content main .head-title .left {
-     margin-right: 12%;
+ 
      display: flex;
   }
-
-  #content main .head-title .right {
-    margin-left: 12%;
-  
- }
-
+ 
  #content main .head-title .left .user {
     margin-right: 30%; 
  }
@@ -464,7 +458,7 @@ button {
 
 
 #content main .table-data {
-	display: flex;
+    display: inline-block;
 	flex-wrap: wrap;
 	grid-gap: 24px;
 	margin-top: 24px;
@@ -493,7 +487,7 @@ button {
 }
 
 #content main .table-data .order {
-	flex-grow: 1;
+	flex-grow: 0.8;
 	flex-basis: 500px;
 }
 #content main .table-data .order table {
@@ -501,14 +495,16 @@ button {
 	border-collapse: collapse;
 }
 #content main .table-data .order table th {
+    width: 33.33%; 
 	padding-bottom: 12px;
 	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
 #content main .table-data .order table td {
+    width: 33.33%; 
 	padding: 16px 0;
-}
+} 
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
@@ -598,9 +594,11 @@ button {
 }
 
 
-
-
-
+.table-container {
+    display: inline-block;
+    margin-right: 15%; /* Ajusta el espacio entre las tablas según sea necesario */
+  }
+    
 
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
