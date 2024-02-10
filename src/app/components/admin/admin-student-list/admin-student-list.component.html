@@ -21,66 +21,47 @@
 
         <div class="head-title">
           <div class="left">
-            <div class="user">
-              <div class="user-detail">
-                <label class="label">Nombre de Usuario:</label>
-                <input class="form-control" />
-              </div>
-              <div class="user-detail">
-                <label class="label">Contraseña:</label>
-                <input class="form-control" />
-              </div> 
-            </div>
-
-            <div class="person">
-              <form [formGroup]="form" (ngSubmit)="onAcceptClick()" class="form-person">
-                <input type="hidden" formControlName="id_person" />
-                <div class="user-detail">
-                  <div class="form-group">
-                    <label class="label">Nombre:</label>
-                    <input
-                      class="form-control"
-                      formControlName="name" 
-                    />
+            <form [formGroup]="form"  class="form-person">
+              <div class="form-container">
+                <div class="user">
+                  <div class="user-detail">
+                    <label class="label">Nombre de Usuario:</label>
+                    <input class="form-control" formControlName="user_name" />
                   </div>
-                  <div class="form-group">
-                    <label class="label">Apellido:</label>
-                    <input
-                      class="form-control"
-                      formControlName="last_name" 
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="label">Edad:</label>
-                    <input
-                      class="form-control"
-                      formControlName="age" 
-                    />
+                  <div class="user-detail">
+                    <label class="label">Contraseña:</label>
+                    <input class="form-control" formControlName="password" />
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
+            
+                <div class="person">
+                  <input type="hidden" formControlName="id_person" />
+                  <div class="user-detail">
+                    <div class="form-group">
+                      <label class="label">Nombre:</label>
+                      <input class="form-control" formControlName="name" />
+                    </div>
+                    <div class="form-group">
+                      <label class="label">Apellido:</label>
+                      <input class="form-control" formControlName="last_name" />
+                    </div>
+                    <div class="form-group">
+                      <label class="label">Edad:</label>
+                      <input class="form-control" formControlName="age" />
+                    </div>
+                    <div class="form-group">
+                      <label class="label">CURSO:</label>
+                      <input class="form-control" formControlName="course" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </form>
+          </div> 
 
           <div class="right">
-            <div class="user-detail">
-              <label class="label">CURSO:</label>
-              <input class="form-control" />
-            </div>
-
-            <div class="user-detail">
-              <label class="label">ESPECIALIDAD:</label>
-              <input class="form-control" />
-            </div>
-
-            <div class="user-detail">
-              <label class="label">EXPERIENCIA:</label>
-              <input class="form-control" />
-            </div>
-          </div>
-
-          <div class="right">
-            <button class="add-button">AGREGAR</button>
+            <button class="add-button" (click)="agregarUsuario()">ASIGNAR</button>
+            <button class="update-button" (click)="actualizarUsuario()">ACTUALIZAR</button> 
             <button class="delete-button">ELIMINAR</button>
           </div>
  
@@ -93,6 +74,7 @@
               <i class="bx bx-search"></i>
               <i class="bx bx-filter"></i>
             </div>
+            <div *ngIf="ready===true"> 
             <table>
               <thead>
                 <tr>
@@ -105,7 +87,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let p of pers; let i = index">
+                <tr *ngFor="let p of displayedPers; let i = index" (click)="seleccionarFila(p, us[i])">
                   <td>{{ p.name + ' ' + p.last_name }}</td>
                   <td>{{ p.age }}</td>
                   <td>{{ us[i]?.user_name }}</td>
@@ -115,6 +97,7 @@
                 </tr>
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       </main>

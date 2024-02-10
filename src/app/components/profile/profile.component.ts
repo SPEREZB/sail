@@ -31,7 +31,7 @@ export class ProfileComponent {
   userData: UserProfile[] = [];
   personData: PersonProfile[] = [];
   id_us: string | null = null;
-  id_person: number | undefined;  
+  id_person: string | null = null; 
   us: any;
   pers: any;
   initialPersonID:any;
@@ -50,22 +50,23 @@ export class ProfileComponent {
 
   ngOnInit(): void {
      this.id_us= localStorage.getItem("userID");
+     this.id_person=localStorage.getItem("personID"); 
+
      if (this.id_us !== null && this.id_us !== undefined) {
       const parsedId = parseInt(this.id_us, 10);
      
-    this.servicio.getUs(parsedId).subscribe(us => {
-      this.us = us;
-  
-      if (us.length > 0) {
-        const id_person = us[0].id_person;
-        if (id_person) {
-          this.servicio.getPerson(id_person).subscribe(pers => {
-            this.pers = pers;
-          });
-        }
-      }
-    });
-  } 
+      this.servicio.getUs(parsedId).subscribe(us => {
+        this.us = us;
+      }); 
+    }
+
+    if (this.id_person !== null && this.id_person !== undefined) {
+      const parsedId = parseInt(this.id_person, 10);
+     
+      this.servicio.getPerson(parsedId).subscribe(pers => {
+        this.pers = pers;
+      }); 
+    } 
   }
 
   onAcceptClick()

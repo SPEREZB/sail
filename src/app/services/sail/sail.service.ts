@@ -74,6 +74,8 @@ export class SailService {
   } 
 
 
+
+
   //course
   getCourse(id_course: number):Observable<any>{  
     return this.clientehttp.get(this.api+"api/course/byId/"+id_course);
@@ -113,10 +115,23 @@ export class SailService {
     return this.clientehttp.post(this.api+"api/user/create",body);
   }
 
+  createStudent(body:any):Observable<any>
+  {  
+    return this.clientehttp.post(this.api+"api/student/create",body);
+  }
+
+ 
+
 
   //update
   updateUs(body: any):Observable<any>
   {
     return this.clientehttp.post(this.api+"update/user",body);
   }
+
+  updateStudent(body: any):Observable<any>
+  {
+    return this.clientehttp.post(this.api+"update/user",body);
+  }
+
 }

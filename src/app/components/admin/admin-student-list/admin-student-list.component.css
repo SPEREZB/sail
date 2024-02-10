@@ -306,8 +306,13 @@ h2 {
 /* NAVBAR */
 
 .form-person{
-	width: 100%;
+	width: 100%; 
 }
+
+.form-container {
+	display: flex;
+  }
+
 
 .user-detail{
 	width: 100%;
@@ -435,6 +440,13 @@ button {
 
 .add-button {
 	background-color: #007bff; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.update-button {
+	background-color: #2cebb2; /* Verde */
     color: white;
     border: none;
     border-radius: 5px;

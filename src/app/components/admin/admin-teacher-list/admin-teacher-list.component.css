@@ -311,6 +311,10 @@ h2 {
 	width: 100%;
 }
 
+.form-container {
+	display: flex;
+  }
+
 .user-detail{
 	width: 100%;
 }

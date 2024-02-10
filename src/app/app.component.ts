@@ -106,11 +106,13 @@ export class AppComponent {
         {
           const firstUser = response.result[0];
           this.appComponentInfo.idUs= firstUser.id_us; 
+          this.appComponentInfo.idPerson= firstUser.id_person;
 
           this.services.authService.login();
           this.loginInfo.isLogin=this.services.authService.isAuthenticated();
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
+          this.services.authService.idPerson(this.appComponentInfo.idPerson);
      
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
