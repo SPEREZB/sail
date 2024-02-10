@@ -1,0 +1,46 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+  }
+
+.cursos
+{
+  margin-top: 2%; 
+  padding: 20px;
+  text-align: center; 
+  max-width: 80%;
+  height: 80%;  
+  margin-left: 11%;  
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
+  align-items: center; 
+}
+
+  
+  .rectangle {
+    width: 300px;
+    background-color: #007bff;
+    margin-bottom: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+  }
+  
+  .title {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .content {
+    padding: 10px;
+    display: none;
+  }
+  
+  .rectangle.expanded {
+    height: 120px; /* Altura expandida */
+  }
+  

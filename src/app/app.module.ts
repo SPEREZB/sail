@@ -28,6 +28,9 @@ import { SafeHtmlPipe } from './components/support-language/safe-html.pipe';
 import { AdminTeacherListComponent } from './components/admin/admin-teacher-list/admin-teacher-list.component';
 import { AdminStudentListComponent } from './components/admin/admin-student-list/admin-student-list.component';
 import { AdminCourseComponent } from './components/admin/admin-course/admin-course.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
+import { AddHomeworkComponent } from './components/add-homework/add-homework.component';
+import { ReviewNotesComponent } from './components/review-notes/review-notes.component';
  
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { AdminCourseComponent } from './components/admin/admin-course/admin-cour
     PerfilprofesorComponent,
     AdminTeacherListComponent,
     AdminStudentListComponent,
-    AdminCourseComponent 
+    AdminCourseComponent,
+    ActivitiesComponent,
+    AddHomeworkComponent,
+    ReviewNotesComponent 
   ],
   imports: [
     BrowserModule,

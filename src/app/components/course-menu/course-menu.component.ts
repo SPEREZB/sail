@@ -1,6 +1,7 @@
  
 import { Component, OnInit } from '@angular/core'; 
 import { SailService } from 'src/app/services/sail/sail.service';
+import { Router } from '@angular/router';
 
 interface UserProfile {
   id_us: number;
@@ -31,10 +32,13 @@ export class CourseMenuComponent implements OnInit {
   id_person: number | undefined; 
 
   id_us: any;
+  type:any;
   cursos: any[]=[];
   subj:any;
+ 
 
-  constructor(public servicio: SailService) {  
+  constructor(private router:Router, 
+    public servicio: SailService) {  
      this.cursos = [
       { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
       { id: 2, nombre: 'Historia', icono: './../../../assets/course/historia.png' },
@@ -44,6 +48,7 @@ export class CourseMenuComponent implements OnInit {
    }   
 
   ngOnInit(): void {
+    this.type= localStorage.getItem("userType");
     this.id_us= localStorage.getItem("userID");  
     
     this.servicio.getSubjectTeacher({ id_us: this.id_us }).subscribe(subj=>{
@@ -54,6 +59,6 @@ export class CourseMenuComponent implements OnInit {
   
   onItemClick(curso: any): void {
     console.log('Item clicked:', curso);
- 
+    this.router.navigate(['profesor/cursos/actividades']);
   }
 }
