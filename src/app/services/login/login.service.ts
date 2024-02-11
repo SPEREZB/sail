@@ -10,6 +10,8 @@ export class LoginService {
   public readonly storageIDUS = 'userID';
   public readonly storageIDPERS = 'personID';
   public readonly storageKeyUSTYPE = 'userType'; 
+  public readonly storageKeySubjects = 'subject'; 
+
   private isLoggedIn: boolean = false;
   private local:string | null = null;
   private userTypeVar:string| null = null;
@@ -59,5 +61,10 @@ export class LoginService {
   idPerson(id:any)
   {
     localStorage.setItem(this.storageIDPERS, id);
+  } 
+
+  subject(sub:any)
+  {
+    localStorage.setItem(this.storageKeySubjects, sub);
   } 
 }

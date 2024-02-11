@@ -12,4 +12,22 @@ export class ReviewNotesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  expandRectangle(id: string): void {
+    const rectangle = document.getElementById(id);
+  
+    if (rectangle instanceof HTMLElement) {
+      rectangle.classList.toggle('expanded');
+  
+      const content = rectangle.querySelector('.content');
+  
+      if (content instanceof HTMLElement) {
+        if (rectangle.classList.contains('expanded')) {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      }
+    }
+  }
+
 }

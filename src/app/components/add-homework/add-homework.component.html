@@ -1,16 +1,54 @@
-   <div class="cursos">
-    <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
-        <div class="title">Deberes</div>
-        <div class="content">Contenido de deberes...</div>
-      </div>
-      
-      <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
-        <div class="title">Actividades en Clases</div>
-        <div class="content">Contenido de actividades en clases...</div>
-      </div>
-      
-      <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
-        <div class="title">Exámenes</div>
-        <div class="content">Contenido de exámenes...</div>
-      </div>
+<div class="actividades"> 
+
+<div class="cursos">
+  <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
+    <div class="title">Deberes</div>
+    <div class="content">
+      <li (click)="mostrarFormulario('deber1')">DEBER1</li>
+      <li (click)="mostrarFormulario('deber2')">DEBER2</li>
+    </div> 
   </div>
+  
+  <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
+    <div class="title">Actividades en Clases</div>
+    <div class="content" (click)="mostrarFormulario('taller1')">taller1</div>
+    <div class="content" (click)="mostrarFormulario('taller2')">taller2</div>
+  </div>
+  
+  <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
+    <div class="title">Exámenes</div>
+    <div class="content" (click)="mostrarFormulario('examen1')">examen1</div>
+    <div class="content" (click)="mostrarFormulario('examen2')">examen2</div>
+  </div>
+</div>
+
+<form class="formulario" [formGroup]="form" (ngSubmit)="ocultarFormulario()"> 
+<div *ngIf="mostrarForm">
+ 
+    <div class="form-group">
+      <label for="nombreActividad">Nombre de la Actividad:</label>
+      <input type="text" id="nombreActividad" formControlName="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="descripcionActividad">Descripción:</label>
+      <textarea id="descripcionActividad" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="tipoActividad">Tipo de Actividad:</label>
+      <input type="text" id="tipoActividad" formControlName="type" />
+    </div>
+
+    <div class="form-group">
+      <label for="fechaLimite">Fecha Límite:</label>
+      <input type="date" id="fechaLimite" formControlName="date" />
+    </div>
+
+    <div class="form-group">
+      <button type="submit">GUARDAR</button>
+    </div>
+ 
+</div>
+</form>
+</div>

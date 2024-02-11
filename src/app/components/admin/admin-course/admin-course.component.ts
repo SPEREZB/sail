@@ -14,6 +14,7 @@ export class AdminCourseComponent implements OnInit {
   id_us: string | null = null;
   id_person: number | undefined;   
   pers: any;
+  ready:any;
 
   //profesor
   teachsubject:any;
@@ -46,37 +47,31 @@ export class AdminCourseComponent implements OnInit {
       
       this.servicio.getSubjectofTeacher(this.teach).subscribe(id_teacher=>{
         this.teachsubject=id_teacher; 
+        this.ready=true;
        });
      });
-
-
-
+ 
 
      this.servicio.getAllTeacher().subscribe(teach=>{
       this.teach=teach;
      });
-
-
-     this.servicio.getAllPersonTeacher().subscribe(pers=>{
-      this.pers=pers;
-      this.servicio.getAllUsTeacher(this.pers).subscribe(usteach=>{
-        this.usteach=usteach.result; 
-       });
-
-
-     }); 
-
-
-
-
+ 
+    
      //CURSO-ASIGNATURA
      this.servicio.getAllCourse().subscribe(curs=>{
       this.curs=curs;
      });
 
      this.servicio.getAllSubject().subscribe(asig=>{
-      this.asig=asig;
+      this.asig=asig; 
      });
+
+     this.servicio.getAllPersonTeacher().subscribe(pers=>{
+      this.pers=pers;
+      this.servicio.getAllUsTeacher(this.pers).subscribe(usteach=>{
+        this.usteach=usteach.result;  
+       }); 
+     });  
    
   }
 
@@ -90,10 +85,8 @@ export class AdminCourseComponent implements OnInit {
       error => {
         console.error('Error en la solicitud:', error); 
       }
-    );  
-
-     this.ngOnInit();
-  
+    );   
+     this.ngOnInit(); 
   }
 
   onDeleteClick()

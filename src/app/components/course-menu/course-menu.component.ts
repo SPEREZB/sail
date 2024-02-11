@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { SailService } from 'src/app/services/sail/sail.service';
 import { Router } from '@angular/router';
+import { Dates } from 'src/app/dates/dates';
 
 interface UserProfile {
   id_us: number;
@@ -30,6 +31,8 @@ export class CourseMenuComponent implements OnInit {
   userData: UserProfile[] = [];
   personData: PersonProfile[] = [];
   id_person: number | undefined; 
+  loginInfo:any;
+  services:any;
 
   id_us: any;
   type:any;
@@ -38,13 +41,16 @@ export class CourseMenuComponent implements OnInit {
  
 
   constructor(private router:Router, 
-    public servicio: SailService) {  
+    public servicio: SailService,dates:Dates) {  
      this.cursos = [
       { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
       { id: 2, nombre: 'Historia', icono: './../../../assets/course/historia.png' },
       { id: 3, nombre: 'Informactica', icono: './../../../assets/course/informatica.png' },
       { id: 4, nombre: 'Ciencias', icono: './../../../assets/course/ciencias.png' },
     ];
+
+    this.loginInfo = dates.loginInfo;
+    this.services = dates.getServices(); 
    }   
 
   ngOnInit(): void {
@@ -52,13 +58,25 @@ export class CourseMenuComponent implements OnInit {
     this.id_us= localStorage.getItem("userID");  
     
     this.servicio.getSubjectTeacher({ id_us: this.id_us }).subscribe(subj=>{
-      this.subj=subj;
+      this.subj=subj; 
      });
 
   }
   
   onItemClick(curso: any): void {
-    console.log('Item clicked:', curso);
+ 
+    this.services.authService.subject(this.subj);
+    
+    this.router.navigate(['profesor/cursos/actividades']);
+  }
+
+   materia1(curso: any): void { 
+    this.services.authService.subject(this.subj[0].id_subject);
+    this.router.navigate(['profesor/cursos/actividades']);
+  }
+
+  materia2(curso: any): void { 
+    this.services.authService.subject(this.subj[0].id_subject);
     this.router.navigate(['profesor/cursos/actividades']);
   }
 }

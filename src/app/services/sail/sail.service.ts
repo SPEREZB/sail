@@ -105,7 +105,11 @@ export class SailService {
     return this.clientehttp.post(this.api+"api/subject/teacher",body);
   } 
 
- 
+  
+  //activity
+  getAllActivity():Observable<any>{  
+    return this.clientehttp.get(this.api+"api/activity");
+  } 
 
 
 
@@ -118,6 +122,11 @@ export class SailService {
   createStudent(body:any):Observable<any>
   {  
     return this.clientehttp.post(this.api+"api/student/create",body);
+  }
+
+  createActivity(body:any):Observable<any>
+  {  
+    return this.clientehttp.post(this.api+"api/activity/create",body);
   }
 
  

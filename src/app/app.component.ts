@@ -62,7 +62,7 @@ export class AppComponent {
      {
       if(localStorage.getItem("userType")=="admin") this.services.router.navigate(['/admin']);
       else if(localStorage.getItem("userType")=="profesor") this.services.router.navigate(['/profesor']);
-      else    this.services.router.navigate(['/dashboard']); 
+      else    this.services.router.navigate(['/estudiante']); 
      }
      
     else this.services.router.navigate(['']);
@@ -117,7 +117,7 @@ export class AppComponent {
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
           else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesor']);
-          else this.dates.getServices().router.navigate(['/dashboard']);
+          else this.dates.getServices().router.navigate(['/estudiante']);
         }
          else  
          {
@@ -149,7 +149,7 @@ export class AppComponent {
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
        
-          this.dates.getServices().router.navigate(['/dashboard']);
+          this.dates.getServices().router.navigate(['/estudiante']);
         }
          else  
          {
