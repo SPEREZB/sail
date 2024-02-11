@@ -3,7 +3,7 @@
     <li class="grid-item"  *ngFor="let s of subj; let i = index">
       <div *ngIf="type==='estudiante'" class="grid-item-content">
         <img (click)="materiaestudiante(s, i)"  alt="Curso Icon">
-        <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
+        <h3 (click)="materiaestudiante(s, i)">{{ s.name }}</h3>
       </div>
 
       <div *ngIf="type==='profesor'" class="grid-item-content">

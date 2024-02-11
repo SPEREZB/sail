@@ -44,8 +44,16 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/person");
   }  
 
+  getPersonTeacher(id_person: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/person/teacher/byId/"+id_person);
+  }  
+
   getAllPersonTeacher():Observable<any>{  
     return this.clientehttp.get(this.api+"api/person/teacher");
+  } 
+  
+  getPersonStudent(id_person: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/person/student/byId/"+id_person);
   }  
 
   getAllPersonStudent():Observable<any>{  
@@ -54,8 +62,8 @@ export class SailService {
 
 
   //teacher
-  getTeacher(id_teacher: number):Observable<any>{  
-    return this.clientehttp.get(this.api+"api/teacher/byId/"+id_teacher);
+  getTeacher(id_person: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/teacher/byId/"+id_person);
   }  
   
   getAllTeacher():Observable<any>{  
@@ -69,13 +77,15 @@ export class SailService {
 
 
   //student
+  getStudent(id_person:any):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/student/byId/"+id_person);
+  } 
+
   getAllStudent():Observable<any>{  
     return this.clientehttp.get(this.api+"api/student");
   } 
 
-
-
-
+ 
   //course
   getCourse(id_course: number):Observable<any>{  
     return this.clientehttp.get(this.api+"api/course/byId/"+id_course);
@@ -89,20 +99,27 @@ export class SailService {
     return this.clientehttp.post(this.api+"api/course", students);
   }  
 
-  
+  getCourseStudentById(id_course: number):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/course/student/byId/"+id_course);
+  }   
+
 
   //subject
   getAllSubject():Observable<any>{  
     return this.clientehttp.get(this.api+"api/subject");
   } 
 
-  getSubjectofTeacher(body:any):Observable<any>
+  getAllSubjectTeacher(body:any):Observable<any>
   {  
-    return this.clientehttp.post(this.api+"api/subject/ofteacher",body);
+    return this.clientehttp.post(this.api+"api/subject/teacher",body);
   }
 
-  getSubjectTeacher(body: { id_us: string }):Observable<any>{  
-    return this.clientehttp.post(this.api+"api/subject/teacher",body);
+  getSubjectTeacher(body: { id_teacher: string }):Observable<any>{  
+    return this.clientehttp.post(this.api+"api/subject/teacher/byId",body);
+  } 
+
+  getSubjectStudent(body: { id_course: string }):Observable<any>{  
+    return this.clientehttp.post(this.api+"api/subject/student/byId",body);
   } 
 
   
@@ -111,7 +128,9 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/activity");
   } 
 
-
+  getActivityStudent(id_course:any):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/activity/student/"+ id_course);
+  } 
 
   //create
   createUs(body:any):Observable<any>

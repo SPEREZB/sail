@@ -45,7 +45,7 @@ export class AdminCourseComponent implements OnInit {
      this.servicio.getAllTeacher().subscribe(teach=>{
       this.teach=teach;
       
-      this.servicio.getSubjectofTeacher(this.teach).subscribe(id_teacher=>{
+      this.servicio.getAllSubjectTeacher(this.teach).subscribe(id_teacher=>{
         this.teachsubject=id_teacher; 
         this.ready=true;
        });

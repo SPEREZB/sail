@@ -31,6 +31,7 @@ import { AdminCourseComponent } from './components/admin/admin-course/admin-cour
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { AddHomeworkComponent } from './components/add-homework/add-homework.component';
 import { ReviewNotesComponent } from './components/review-notes/review-notes.component';
+import { DoHomeworkComponent } from './components/do-homework/do-homework.component';
  
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ReviewNotesComponent } from './components/review-notes/review-notes.com
     AdminCourseComponent,
     ActivitiesComponent,
     AddHomeworkComponent,
-    ReviewNotesComponent 
+    ReviewNotesComponent,
+    DoHomeworkComponent 
   ],
   imports: [
     BrowserModule,

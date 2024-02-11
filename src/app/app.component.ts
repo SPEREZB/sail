@@ -99,7 +99,8 @@ export class AppComponent {
   
   enviarDatos() { 
     this.dates.getServices().servicio.getVerify(this.appComponentInfo.form.value).subscribe(
-      response => {
+      {
+      next: (response)  => {
         console.log('Respuesta del servidor:', response); 
         
         if(response.result.length >0)
@@ -108,12 +109,26 @@ export class AppComponent {
           this.appComponentInfo.idUs= firstUser.id_us; 
           this.appComponentInfo.idPerson= firstUser.id_person;
 
+          this.dates.getServices().servicio.getPersonTeacher(this.appComponentInfo.idPerson).subscribe(resteacher=>{
+              this.appComponentInfo.idTeacher=resteacher[0].id_teacher;  
+              this.services.authService.idTeacher(this.appComponentInfo.idTeacher);  
+            });
+
+          this.dates.getServices().servicio.getPersonStudent(this.appComponentInfo.idPerson).subscribe(resstudent=>{
+              this.appComponentInfo.idStudent=resstudent[0].id_student; 
+              this.services.authService.idStudent(this.appComponentInfo.idStudent);
+
+              this.dates.getServices().servicio.getCourseStudentById(this.appComponentInfo.idStudent).subscribe(restcourse=>{
+                this.appComponentInfo.idCourse=restcourse[0].id_course; 
+                this.services.authService.idCourse(this.appComponentInfo.idCourse);
+              });
+            });
+
           this.services.authService.login();
           this.loginInfo.isLogin=this.services.authService.isAuthenticated();
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
-          this.services.authService.idPerson(this.appComponentInfo.idPerson);
-     
+          this.services.authService.idPerson(this.appComponentInfo.idPerson); 
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
           else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesor']);
@@ -125,10 +140,11 @@ export class AppComponent {
           this.services.router.navigate(['']);
         } 
       },
-      error => {
+      error: (error) => {
         console.error('Error en la solicitud:', error);
         this.services.router.navigate(['']);
       }
+    }
     );  
   }
 

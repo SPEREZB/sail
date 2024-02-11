@@ -35,6 +35,8 @@ export class CourseMenuComponent implements OnInit {
   services:any;
 
   id_us: any;
+  id_teach:any;
+  id_course:any;
   type:any;
   cursos: any[]=[];
   subj:any;
@@ -54,12 +56,21 @@ export class CourseMenuComponent implements OnInit {
    }   
 
   ngOnInit(): void {
-    this.type= localStorage.getItem("userType");
-    this.id_us= localStorage.getItem("userID");  
-    
-    this.servicio.getSubjectTeacher({ id_us: this.id_us }).subscribe(subj=>{
-      this.subj=subj; 
-     });
+    this.type= localStorage.getItem("userType"); 
+    this.id_teach= localStorage.getItem("teacherID");
+    this.id_course= localStorage.getItem("studentID");
+
+    if(this.type=="profesor")
+    {
+      this.servicio.getSubjectTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
+        this.subj=subj; 
+       });
+    }else
+    {
+      this.servicio.getSubjectStudent({ id_course: this.id_course }).subscribe(subj=>{
+        this.subj=subj; 
+       });
+    } 
 
   }
   
@@ -72,7 +83,7 @@ export class CourseMenuComponent implements OnInit {
 
    materiaestudiante(curso: any, id:any): void { 
     this.services.authService.subject(this.subj[id].id_subject);
-    this.router.navigate(['profesor/cursos/actividades']);
+    this.router.navigate(['estudiante/cursos/realizar_deber']);
   }
 
   materiaprofesor(curso: any, id:any): void { 

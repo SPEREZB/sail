@@ -15,6 +15,7 @@ import { AdminStudentListComponent } from './components/admin/admin-student-list
 import { AdminCourseComponent } from './components/admin/admin-course/admin-course.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { AddHomeworkComponent } from './components/add-homework/add-homework.component';
+import { DoHomeworkComponent } from './components/do-homework/do-homework.component';
 
 const routes: Routes = [ 
   {path:"", redirectTo:"login",pathMatch:"full"},  
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:"estudiante",component:PerfilestudianteComponent, canActivate: [GuardGuard]},  
   {path:"estudiante/profile",component:ProfileComponent},  
   {path:"estudiante/cursos",component:CourseMenuComponent},  
+  {path:"estudiante/cursos/realizar_deber",component:DoHomeworkComponent},  
   {path:"estudiante/retos",component:ChallengesComponent},  
   {path:"estudiante/idiomas",component:SupportLanguageComponent}, 
 

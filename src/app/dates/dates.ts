@@ -44,5 +44,9 @@ import { Injectable } from '@angular/core';
       form_reg: FormGroup,
       idUs: 0,
       idPerson: 0,
+      idStudent:0,
+      idTeacher:0,
+      idCourse:0,
+      idSubject:0
     };  
   }

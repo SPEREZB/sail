@@ -9,6 +9,9 @@ export class LoginService {
   public readonly storageKey = 'userLoggedIn';
   public readonly storageIDUS = 'userID';
   public readonly storageIDPERS = 'personID';
+  public readonly storageIDSTUD = 'studentID';
+  public readonly storageIDTEACH = 'teacherID';
+  public readonly storageIDCOURSE = 'courseID';
   public readonly storageKeyUSTYPE = 'userType'; 
   public readonly storageKeySubjects = 'subject'; 
 
@@ -61,6 +64,21 @@ export class LoginService {
   idPerson(id:any)
   {
     localStorage.setItem(this.storageIDPERS, id);
+  } 
+
+  idStudent(id:any)
+  {
+    localStorage.setItem(this.storageIDSTUD, id);
+  } 
+
+  idTeacher(id:any)
+  {
+    localStorage.setItem(this.storageIDTEACH, id);
+  } 
+
+  idCourse(id:any)
+  {
+    localStorage.setItem(this.storageIDCOURSE, id);
   } 
 
   subject(sub:any)
