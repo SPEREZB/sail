@@ -70,13 +70,13 @@ export class CourseMenuComponent implements OnInit {
     this.router.navigate(['profesor/cursos/actividades']);
   }
 
-   materia1(curso: any): void { 
-    this.services.authService.subject(this.subj[0].id_subject);
+   materiaestudiante(curso: any, id:any): void { 
+    this.services.authService.subject(this.subj[id].id_subject);
     this.router.navigate(['profesor/cursos/actividades']);
   }
 
-  materia2(curso: any): void { 
-    this.services.authService.subject(this.subj[0].id_subject);
+  materiaprofesor(curso: any, id:any): void { 
+    this.services.authService.subject(this.subj[id].id_subject);
     this.router.navigate(['profesor/cursos/actividades']);
   }
 }

@@ -54,7 +54,8 @@ export class AddHomeworkComponent implements OnInit {
 
   mostrarFormulario(tipoActividad: string) {
     this.mostrarForm = true;
-    this.tipoActividad = tipoActividad;
+    this.form.get('type')?.setValue(tipoActividad);
+    this.form.get('type')?.disable();
   }
 
   ocultarFormulario() {
@@ -70,10 +71,19 @@ export class AddHomeworkComponent implements OnInit {
 
     const formData = { ...this.form.getRawValue(), id_subject: this.id_subject };
  
-    this.servicio.createActivity(formData).subscribe(act=>
-      {
-        alert("BIENN");
-      });
+    this.servicio.createActivity(formData).subscribe(
+      (response) => {
+        if (response.success) {
+          alert('Actividad creada con éxito');
+        } else {
+          alert('Error: ' + response.error);
+        }
+      },
+      (error) => {
+        console.error('Error en la solicitud:', error);
+        alert('Hubo un problema al procesar la solicitud. Por favor, inténtelo de nuevo.');
+      }
+    );
   }
 
 }

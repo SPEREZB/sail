@@ -14,7 +14,7 @@ export class ActivitiesComponent implements OnInit {
   constructor(private router:Router) {
     this.actividades = [
       { id: 1, nombre: 'Agregar actividades', icono: './../../../assets/course/aggactividad.png' },
-      { id: 2, nombre: 'Revisar actividades', icono: './../../../assets/course/revisaractividad.png' } 
+      { id: 2, nombre: 'Revisar actividades', icono: './../../../assets/course/revisaractividad.jfif' } 
     ];
  
    }
@@ -30,3 +30,4 @@ export class ActivitiesComponent implements OnInit {
     this.router.navigate(['profesor/cursos/añadir']);
   }
 }
+ 

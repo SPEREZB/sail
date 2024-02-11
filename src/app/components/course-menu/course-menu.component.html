@@ -1,14 +1,14 @@
 <div class="cursos">
   <ul class="grid-container common-styles">
-    <li class="grid-item"  *ngFor="let s of subj">
+    <li class="grid-item"  *ngFor="let s of subj; let i = index">
       <div *ngIf="type==='estudiante'" class="grid-item-content">
-        <img (click)="materia2(s)"  alt="Curso Icon">
-        <h3>{{ s.name }}</h3>
+        <img (click)="materiaestudiante(s, i)"  alt="Curso Icon">
+        <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
       </div>
 
       <div *ngIf="type==='profesor'" class="grid-item-content">
-        <img (click)="materia1(s)"  alt="Curso Icon">
-        <h3>{{ s.name }}</h3>
+        <img (click)="materiaprofesor(s, i)"  alt="Curso Icon">
+        <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
       </div>
     </li>
   </ul>

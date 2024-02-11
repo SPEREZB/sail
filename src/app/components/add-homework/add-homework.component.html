@@ -1,24 +1,16 @@
 <div class="actividades"> 
 
 <div class="cursos">
-  <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
-    <div class="title">Deberes</div>
-    <div class="content">
-      <li (click)="mostrarFormulario('deber1')">DEBER1</li>
-      <li (click)="mostrarFormulario('deber2')">DEBER2</li>
-    </div> 
+  <div class="rectangle" id="deberes" (click)="mostrarFormulario('DEBER')">
+    <div class="title">Deberes</div> 
   </div>
   
-  <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
-    <div class="title">Actividades en Clases</div>
-    <div class="content" (click)="mostrarFormulario('taller1')">taller1</div>
-    <div class="content" (click)="mostrarFormulario('taller2')">taller2</div>
+  <div class="rectangle" id="actividades" (click)="mostrarFormulario('TALLER EN CLASES')">
+    <div class="title">Actividades en Clases</div> 
   </div>
   
-  <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
-    <div class="title">Exámenes</div>
-    <div class="content" (click)="mostrarFormulario('examen1')">examen1</div>
-    <div class="content" (click)="mostrarFormulario('examen2')">examen2</div>
+  <div class="rectangle" id="examenes" (click)="mostrarFormulario('EXAMEN')">
+    <div class="title">Exámenes</div> 
   </div>
 </div>
 
