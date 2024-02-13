@@ -1,4 +1,3 @@
- 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,7 +17,7 @@ import { CustomAlertComponent } from './components/custom-alert/custom-alert.com
 import { AlertService } from './services/alert/alert.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';    
 import { firebase } from '../config/index'; 
 import { PerfiladminComponent } from './components/perfiles/perfiladmin/perfiladmin.component';
 import { PerfilestudianteComponent } from './components/perfiles/perfilestudiante/perfilestudiante.component';
@@ -58,7 +57,7 @@ import { DoHomeworkComponent } from './components/do-homework/do-homework.compon
     BrowserModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
-    AngularFireStorageModule,
+    AngularFireStorageModule,  
     MatListModule,
     MatGridListModule, 
     ReactiveFormsModule,

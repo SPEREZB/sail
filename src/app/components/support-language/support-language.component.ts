@@ -53,13 +53,13 @@ export class SupportLanguageComponent implements OnInit {
  
   this.jsonData = this.messages.join('\n');
    
-  this.someFunction(formattedMessage); 
+  this.IA(formattedMessage); 
 
  
  } 
 
 
- someFunction(prompt:string) { 
+ IA(prompt:string) { 
   this.ia.getResponseIA(prompt,this.selectedLanguage)
     .then((response) => {
       this.responseia = response;

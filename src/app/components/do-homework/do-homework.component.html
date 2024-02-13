@@ -41,6 +41,13 @@
           <label for="fechaLimite">Fecha Límite:</label>
           <input type="date" id="fechaLimite" formControlName="date" />
         </div>
+ 
+
+        <label id="custom-file" class="custom-file-upload">
+          <input type="file" name="archivo" accept=".pdf" style="display: none;" (change)="updateFileName($event)">
+          <span id="select-file-text" [style.display]="file ? 'none' : 'inline-block'">Seleccionar archivo</span>
+          <span id="file-name" [style.display]="file ? 'inline-block' : 'none'">{{ file }}</span>
+        </label>
     
         <div class="form-group">
           <button type="submit">GUARDAR</button>
@@ -49,3 +56,4 @@
     </div>
     </form>
     </div>
+ 

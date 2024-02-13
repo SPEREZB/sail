@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core'; 
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Observable, from, throwError } from 'rxjs'; 
+import { Injectable, Component, inject } from '@angular/core'; 
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
+import { Observable, finalize,map, from, throwError } from 'rxjs'; 
 import { HttpClient } from '@angular/common/http';   
+ 
+ 
 import { apiUrl, apiIa } from 'src/config';
+import { AngularFireDatabase } from '@angular/fire/compat/database'; 
 
 
 @Injectable({
@@ -11,15 +14,17 @@ import { apiUrl, apiIa } from 'src/config';
 
 export class ChatService {
   descarga: any;
-  api = apiUrl;
-
+  api = apiUrl; 
   apiIa=apiIa;
-
+  
+  
   constructor( 
-    private storage: AngularFireStorage,
+    private storage: AngularFireStorage,   
+    private db: AngularFireDatabase,
     private httpClient:HttpClient
   ) {}
-
+ 
+  
   saveChat(messages: string[], chatId: string): void {  
     this.saveChatInStorage(messages, chatId);
   }
@@ -48,4 +53,33 @@ export class ChatService {
   {
     return this.httpClient.post(this.apiIa+"api/chat",message);
   }
+
+  private basePath = '/archivos';
+
+  saveFileInStorage(file: File | null, studentId: string, activityId: string): Observable<number | null> {
+    if (!file) {
+      console.error('No se proporcionó ningún archivo para cargar.');
+      return new Observable<number | null>();
+    }
+
+    const filePath = `${this.basePath}/${studentId}_${activityId}_${file.name}`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, file);
+
+    return this.trackUploadProgress(uploadTask).pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          const fileUpload = { name: file.name, url: downloadURL, file }; 
+        });
+      })
+    );
+  }
+ 
+
+  private trackUploadProgress(uploadTask: AngularFireUploadTask): Observable<number | null> {
+    return uploadTask.percentageChanges().pipe(
+      map(percentage => percentage || null)
+    );
+  }
 }
+ 

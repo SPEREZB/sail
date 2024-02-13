@@ -161,5 +161,4 @@ export class SailService {
   {
     return this.clientehttp.post(this.api+"update/user",body);
   }
-
 }
