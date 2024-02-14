@@ -62,12 +62,12 @@ export class CourseMenuComponent implements OnInit {
 
     if(this.type=="profesor")
     {
-      this.servicio.getSubjectTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
+      this.servicio.getSubjectOfTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
         this.subj=subj; 
        });
     }else
     {
-      this.servicio.getSubjectStudent({ id_course: this.id_course }).subscribe(subj=>{
+      this.servicio.getSubjectOfStudent({ id_course: this.id_course }).subscribe(subj=>{
         this.subj=subj; 
        });
     } 

@@ -1,6 +1,6 @@
-import { Injectable, Component, inject } from '@angular/core'; 
+import { Injectable } from '@angular/core'; 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { Observable, finalize,map, from, throwError } from 'rxjs'; 
+import { Observable, finalize,map, forkJoin, catchError, of } from 'rxjs'; 
 import { HttpClient } from '@angular/common/http';   
  
  
@@ -54,6 +54,8 @@ export class ChatService {
     return this.httpClient.post(this.apiIa+"api/chat",message);
   }
 
+  // GUARDAR DEBERES
+
   private basePath = '/archivos';
 
   saveFileInStorage(file: File | null, studentId: string, activityId: string): Observable<number | null> {
@@ -80,6 +82,54 @@ export class ChatService {
     return uploadTask.percentageChanges().pipe(
       map(percentage => percentage || null)
     );
+  }
+
+  //OBTENER DEBERES
+
+  getFilesByIds(students: any[], activities: any[]): Observable<string[]> {
+    const folderPath = 'archivos';
+    const folderRef = this.storage.ref(folderPath);
+  
+    
+    const observables: Observable<string[]>[] = [];
+  
+ 
+    for (let i = 0; i < students.length; i++) {
+      const student = students[i];
+  
+      // Bucle para cada id_activities
+      for (let j = 0; j < activities.length; j++) {
+        const activity = activities[j];
+  
+    
+        const observable = folderRef.listAll().pipe(
+          map((result) =>
+            result.items
+              .filter((item) => {
+                const itemName = item.name;
+                return itemName.startsWith(`${student.id_student}_${activity.id_activities}_`);
+              })
+              .map((item) => item.name)
+          ),
+          catchError(() => of([]))  
+        );
+   
+        observables.push(observable);
+      }
+    }
+   
+    return forkJoin(observables).pipe(
+      map((arrays) => arrays.reduce((acc, arr) => acc.concat(arr), []))  
+    );
+  }
+
+  downloadFile(fileName: string): void {
+    const filePath = `archivos/${fileName}`;
+    const fileRef = this.storage.ref(filePath);
+
+    fileRef.getDownloadURL().subscribe((url) => { 
+      window.open(url, '_blank');
+    });
   }
 }
  

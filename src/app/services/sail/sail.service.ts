@@ -85,6 +85,10 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/student");
   } 
 
+  getAllStudentofCoursebySubject(id_subject:any):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/student/ofcoursebysubject/"+id_subject);
+  } 
+
  
   //course
   getCourse(id_course: number):Observable<any>{  
@@ -99,7 +103,7 @@ export class SailService {
     return this.clientehttp.post(this.api+"api/course", students);
   }  
 
-  getCourseStudentById(id_course: number):Observable<any>{  
+  getCourseOfStudentById(id_course: number):Observable<any>{  
     return this.clientehttp.get(this.api+"api/course/student/byId/"+id_course);
   }   
 
@@ -114,11 +118,11 @@ export class SailService {
     return this.clientehttp.post(this.api+"api/subject/teacher",body);
   }
 
-  getSubjectTeacher(body: { id_teacher: string }):Observable<any>{  
+  getSubjectOfTeacher(body: { id_teacher: string }):Observable<any>{  
     return this.clientehttp.post(this.api+"api/subject/teacher/byId",body);
   } 
 
-  getSubjectStudent(body: { id_course: string }):Observable<any>{  
+  getSubjectOfStudent(body: { id_course: string }):Observable<any>{  
     return this.clientehttp.post(this.api+"api/subject/student/byId",body);
   } 
 
@@ -130,7 +134,8 @@ export class SailService {
 
   getActivityStudent(id_course:any):Observable<any>{  
     return this.clientehttp.get(this.api+"api/activity/student/"+ id_course);
-  } 
+  }  
+ 
 
   //create
   createUs(body:any):Observable<any>

@@ -58,7 +58,7 @@ export class AppComponent {
 
     this.loginInfo.userType = localStorage.getItem("userType") ?? "";
 
-    if(localStorage.getItem("userLoggedIn")=="true")
+    if(sessionStorage.getItem("userLoggedIn")=="true")
      {
       if(localStorage.getItem("userType")=="admin") this.services.router.navigate(['/admin']);
       else if(localStorage.getItem("userType")=="profesor") this.services.router.navigate(['/profesor']);
@@ -118,7 +118,7 @@ export class AppComponent {
               this.appComponentInfo.idStudent=resstudent[0].id_student; 
               this.services.authService.idStudent(this.appComponentInfo.idStudent);
 
-              this.dates.getServices().servicio.getCourseStudentById(this.appComponentInfo.idStudent).subscribe(restcourse=>{
+              this.dates.getServices().servicio.getCourseOfStudentById(this.appComponentInfo.idStudent).subscribe(restcourse=>{
                 this.appComponentInfo.idCourse=restcourse[0].id_course; 
                 this.services.authService.idCourse(this.appComponentInfo.idCourse);
               });

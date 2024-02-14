@@ -1,16 +1,44 @@
+<div class="actividades"> 
 <div class="cursos">
-    <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
-        <div class="title">Deberes</div>
-        <div class="content">Contenido de deberes...</div>
-      </div>
-      
-      <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
-        <div class="title">Actividades en Clases</div>
-        <div class="content">Contenido de actividades en clases...</div>
-      </div>
-      
-      <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
-        <div class="title">Exámenes</div>
-        <div class="content">Contenido de exámenes...</div>
-      </div>
+  <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
+    <div class="title">Deberes</div>
+    <div class="content">
+      <li *ngFor="let activity of activities.deberes" (click)="mostrarFormulario(activity)">{{ activity.name }}</li>
+    </div>
   </div>
+
+  <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
+    <div class="title">Actividades en Clases</div>
+    <div class="content" *ngFor="let activity of activities.actividadesClases" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
+  </div>
+
+  <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
+    <div class="title">Exámenes</div>
+    <div class="content" *ngFor="let activity of activities.examenes" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
+  </div>
+</div>
+
+
+<table class="formulario" > 
+<div  *ngIf="mostrarForm">
+ 
+  <thead>
+    <tr>
+      <th>NOMBRE</th>
+      <th>APELLIDO</th>
+      <th>ARCHIVO</th>
+      <th>NOTA</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let f of file">
+      <td>John</td>
+      <td>Doe</td>
+      <td (click)="descargarArchivo(f)">{{ f }}</td>
+      <td>10</td>  
+    </tr> 
+  </tbody>
+ 
+</div>
+</table>
+</div>

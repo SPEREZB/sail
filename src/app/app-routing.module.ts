@@ -16,6 +16,7 @@ import { AdminCourseComponent } from './components/admin/admin-course/admin-cour
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { AddHomeworkComponent } from './components/add-homework/add-homework.component';
 import { DoHomeworkComponent } from './components/do-homework/do-homework.component';
+import { ReviewNotesComponent } from './components/review-notes/review-notes.component';
 
 const routes: Routes = [ 
   {path:"", redirectTo:"login",pathMatch:"full"},  
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path:"profesor/profile",component:ProfileComponent},  
   {path:"profesor/cursos/actividades",component:ActivitiesComponent},  
   {path:"profesor/cursos/añadir",component:AddHomeworkComponent}, 
+  {path:"profesor/cursos/revisar",component:ReviewNotesComponent}, 
 ];
 
 @NgModule({

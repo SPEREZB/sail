@@ -58,7 +58,7 @@ export class AddHomeworkComponent implements OnInit {
     this.form.get('type')?.disable();
   }
 
-  ocultarFormulario() {
+  saveActivity() {
     this.mostrarForm = false; 
     this.nombreActividad = '';
     this.descripcionActividad = '';

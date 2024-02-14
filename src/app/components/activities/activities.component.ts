@@ -17,17 +17,14 @@ export class ActivitiesComponent implements OnInit {
       { id: 2, nombre: 'Revisar actividades', icono: './../../../assets/course/revisaractividad.jfif' } 
     ];
  
-   }
-
- 
-
+   }  
   ngOnInit(): void {
   }
-
-
+ 
   onItemClick(curso: any): void {
     console.log('Item clicked:', curso);
-    this.router.navigate(['profesor/cursos/añadir']);
+    if(curso.id==1) this.router.navigate(['profesor/cursos/añadir']);
+    else this.router.navigate(['profesor/cursos/revisar']);
   }
 }
  

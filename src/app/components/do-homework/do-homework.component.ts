@@ -94,7 +94,7 @@ export class DoHomeworkComponent implements OnInit {
     this.selectedFile = event.target.files[0];  
   }
   
-  ocultarFormulario(): void {
+  saveFile(): void {
     this.mostrarForm = false;
  
       this.servicefire.saveFileInStorage(this.selectedFile, this.id_student, this.id_activites)

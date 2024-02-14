@@ -23,17 +23,17 @@ export class LoginService {
 
   login() {
     this.isLoggedIn = true;
-    localStorage.setItem(this.storageKey, 'true');
+    sessionStorage.setItem(this.storageKey, 'true');
   }
 
   logout() {
     this.isLoggedIn = false;
-    localStorage.setItem(this.storageKey, 'false');
+    sessionStorage.setItem(this.storageKey, 'false');
     this.router.navigate(['/']);
   }
 
   isAuthenticated():boolean{    
-    this.local = localStorage.getItem('userLoggedIn');
+    this.local = sessionStorage.getItem('userLoggedIn');
     if(this.local=='true') this.isLoggedIn=true;
     else this.isLoggedIn=false;
     return this.isLoggedIn;
