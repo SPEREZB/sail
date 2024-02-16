@@ -16,6 +16,7 @@ export class ReviewNotesComponent implements OnInit {
   id_activites:any;
   id_subject:any; 
   id_student:any;
+  students:any;
   activ:any;
   selectedFile:any;
   file: any;
@@ -50,13 +51,19 @@ export class ReviewNotesComponent implements OnInit {
 
       this.servicio.getAllStudentofCoursebySubject(this.id_subject).subscribe(idst=>{
         this.id_student=idst;  
-        this.loadFiles();
+        this.servicio.getPersonIdStudent(this.id_student).subscribe(students=>
+          {
+            this.students=students;
+           
+          })
+
+     
        });
     }
 
-    loadFiles(): void {
+    loadFiles(id_activites: any): void {
       this.servicefire
-        .getFilesByIds(this.id_student, this.activ)
+        .getFilesByIds(this.id_student, id_activites)
         .subscribe((files) => {
           this.file = files;
         });
@@ -87,16 +94,9 @@ export class ReviewNotesComponent implements OnInit {
 
 
   mostrarFormulario(actividad: any) {
-    this.mostrarForm = true;  
-    this.form.get('name')?.setValue(actividad.name);
-    this.form.get('description')?.setValue(actividad.description);
-    this.form.get('type')?.setValue(actividad.type);
-    this.form.get('date')?.setValue(actividad.date);
-
-    this.form.get('name')?.disable();
-    this.form.get('description')?.disable();
-    this.form.get('type')?.disable();
-    this.form.get('date')?.disable();
+    this.mostrarForm = true;   
+    this.id_activites=  actividad.id_activities;
+    this.loadFiles(this.id_activites); 
   }
 
 }

@@ -31,9 +31,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of file">
-      <td>John</td>
-      <td>Doe</td>
+    <tr *ngFor="let f of file; let i = index">
+      <td>{{ students[i]?.name }}</td>
+      <td>{{ students[i]?.last_name }}</td>
       <td (click)="descargarArchivo(f)">{{ f }}</td>
       <td>10</td>  
     </tr> 

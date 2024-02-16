@@ -84,11 +84,8 @@ export class CourseMenuComponent implements OnInit {
   }
 
   downloadImg(cursos:any): void {
-    this.servicefire.downloadImg(cursos).subscribe((urls: string[]) => {
-      // urls contiene las URLs de descarga directa
-      console.log(urls);
-
-      // Puedes asignar las URLs a tu propiedad cursos
+    this.servicefire.downloadImg(cursos).subscribe((urls: string[]) => { 
+      console.log(urls); 
       this.cursos = urls;
     });
   }

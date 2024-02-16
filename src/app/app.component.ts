@@ -61,7 +61,7 @@ export class AppComponent {
     if(sessionStorage.getItem("userLoggedIn")=="true")
      {
       if(localStorage.getItem("userType")=="admin") this.services.router.navigate(['/admin']);
-      else if(localStorage.getItem("userType")=="profesor") this.services.router.navigate(['/profesor']);
+      else if(localStorage.getItem("userType")=="false") this.services.router.navigate(['/profesor']);
       else    this.services.router.navigate(['/estudiante']); 
      }
      

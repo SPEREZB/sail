@@ -2,12 +2,12 @@
   <ul class="grid-container common-styles">
     <li class="grid-item"  *ngFor="let s of subj; let i = index">
       <div *ngIf="type==='true'" class="grid-item-content">
-        <img (click)="materiaestudiante(s, i)" [src]="curso" alt="Curso Icon" *ngFor="let curso of cursos">
+        <img (click)="materiaestudiante(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaestudiante(s, i)">{{ s.name }}</h3>
       </div>
 
       <div *ngIf="type==='false'" class="grid-item-content">
-        <img (click)="materiaprofesor(s, i)" [src]="cursos[i].icono" alt="Curso Icon">
+        <img (click)="materiaprofesor(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
       </div>
     </li>

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
  
 import { apiUrl, apiIa } from 'src/config';
 import { AngularFireDatabase } from '@angular/fire/compat/database'; 
+import { ListResult } from '@angular/fire/compat/storage/interfaces';
 
 
 @Injectable({
@@ -64,8 +65,27 @@ export class ChatService {
       return new Observable<number | null>();
     }
 
+    const folderPath = `${studentId}_${activityId}`; 
+    const storageRefTemp = this.storage.ref(this.basePath); 
+ 
+ 
+    storageRefTemp.listAll().subscribe({
+      next: (items: ListResult) => {
+        items.items.forEach(itemRef => {
+          const itemName = itemRef.name; 
+          if (itemName.startsWith(folderPath)) {
+            itemRef.delete();
+          }
+        });
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+    });
+
     const filePath = `${this.basePath}/${studentId}_${activityId}_${file.name}`;
     const storageRef = this.storage.ref(filePath);
+
     const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, file);
 
     return this.trackUploadProgress(uploadTask).pipe(
@@ -86,7 +106,7 @@ export class ChatService {
 
   //OBTENER DEBERES
 
-  getFilesByIds(students: any[], activities: any[]): Observable<string[]> {
+  getFilesByIds(students: any[], activities: any): Observable<string[]> {
     const folderPath = 'archivos';
     const folderRef = this.storage.ref(folderPath);
   
@@ -96,10 +116,7 @@ export class ChatService {
  
     for (let i = 0; i < students.length; i++) {
       const student = students[i];
-  
-      // Bucle para cada id_activities
-      for (let j = 0; j < activities.length; j++) {
-        const activity = activities[j];
+   
   
     
         const observable = folderRef.listAll().pipe(
@@ -107,15 +124,14 @@ export class ChatService {
             result.items
               .filter((item) => {
                 const itemName = item.name;
-                return itemName.startsWith(`${student.id_student}_${activity.id_activities}_`);
+                return itemName.startsWith(`${student.id_student}_${activities}_`);
               })
               .map((item) => item.name)
           ),
           catchError(() => of([]))  
         );
    
-        observables.push(observable);
-      }
+        observables.push(observable); 
     }
    
     return forkJoin(observables).pipe(

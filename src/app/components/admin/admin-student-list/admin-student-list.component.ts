@@ -61,9 +61,7 @@ export class AdminStudentListComponent implements OnInit {
         this.course=cor;
         this.ready=true;
        }); 
-     }); 
-     
-   
+     });   
   }
  
   agregarUsuario(): void { 

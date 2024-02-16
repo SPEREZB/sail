@@ -56,6 +56,10 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/person/student/byId/"+id_person);
   }  
 
+  getPersonIdStudent(id_student: any):Observable<any>{  
+    return this.clientehttp.post(this.api+"api/person/student/byIdStudent",id_student);
+  }  
+
   getAllPersonStudent():Observable<any>{  
     return this.clientehttp.get(this.api+"api/person/student");
   }   
