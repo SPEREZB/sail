@@ -44,12 +44,7 @@ export class CourseMenuComponent implements OnInit {
 
   constructor(private router:Router, 
     public servicio: SailService,dates:Dates) {  
-     this.cursos = [
-      { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
-      { id: 2, nombre: 'Historia', icono: './../../../assets/course/historia.png' },
-      { id: 3, nombre: 'Informactica', icono: './../../../assets/course/informatica.png' },
-      { id: 4, nombre: 'Ciencias', icono: './../../../assets/course/ciencias.png' },
-    ];
+ 
 
     this.loginInfo = dates.loginInfo;
     this.services = dates.getServices(); 
@@ -65,11 +60,19 @@ export class CourseMenuComponent implements OnInit {
       this.servicio.getSubjectOfTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
         this.subj=subj; 
        });
+       this.cursos = [
+        { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
+        { id: 2, nombre: 'Lengua', icono: './../../../assets/course/lengua.png' }
+      ];
     }else
     {
       this.servicio.getSubjectOfStudent({ id_course: this.id_course }).subscribe(subj=>{
         this.subj=subj; 
        });
+
+       this.cursos = [
+        { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' } 
+      ];
     } 
 
   }

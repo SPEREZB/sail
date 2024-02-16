@@ -17,6 +17,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);   
   align-items: center; 
+  text-align: left;
 }
 
 .actividades{
@@ -37,11 +38,13 @@ body {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
+    color: white;
   }
   
   .content {
-    padding: 10px;
-    display: none;
+    padding: 10px;  
+    color: black;
+    width: 100%;
   }
   
   .rectangle.expanded {
@@ -57,10 +60,25 @@ body {
   .form-group {
     margin-bottom: 15px;
   }
+
+  .mat-expansion-panel {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+ 
+  
+  .mat-expansion-panel-header {
+    background-color: #007bff;  
+  }
   
   label {
     display: block;
     margin-bottom: 5px;
+  }
+
+  mat-expansion-panel{
+    background-color: #007bff;  
   }
   
   input,

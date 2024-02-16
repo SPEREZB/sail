@@ -36,8 +36,9 @@ export class ChallengesComponent {
     
     const prompt = "Crea 4 desafios cortos para estudiantes, que sean de las materias de ciencias, historia, matematicas e informatica; 1 reto para cada"+
     " materia, y damelo en esta estructura: Ciencias: el objetivo del reto y nada mas, Matematicas: el objetivo del reto y nada mas y asi sucesivamente. Cada reto que tenga solo 12 palabras"+
-    " siempre respeta la estructura que te di Historia: reto Matematicas: reto Historia: reto Informatica: reto. Todos los retos en un mismo parrafo es decir terminas el reto de ciencias. Matematicas:"+
-    " y asi sucesivamente, ademas cada reto quiero sea todo en mayusculas es decir CIENCIAS, MATEMÁTICAS, HISTORIA, INFORMÁTICA";
+    " siempre respeta la estructura que te di Historia: reto Matematicas: reto Historia: reto Informatica: reto. Todos los retos en un mismo parrafo es decir terminas el reto de CIENCIAS, y sigues"+ 
+    " con el de Matematicas y asi sucesivamente, osea todo va seguido no quiero que hagas ningun salto a otro parrafo, ademas cada reto quiero sea todo en mayusculas es decir CIENCIAS, MATEMÁTICAS,"+
+    " HISTORIA, INFORMÁTICA y siempre al final de cada reto pon un . pero solo uno no quiero q pongas mas osea el . y luego sgues con el otro reto";
     try {
       this.challengeDescription = await this.openaiService.generateChallenge(prompt);
       this.parseChallenges();
@@ -110,6 +111,7 @@ export class ChallengesComponent {
     if (this.selectedFile) { 
       const formData = new FormData();
       formData.append('pdf', this.selectedFile);
+ 
  
       this.openaiService.revisarChallenge(formData).then((result) => {
         console.log('Resultado de revisarChallenge:', result);

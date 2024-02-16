@@ -1,34 +1,30 @@
- 
-
- <div class="chat">
+<div class="chat">
    <div class="chat-container">
      <div class="chat-header">
        <div class="chat-title">Chat</div>
        <div class="language-selector" [(ngModel)]="selectedLanguage" (change)="onLanguageChange($event)">
-         <label class="chat-title" for="language">Idioma:</label>
-         <select id="language" [(ngModel)]="selectedLanguage"> 
-           <option value="en">Inglés</option>
-           <option value="fr">Francés</option>
-           <option value="fr">Portugues</option>
-         </select>
-       </div>
+        <label class="chat-title" for="language">Idioma:</label>
+        <select id="language" [(ngModel)]="selectedLanguage"> 
+          <option value="en">Inglés</option>
+          <option value="fr">Francés</option>
+          <option value="fr">Portugues</option>
+        </select>
+      </div>
      </div>
      <div class="chat-messages"> 
-      <div class="fake-textarea" [innerHTML]="jsonData | safeHtml">
-            <div *ngFor="let message of messages">   
-               {{ message.replace(',', '') }}
-            </div>
-         </div> 
-     </div>
+      <mat-list>
+        <div *ngFor="let message of messages; let i = index" [ngClass]="{ 'odd-message': i % 2 === 0, 'even-message': i % 2 !== 0 }" class="message-item" [style.min-height]="calcularAltura(message)">
+          {{ message.replace(',', '') }}
+        </div>
+      </mat-list>
+    </div>
      <div class="chat-user-input">
-       <div class="user-input-textarea">
-         <textarea [(ngModel)]="userMessage" placeholder="Escribe tu mensaje"></textarea>
-       </div>
+      <div class="user-input-textarea">
+        <textarea style="width: 100%;" matInput [(ngModel)]="userMessage" placeholder="Escribe tu mensaje"></textarea>
+      </div>
        <div class="user-input-button">
-         <button (click)="sendMessage()">Enviar</button>
+        <button mat-raised-button color="primary" (click)="sendMessage()">Enviar</button>
        </div>
      </div>
    </div>
- </div>
-
- 
+ </div> 

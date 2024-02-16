@@ -18,15 +18,16 @@ export class SupportLanguageComponent implements OnInit {
   jsonData: string="";
   responseia:any;
   selectedLanguage: string= '';
+  
   constructor(private storage: AngularFireStorage, private chatService: ChatService,
     private ia: IaService) {}
  
 
   ngOnInit(): void {
-    const chatId = 'chat1'; // Ajusta esto según tu lógica para identificar el chat
+    const chatId = 'chat1';  
     
     this.chatService.getPDF(chatId).subscribe((data: string[]) => {
-      // Remover comas después de saltos de línea en cada cadena
+   
       const cleanedData = data.map((message: string) => message.replace(/\n,/g, '\n'));
       this.jsonData = cleanedData.join('\n');
     });
@@ -41,15 +42,14 @@ export class SupportLanguageComponent implements OnInit {
   }
 
 
-  sendMessage(): void {
-    this.messages = [];
-
+  sendMessage(): void { 
     const formattedMessage = `${this.userMessage}\n`;
     this.messages.push(formattedMessage);
 
     this.userMessage = '';
     const fakeTextareaContent = document.querySelector('.fake-textarea')?.textContent || '';
     this.messages.unshift(fakeTextareaContent); 
+    this.messages = this.messages.filter(message => message.trim() !== '');
  
   this.jsonData = this.messages.join('\n');
    
@@ -73,6 +73,20 @@ export class SupportLanguageComponent implements OnInit {
     .catch((error) => {
       console.error('Error:', error);
     });
+}
+
+calcularAltura(message: string): string {
+  const caracteres = message.length;
+  const alturaMinima = 20;  
+  const incrementoPorIntervalo = 117;  
+
+  if (caracteres > 234) {
+    const intervalosAdicionales = Math.floor((caracteres - 234) / incrementoPorIntervalo);
+    const alturaAdicional = intervalosAdicionales * 25;  
+    return `${alturaMinima + alturaAdicional}px`;
+  } else {
+    return `${alturaMinima * 2}px`;
+  }
 }
  
 } 

@@ -1,22 +1,52 @@
 <div class="actividades"> 
 
   <div class="cursos">
-    <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
-      <div class="title">Deberes</div>
+    <mat-accordion> 
+    <mat-expansion-panel (click)="expandRectangle('deberes')">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="title">Deberes</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
       <div class="content">
-        <li *ngFor="let activity of activities.deberes" (click)="mostrarFormulario(activity)">{{ activity.name }}</li>
+        <mat-list>
+          <mat-list-item *ngFor="let activity of activities.deberes" (click)="mostrarFormulario(activity)">
+            {{ activity.name }}
+          </mat-list-item>
+        </mat-list>
       </div>
-    </div>
+    </mat-expansion-panel>
   
-    <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
-      <div class="title">Actividades en Clases</div>
-      <div class="content" *ngFor="let activity of activities.actividadesClases" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
-    </div>
+    <mat-expansion-panel (click)="expandRectangle('actividades')">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="title">Actividades en Clases</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="content">
+        <mat-list>
+          <mat-list-item *ngFor="let activity of activities.actividadesClases" (click)="mostrarFormulario(activity)">
+            {{ activity.name }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-expansion-panel>
   
-    <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
-      <div class="title">Exámenes</div>
-      <div class="content" *ngFor="let activity of activities.examenes" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
-    </div>
+    <mat-expansion-panel (click)="expandRectangle('examenes')">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="title">Exámenes</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="content">
+        <mat-list>
+          <mat-list-item *ngFor="let activity of activities.examenes" (click)="mostrarFormulario(activity)">
+            {{ activity.name }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
   </div>
     
     <form class="formulario" [formGroup]="form" (ngSubmit)="saveFile()"> 

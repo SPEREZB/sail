@@ -33,6 +33,7 @@
 .language-selector {
   margin-right: 5%;
   width: 100px;
+  color: black;
 }
 
 #language{
@@ -139,3 +140,45 @@
   font-weight: bold;
   font-style: italic;
 }
+
+.odd-message {
+  background-color: #007bff;  
+  color: #fff;  
+}
+
+.even-message {
+  background-color: #00ff95;  
+  color: #fff;  
+}
+
+.message-item {
+  border-radius: 25px;
+  margin-bottom: 2%; 
+  width: auto;  
+  max-width: max-content;    
+  height: auto;
+  height: 50px;
+  max-height: max-content;
+  text-align: justify;
+  align-items: center;
+  padding: 1%;
+}
+
+mat-select{
+  color: black;
+}
+
+mat-form-field{
+  color: black;
+}
+
+mat-list-item 
+{
+  width: auto;  
+  max-width: max-content;    
+  height: auto;
+  height: 50px;
+  max-height: max-content;
+  text-align: justify;
+  align-items: center;
+} 

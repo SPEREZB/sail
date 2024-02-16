@@ -48,8 +48,7 @@ export class IaService {
   revisarChallenge(formData: FormData): Promise<string> {
     return axios.post(this.apiUrl + 'api/process_pdf', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${url}`, 
+        'Content-Type': 'multipart/form-data', 
       },
     })
       .then((response) => {
@@ -123,7 +122,7 @@ export class IaService {
     return axios.post(this.apiUrl + 'api/chat', requestData, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${url}`, // Asegúrate de definir y proporcionar el valor de url
+        'Authorization': `Bearer ${url}`, 
       },
     })
     .then((response) => {
