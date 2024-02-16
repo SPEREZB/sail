@@ -101,17 +101,17 @@ export class ChallengesComponent {
  
   }
  
-  onFileSelected(event: any, challengeFunction: string) {
+  onFileSelected(event: any, challengeFunction: string, challenge:any) {
     
     this.selectedFile = event.target.files[0];
-    this.uploadPDF(challengeFunction); 
+    this.uploadPDF(challengeFunction,challenge); 
   }
 
-  uploadPDF(challengeFunction: string) {
+  uploadPDF(challengeFunction: string,challenge:any) {
     if (this.selectedFile) { 
       const formData = new FormData();
       formData.append('pdf', this.selectedFile);
- 
+      formData.append('challenge', challenge);
  
       this.openaiService.revisarChallenge(formData).then((result) => {
         console.log('Resultado de revisarChallenge:', result);

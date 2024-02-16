@@ -13,7 +13,7 @@
         <p>{{ reto1 }}</p>  
         <div class="file-upload-section">
           <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge1')" accept=".pdf" class="hidden-input" [disabled]="isReto1 !== null">
+          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge1',reto1)" accept=".pdf" class="hidden-input" [disabled]="isReto1 !== null">
           <button>Subir PDF</button>
         </div>
       </div>
@@ -24,7 +24,7 @@
       <p>{{ reto2 }}</p>
       <div class="file-upload-section">
         <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-        <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge2')" accept=".pdf" class="hidden-input" [disabled]="isReto2 !== null">
+        <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge2',reto2)" accept=".pdf" class="hidden-input" [disabled]="isReto2 !== null">
         <button>Subir PDF</button>
       </div>
     </div>
@@ -35,7 +35,7 @@
         <p>{{ reto3 }}</p>
         <div class="file-upload-section">
           <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge3')" accept=".pdf" class="hidden-input" [disabled]="isReto3 !== null">
+          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge3',reto3)" accept=".pdf" class="hidden-input" [disabled]="isReto3 !== null">
           <button>Subir PDF</button>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <p>{{ reto4 }}</p>
         <div class="file-upload-section">
           <label for="pdfInput" class="hidden-label">Selecciona un archivo PDF</label>
-          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge4')" accept=".pdf" class="hidden-input" [disabled]="isReto4 !== null">
+          <input type="file" id="pdfInput" (change)="onFileSelected($event, 'challenge4',reto4)" accept=".pdf" class="hidden-input" [disabled]="isReto4 !== null">
           <button>Subir PDF</button>
         </div>
     </div>
