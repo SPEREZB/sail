@@ -1,11 +1,8 @@
  
 import { Component, OnInit } from '@angular/core'; 
 import { SailService } from '../../services/sail/sail.service';
- 
-import { Router } from '@angular/router';  
-import { switchMap } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { LoginService } from 'src/app/services/login/login.service';
+import { Dates } from 'src/app/dates/dates'; 
+import { FormBuilder, FormGroup } from '@angular/forms'; 
 
 interface UserProfile {
   id_us: number;
@@ -36,16 +33,18 @@ export class ProfileComponent {
   pers: any;
   initialPersonID:any;
   form: FormGroup;
+  loginInfo:any;
   
   constructor( 
-    private ruteador: Router,
-    private authservice: LoginService,
+    dates:Dates,
     private formulario:FormBuilder,
     public servicio: SailService) {
        this.initialPersonID = parseInt(localStorage.getItem('personID') || '0', 10);
       this.form = this.formulario.group({
         id_person: [], name: [''], last_name: [''],age: []
      });
+
+     this.loginInfo = dates.loginInfo;
        }
 
   ngOnInit(): void {

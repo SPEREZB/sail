@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'; 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { Observable, finalize,map, forkJoin, catchError, of } from 'rxjs'; 
+import { Observable, finalize,map, forkJoin, catchError, of, switchMap } from 'rxjs';  
 import { HttpClient } from '@angular/common/http';   
  
  
@@ -131,5 +131,42 @@ export class ChatService {
       window.open(url, '_blank');
     });
   }
+
+  // OBTENER IMAGENES
+  getImgByIds(subjects: any[]): Observable<(string | null)[]> {
+    const folderPath = 'imagenes_materias';
+    const folderRef = this.storage.ref(folderPath);
+
+    const observables: Observable<string | null>[] = [];
+
+    for (let i = 0; i < subjects.length; i++) { 
+      const id_subject = subjects[i].id_subject.toString();
+
+      const observable = folderRef.listAll().pipe(
+        map(res => {
+          const matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0));
+          return matchingFile ? matchingFile.fullPath : null;
+        })
+      );
+
+      observables.push(observable);
+    }
+
+    // Combina las observables en una única observable usando forkJoin
+    return forkJoin(observables);
+  }
+
+  downloadImg(cursos: string[]): Observable<string[]> {
+    const observables = cursos.map(curso => this.getDownloadUrl(curso));
+
+    return forkJoin(observables);
+  }
+
+  private getDownloadUrl(imagePath: string): Observable<string> {
+    const ref = this.storage.ref(imagePath);
+    return ref.getDownloadURL();
+  }
+ 
+
 }
  

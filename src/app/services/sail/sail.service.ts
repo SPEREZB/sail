@@ -135,6 +135,12 @@ export class SailService {
   getActivityStudent(id_course:any):Observable<any>{  
     return this.clientehttp.get(this.api+"api/activity/student/"+ id_course);
   }  
+
+  // IMG
+  getImg(ruta: any[]): Observable<any> {
+    // Utiliza una solicitud POST para enviar las rutas en el cuerpo del mensaje
+    return this.clientehttp.post(`${this.api}api/firebase`, { ruta });
+  }
  
 
   //create

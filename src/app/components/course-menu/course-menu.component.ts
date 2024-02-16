@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SailService } from 'src/app/services/sail/sail.service';
 import { Router } from '@angular/router';
 import { Dates } from 'src/app/dates/dates';
+import { ChatService } from 'src/app/services/chat/chat.service';
 
 interface UserProfile {
   id_us: number;
@@ -43,7 +44,8 @@ export class CourseMenuComponent implements OnInit {
  
 
   constructor(private router:Router, 
-    public servicio: SailService,dates:Dates) {  
+    public servicio: SailService,dates:Dates,
+    private servicefire: ChatService) {  
  
 
     this.loginInfo = dates.loginInfo;
@@ -55,26 +57,40 @@ export class CourseMenuComponent implements OnInit {
     this.id_teach= localStorage.getItem("teacherID");
     this.id_course= localStorage.getItem("studentID");
 
-    if(this.type=="profesor")
+    if(this.type=="false")
     {
       this.servicio.getSubjectOfTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
         this.subj=subj; 
+        this.loadImg();
        });
-       this.cursos = [
-        { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' },
-        { id: 2, nombre: 'Lengua', icono: './../../../assets/course/lengua.png' }
-      ];
+     
     }else
     {
       this.servicio.getSubjectOfStudent({ id_course: this.id_course }).subscribe(subj=>{
         this.subj=subj; 
-       });
-
-       this.cursos = [
-        { id: 1, nombre: 'Matemáticas', icono: './../../../assets/course/mate.png' } 
-      ];
+        this.loadImg();
+       }); 
     } 
 
+  }
+
+  loadImg(): void {
+    this.servicefire
+      .getImgByIds(this.subj)
+      .subscribe((files) => { 
+        this.cursos = files;
+        this.downloadImg(this.cursos)
+      });
+  }
+
+  downloadImg(cursos:any): void {
+    this.servicefire.downloadImg(cursos).subscribe((urls: string[]) => {
+      // urls contiene las URLs de descarga directa
+      console.log(urls);
+
+      // Puedes asignar las URLs a tu propiedad cursos
+      this.cursos = urls;
+    });
   }
   
   onItemClick(curso: any): void {

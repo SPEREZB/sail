@@ -4,22 +4,14 @@
       <h2 *ngIf="loginInfo.isRegistro" class="inactive underlineHover">REGISTRO </h2>
   
       <div class="fadeIn first">
-        <img *ngIf="loginInfo.userType  === '' || loginInfo.userType  === 'estudiante'" src="../assets/login/estudiante.png" id="icon" alt="User Icon" />
-        <img *ngIf="loginInfo.userType  === 'profesor'" src="../assets/login/profe.png" id="icon" alt="User Icon" />
+        <img *ngIf="loginInfo.userType  === '' || loginInfo.userType  === 'estudiante'" src="../assets/login/estudiante.png" id="icon" alt="User Icon" /> 
       </div>
   
       <form *ngIf="!loginInfo.isRegistro"  [formGroup]="appComponentInfo.form"  (ngSubmit)="enviarDatos()"> 
-        <div class="select-wrapper">
-          <select (change)="updateImage()" class="fadeIn second" name="userType" id="tipous">
-              <option value="" disabled selected hidden>Tipo de usuario</option>
-            <option value="estudiante">Estudiante</option>
-            <option value="profesor">Profesor</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
+    
         <input type="text" formControlName="user_name" (change)="updateUserName()" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
         <input type="password" formControlName="password" (change)="updatePassword()" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-        <input type="submit" class="fadeIn fourth" value="INGRESAR" [disabled]="loginInfo.userType  === '' || loginInfo.usName === '' || loginInfo.passw === '' ">
+        <input type="submit" class="fadeIn fourth" value="INGRESAR" [disabled]="loginInfo.usName === '' || loginInfo.passw === '' ">
        
       </form>
   
@@ -57,20 +49,15 @@
   
     </div>
 </div> 
-
-
-
+ 
 <app-custom-alert></app-custom-alert>  
-
-  
-
-
+ 
 <section id="sidebar">
-<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'estudiante'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'true'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
   <app-perfilestudiante></app-perfilestudiante>
   </div> 
 
-  <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'profesor'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+  <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'false'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
     <app-perfilprofesor></app-perfilprofesor>
     </div> 
 
@@ -80,9 +67,8 @@
     </div> 
 </section>
 
-  <section id="content">
-<div class="panel" *ngIf="loginInfo.isLogin">
+  <section *ngIf="loginInfo.isLogin" id="content">
+<div class="panel"  >
   <router-outlet></router-outlet>  
-</div>
-  
+</div> 
  </section>

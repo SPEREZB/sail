@@ -108,6 +108,7 @@ export class AppComponent {
           const firstUser = response.result[0];
           this.appComponentInfo.idUs= firstUser.id_us; 
           this.appComponentInfo.idPerson= firstUser.id_person;
+          this.loginInfo.userType = firstUser.type;
 
           this.dates.getServices().servicio.getPersonTeacher(this.appComponentInfo.idPerson).subscribe(resteacher=>{
               this.appComponentInfo.idTeacher=resteacher[0].id_teacher;  
@@ -131,8 +132,8 @@ export class AppComponent {
           this.services.authService.idPerson(this.appComponentInfo.idPerson); 
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
-          else if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/profesor']);
-          else this.dates.getServices().router.navigate(['/estudiante']);
+          else if(this.loginInfo.userType=="false") this.dates.getServices().router.navigate(['/profesor']);
+          else this.dates.getServices().router.navigate(['/true']);
         }
          else  
          {
