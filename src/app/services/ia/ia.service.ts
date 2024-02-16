@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios'; 
+import { apiIa } from 'src/config';
  
 const url = 'https://api.bard.com/'; 
 @Injectable({
@@ -16,7 +17,7 @@ export class IaService {
   public readonly storageReto4 = 'reto4'; 
   private reto:string| null = null;
 
-  private apiUrl = 'http://127.0.0.1:5000/';
+  private apiUrl = apiIa;
   
    
   generateChallenge(prompt: string): Promise<string> { 
