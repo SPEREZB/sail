@@ -13,7 +13,7 @@
      </div>
      <div class="chat-messages"> 
       <mat-list>
-        <div *ngFor="let message of messages; let i = index" [ngClass]="{ 'odd-message': i % 2 === 0, 'even-message': i % 2 !== 0 }" class="message-item" [style.min-height]="calcularAltura(message)">
+        <div *ngFor="let message of messages; let i = index" [ngClass]="{ 'odd-message': i % 2 === 0, 'even-message': i % 2 !== 0 }" class="message-item">
           {{ message.replace(',', '') }}
         </div>
       </mat-list>

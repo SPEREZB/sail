@@ -1,32 +1,18 @@
+
+
 <div class="cursos">
-  <ul class="grid-container common-styles">
+<ul class="grid-item-content">
+  <div class="project-container">
     <li class="grid-item"  *ngFor="let s of subj; let i = index">
       <div *ngIf="type==='true'" class="grid-item-content">
         <img (click)="materiaestudiante(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaestudiante(s, i)">{{ s.name }}</h3>
       </div>
-      <div class="project-container">
-        <div class="project-box">
-            <i class="uil uil-briefcase-alt"></i>
-            <h3>Completed</h3>
-            <label>15+ Finished Projects</label>
-        </div>
-        <div class="project-box">
-            <i class="uil uil-users-alt"></i>
-            <h3>Clients</h3>
-            <label>25+ Happy Clients</label>
-        </div>
-        <div class="project-box">
-            <i class="uil uil-award"></i>
-            <h3>Experience</h3>
-            <label>7+ Years in the field</label>
-        </div>
-    </div>
-
       <div *ngIf="type==='false'" class="grid-item-content">
         <img (click)="materiaprofesor(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
       </div>
     </li>
-  </ul>
+  </div>
+</ul>  
 </div>

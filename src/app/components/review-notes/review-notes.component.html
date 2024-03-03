@@ -2,19 +2,24 @@
 <div class="cursos">
   <div class="rectangle" id="deberes" (click)="expandRectangle('deberes')">
     <div class="title">Deberes</div>
-    <div class="content">
-      <li *ngFor="let activity of activities.deberes" (click)="mostrarFormulario(activity)">{{ activity.name }}</li>
+    <div class="content" *ngFor="let activity of activities.actividadesClases">
+      <button (click)="mostrarFormulario(activity)">{{ activity.name }}</button>
     </div>
   </div>
 
   <div class="rectangle" id="actividades" (click)="expandRectangle('actividades')">
     <div class="title">Actividades en Clases</div>
-    <div class="content" *ngFor="let activity of activities.actividadesClases" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
+    <div class="content" *ngFor="let activity of activities.actividadesClases">
+      <button (click)="mostrarFormulario(activity)">{{ activity.name }}</button>
+    </div>
+  
   </div>
 
   <div class="rectangle" id="examenes" (click)="expandRectangle('examenes')">
     <div class="title">Exámenes</div>
-    <div class="content" *ngFor="let activity of activities.examenes" (click)="mostrarFormulario(activity)">{{ activity.name }}</div>
+    <div class="content" *ngFor="let activity of activities.examenes" >
+      <button (click)="mostrarFormulario(activity)">{{ activity.name }}</button>
+    </div>
   </div>
 </div>
 
@@ -34,7 +39,9 @@
     <tr *ngFor="let f of file; let i = index">
       <td>{{ students[i]?.name }}</td>
       <td>{{ students[i]?.last_name }}</td>
-      <td (click)="descargarArchivo(f)">{{ f }}</td>
+      <td>
+        <a class="underlineHover" href="javascript:void(0)" (click)="descargarArchivo(f)">{{ f }}</a>
+      </td>
       <td>10</td>  
     </tr> 
   </tbody>

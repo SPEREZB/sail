@@ -9,11 +9,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="content">
-        <mat-list>
+        <button mat-list>
           <mat-list-item *ngFor="let activity of activities.deberes" (click)="mostrarFormulario(activity)">
             {{ activity.name }}
           </mat-list-item>
-        </mat-list>
+        </button>
       </div>
     </mat-expansion-panel>
   
@@ -24,11 +24,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="content">
-        <mat-list>
+        <button mat-list>
           <mat-list-item *ngFor="let activity of activities.actividadesClases" (click)="mostrarFormulario(activity)">
             {{ activity.name }}
           </mat-list-item>
-        </mat-list>
+        </button>
       </div>
     </mat-expansion-panel>
   
@@ -39,11 +39,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="content">
-        <mat-list>
+        <button mat-list>
           <mat-list-item *ngFor="let activity of activities.examenes" (click)="mostrarFormulario(activity)">
             {{ activity.name }}
           </mat-list-item>
-        </mat-list>
+        </button>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

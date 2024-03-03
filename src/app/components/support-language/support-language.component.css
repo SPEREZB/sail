@@ -45,7 +45,7 @@
 .chat-messages {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 80px);
+  height: 100%;
   overflow-y: auto;
   padding: 10px;
 }
@@ -147,7 +147,7 @@
 }
 
 .even-message {
-  background-color: #00ff95;  
+  background-color: #86c8ac;  
   color: #fff;  
 }
 
@@ -156,8 +156,7 @@
   margin-bottom: 2%; 
   width: auto;  
   max-width: max-content;    
-  height: auto;
-  height: 50px;
+  min-height: min-content;
   max-height: max-content;
   text-align: justify;
   align-items: center;
