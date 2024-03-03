@@ -16,14 +16,7 @@
       </form>
   
       <form *ngIf="loginInfo.isRegistro"  [formGroup]="appComponentInfo.form_reg"  (ngSubmit)="crearUs()"> 
-        <div class="col">
-          <div class="form-control">
-              <div class="form-inputs">
-                  <input type="text" class="input-field" placeholder="Name">
-                  <input type="text" class="input-field" placeholder="Email">
-              </div>
-          </div>
-        </div>
+        
         <div class="dates">
           <div class="user_person"> 
             <input type="text" formControlName="user_name_reg" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
@@ -38,6 +31,7 @@
               <input type="text" formControlName="work_experience_reg"  class="fadeIn third" name="experiencia" placeholder="Experiencia"> 
             </div>
         </div>
+        
        
        
         <div class="select-wrapper">
