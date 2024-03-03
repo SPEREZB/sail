@@ -36,6 +36,21 @@
 {
   display: flex;
 }
+.col{
+  display: flex;
+  width: 50%;
+}
+.form-control{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.form-inputs{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
 
   #sup-menu {
     display: flex;
