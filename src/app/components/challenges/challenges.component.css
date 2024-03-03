@@ -23,6 +23,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
     gap: 20px;
+    position: relative;
   }
   .challenges{
     display: flex;
@@ -70,9 +71,10 @@ img {
 }
 
 .file-upload-section {
-  position: relative;
+  
   overflow: hidden;
   display: inline-block;
+  position: absolute;
 }
 
  
