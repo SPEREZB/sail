@@ -8,7 +8,7 @@
         <img (click)="materiaestudiante(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaestudiante(s, i)">{{ s.name }}</h3>
       </div>
-      <div *ngIf="type==='false'" class="grid-item-content">
+      <div *ngIf="type==='profesor'" class="grid-item-content">
         <img (click)="materiaprofesor(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaprofesor(s, i)">{{ s.name }}</h3>
       </div>

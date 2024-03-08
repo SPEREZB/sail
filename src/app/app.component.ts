@@ -61,7 +61,7 @@ export class AppComponent {
     if(sessionStorage.getItem("userLoggedIn")=="true")
      {
       if(localStorage.getItem("userType")=="admin") this.services.router.navigate(['/admin']);
-      else if(localStorage.getItem("userType")=="false") this.services.router.navigate(['/profesor']);
+      else if(localStorage.getItem("userType")=="profesor") this.services.router.navigate(['/profesor']);
       else    this.services.router.navigate(['/estudiante']); 
      }
      
@@ -165,8 +165,9 @@ export class AppComponent {
           this.loginInfo.isLogin=this.dates.getServices().authService.isAuthenticated();
           this.services.authService.userType(this.loginInfo.userType);
           this.services.authService.idUs(this.appComponentInfo.idUs);
-       
-          this.dates.getServices().router.navigate(['/estudiante']);
+
+          if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/estudiante']);
+          else this.dates.getServices().router.navigate(['/estudiante']);
         }
          else  
          {

@@ -4,7 +4,7 @@
       <h2 *ngIf="loginInfo.isRegistro" class="inactive underlineHover">REGISTRO </h2>
   
       <div class="fadeIn first">
-        <img *ngIf="loginInfo.userType  === '' || loginInfo.userType  === 'estudiante'" src="../assets/login/estudiante.png" id="icon" alt="User Icon" /> 
+        <img  src="../assets/login/estudiante.png" id="icon" alt="User Icon" /> 
       </div>
   
       <form *ngIf="!loginInfo.isRegistro"  [formGroup]="appComponentInfo.form"  (ngSubmit)="enviarDatos()"> 
@@ -60,7 +60,7 @@
   <app-perfilestudiante></app-perfilestudiante>
   </div> 
 
-  <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'false'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+  <div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'profesor'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
     <app-perfilprofesor></app-perfilprofesor>
     </div> 
 

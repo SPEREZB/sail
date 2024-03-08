@@ -162,10 +162,7 @@ export class SailService {
   {  
     return this.clientehttp.post(this.api+"api/activity/create",body);
   }
-
  
-
-
   //update
   updateUs(body: any):Observable<any>
   {
@@ -174,6 +171,6 @@ export class SailService {
 
   updateStudent(body: any):Observable<any>
   {
-    return this.clientehttp.post(this.api+"update/user",body);
+    return this.clientehttp.post(this.api+"api/student/update",body);
   }
 }

@@ -41,8 +41,8 @@ export class AdminTeacherListComponent implements OnInit {
      this.servicio.getAllPersonTeacher().subscribe(pers=>{
       this.pers=pers;
 
-      this.servicio.getAllUsOrder(this.pers).subscribe(us=>{
-        this.us=us;
+      this.servicio.getAllUsTeacher(this.pers).subscribe(us=>{
+        this.us=us.result;
         this.ready=true;
        });
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false, 
-  apiUrl: 'https://apisail.onrender.com/', 
+  //apiUrl: 'https://apisail.onrender.com/', 
+  apiUrl: 'http://localhost:3000/', 
   apiIa: 'https://apiia-vkhj.onrender.com/',
   firebase: {
     apiKey: "AIzaSyD04Ux8zdPEviJed8XAaK0IQBPik3Ss6D8",

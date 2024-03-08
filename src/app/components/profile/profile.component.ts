@@ -31,6 +31,7 @@ export class ProfileComponent {
   id_person: string | null = null; 
   us: any;
   pers: any;
+  initialUserID:any;
   initialPersonID:any;
   form: FormGroup;
   loginInfo:any;
@@ -40,8 +41,10 @@ export class ProfileComponent {
     private formulario:FormBuilder,
     public servicio: SailService) {
        this.initialPersonID = parseInt(localStorage.getItem('personID') || '0', 10);
+       this.initialUserID = parseInt(localStorage.getItem('userID') || '0', 10); 
+
       this.form = this.formulario.group({
-        id_person: [], name: [''], last_name: [''],age: []
+        id_us: [this.initialUserID],id_person: [this.initialPersonID], user_name: [''], password: [''], name: [''], last_name: [''],age: []
      });
 
      this.loginInfo = dates.loginInfo;
@@ -67,20 +70,17 @@ export class ProfileComponent {
       }); 
     } 
   }
-
-  onAcceptClick()
-  { 
-    this.form.patchValue({ id_person: this.initialPersonID  }); 
-
-    const formData = this.form.getRawValue();
-    this.servicio.updateUs(formData).subscribe(respuesta=>{
-      alert(respuesta.message)
-    });  
-  }
+ 
 
   onDeleteClick()
   {
 
+  }
+
+  actualizarDatos(datos:any): void {  
+    this.servicio.updateStudent(datos.value).subscribe(respuesta => {
+      alert("DATOS ACTUALIZADOS CORRECTAMENTE");
+    });
   }
  
 } 

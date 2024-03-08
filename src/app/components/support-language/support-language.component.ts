@@ -73,20 +73,5 @@ export class SupportLanguageComponent implements OnInit {
     .catch((error) => {
       console.error('Error:', error);
     });
-}
-
-calcularAltura(message: string): string {
-  const caracteres = message.length;
-  const alturaMinima = 20;  
-  const incrementoPorIntervalo = 117;  
-
-  if (caracteres > 234) {
-    const intervalosAdicionales = Math.floor((caracteres - 234) / incrementoPorIntervalo);
-    const alturaAdicional = intervalosAdicionales * 25;  
-    return `${alturaMinima + alturaAdicional}px`;
-  } else {
-    return `${alturaMinima * 2}px`;
-  }
-}
- 
+}  
 } 

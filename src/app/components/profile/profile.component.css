@@ -24,6 +24,13 @@
   border-radius: 8px;
 }
 
+.buttons{
+  flex: 0 0 10%; 
+  
+}
+
+
+
 .profile-image {
   flex: 1;
   margin-left: auto;
@@ -83,13 +90,14 @@
   flex-wrap: wrap;
   background: #ffffff;
   border-radius: 8px;
+  width: 70%;
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .user-column {
-  flex: 1;
+  flex: 0 0 27%; 
   margin-right: 20px;
 }
 
@@ -99,7 +107,7 @@
 }
 
 .container-fluid {
-  flex: 1;
+  flex: 0 0 30%; 
   align-items: left;
 }
  
@@ -144,7 +152,7 @@
 .button-container {
   flex: 1;
   margin-top: 10px;
-  width: 100%;
+  width: 100%; 
 }
 
 .accept-button,
@@ -239,7 +247,7 @@
  
 
   .user-detail {
-    width: 48%;
+    width: 70%;
     margin-right: 2%;
   }
 }

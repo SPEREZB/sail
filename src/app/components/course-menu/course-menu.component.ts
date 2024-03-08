@@ -57,7 +57,7 @@ export class CourseMenuComponent implements OnInit {
     this.id_teach= localStorage.getItem("teacherID");
     this.id_course= localStorage.getItem("studentID");
 
-    if(this.type=="false")
+    if(this.type=="profesor")
     {
       this.servicio.getSubjectOfTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
         this.subj=subj; 
