@@ -1,100 +1,140 @@
 <div class="profile-info">
- 
-    <div class="greeting-container">
-      <div class="greeting">
-        <h2>Saludos, Sebastian</h2>
-        <div class="motivational-paragraph">
-          <p>¡Bienvenido al sistema de SAIL! Estamos emocionados de tenerte aquí. 🚀📚✨</p>
-        </div>
-      </div>
-      <div class="profile-image">
-        <img src="../../../assets/profile/student.png" alt="Profile Image">
+  <div class="greeting-container">
+    <div class="greeting">
+      <h2>Saludos</h2>
+      <div class="motivational-paragraph">
+        <p>¡Bienvenido al sistema de SAIL! Estamos emocionados de tenerte aquí. 🚀📚✨</p>
       </div>
     </div>
+    <div class="profile-image">
+      <img src="../../../assets/profile/student.png" alt="Profile Image">
+    </div>
+  </div>
 
 
-    <section id="content"> 
+  <section id="content">
     <main>
-    <div class="head-title">
-      <div class="left">
-        <h1>Home</h1>
-        <ul class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li><i class='bx bx-chevron-right'></i></li>  
-          <li class="active"><a href="dashboard">PERFIL</a></li>
-        </ul>
+      <div class="head-title">
+        <div class="left">
+          <h1>Home</h1>
+          <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><i class='bx bx-chevron-right'></i></li>
+            <li class="active"><a href="dashboard">PERFIL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="box-info">
+        <li>
+          <i class='bx bxs-group'></i>
+          <span class="text">
+            <h3>1220</h3>
+            <p>Alumnos</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-group'></i>
+          <span class="text">
+            <h3>200</h3>
+            <p>Docentes</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-doughnut-chart'></i>
+          <span class="text">
+            <h3>100</h3>
+            <p>Materias</p>
+          </span>
+        </li>
+      </ul>
+    </main>
+  </section>
+
+  <div class="top-header">
+    <h1>Datos del Usuario</h1>
+  </div>
+  <!-- <div class="row">
+    <div class="col">
+      <div class="form-control">
+        <div *ngFor="let u of us" class="user-column">
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Nombre Usuario" [(ngModel)]="u.user_name" />
+
+          </div>
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Contraseña" [(ngModel)]="u.password" />
+          </div>
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Tipo de Usuario"> {{ u.type ? "Profesor":"Estudiante" }}
+          </div>
+        </div>
       </div>
     </div>
-
-    <ul class="box-info">
-      <li>
-        <i class='bx bxs-group'></i>
-        <span class="text">
-          <h3>1220</h3>
-          <p>Alumnos</p>
-        </span> 
-      </li>
-      <li>
-        <i class='bx bxs-group'></i>
-        <span class="text">
-          <h3>200</h3>
-          <p>Docentes</p>
-        </span>
-      </li>
-      <li>
-        <i class='bx bxs-doughnut-chart'></i>
-        <span class="text">
-          <h3>100</h3>
-          <p>Materias</p>
-        </span>
-      </li>
-    </ul>
-  </main>
-</section>
- 
-    <div class="message-container">
-      <label id="title">DATOS DEL USUARIO:</label>
-      <div class="user-detail-container">
-        <div *ngFor="let u of us"  class="user-column">
-          <div class="user-detail">
-            <label class="label">Nombre de Usuario:</label>
-            <input class="form-control" [(ngModel)]="u.user_name" />
+    <div class="col">
+      <div class="form-control">
+        <div *ngFor="let per of pers" class="user-column">
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Nombre" [(ngModel)]="per.name" />
           </div>
-          <div class="user-detail">
-            <label class="label">Contraseña:</label>
-            <input class="form-control" [(ngModel)]="u.password" />
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Apellido" [(ngModel)]="per.last_name" />
           </div>
-          <div class="user-detail">
-            <label class="label">Tipo de usuario:</label>
-            <label id="data">{{ u.type ? "Estudiante" : "Profesor" }}</label>
+          <div class="form-inputs">
+            <input type="text" class="input-field" placeholder="Edad" [(ngModel)]="per.age" />
           </div>
-        </div>
-
-        <div class="container-fluid" id="persona">
-          <form [formGroup]="form" (ngSubmit)="onAcceptClick()" class="row">
-            <input type="hidden" formControlName="id_person" />
-            <div *ngFor="let per of pers" class="user-detail col-md-6 offset-md-3">
-              <div class="form-group">
-                <label class="label">Nombre:</label>
-                <input class="form-control" formControlName="name" placeholder="Nombre" [(ngModel)]="per.name" />
-              </div>
-              <div class="form-group">
-                <label class="label">Apellido:</label>
-                <input class="form-control" formControlName="last_name" placeholder="Apellido" [(ngModel)]="per.last_name" />
-              </div>
-              <div class="form-group">
-                <label class="label">Edad:</label>
-                <input class="form-control" formControlName="age" placeholder="Edad" [(ngModel)]="per.age" />
-              </div>
-            </div>
-
-            <div class="button-container col-md-6 offset-md-3">
-              <button type="submit" class="btn btn-success form-control">ACTUALIZAR</button>
-              <button type="submit" class="btn btn-danger form-control mt-2" (click)="onDeleteClick()">ELIMINAR</button>
-            </div>
-          </form>
         </div>
       </div>
-    </div> 
- 
+    </div>
+    <div class="form-button">
+      <button class="btn">Actualizar <i class="uil uil-message"></i></button>
+      <button class="btn">Eliminar <i class="uil uil-message"></i></button>
+    </div>
+  </div> -->
+  <div class="message-container">
+    <label id="title">DATOS DEL USUARIO:</label>
+    <div class="user-detail-container">
+      <div *ngFor="let u of us" class="user-column">
+        <div class="user-detail">
+          <label class="label">Nombre de Usuario:</label>
+          <input class="form-control" [(ngModel)]="u.user_name" />
+        </div>
+        <div class="user-detail">
+          <label class="label">Contraseña:</label>
+          <input class="form-control" [(ngModel)]="u.password" />
+        </div>
+        <div class="user-detail">
+          <label class="label">Tipo de usuario:</label>
+          <label id="data">{{ u.type ? "Estudiante" : "Profesor" }}</label>
+        </div>
+      </div>
+      <div class="container-fluid" id="persona">
+        <form [formGroup]="form" (ngSubmit)="onAcceptClick()" class="row">
+          <input type="hidden" formControlName="id_person" />
+          <div *ngFor="let per of pers" class="user-detail col-md-6 offset-md-3">
+            <div class="form-group">
+              <label class="label">Nombre:</label>
+              <input class="form-control" formControlName="name" placeholder="Nombre" [(ngModel)]="per.name" />
+            </div>
+            <div class="form-group">
+              <label class="label">Apellido:</label>
+              <input class="form-control" formControlName="last_name" placeholder="Apellido"
+                [(ngModel)]="per.last_name" />
+            </div>
+            <div class="form-group">
+              <label class="label">Edad:</label>
+              <input class="form-control" formControlName="age" placeholder="Edad" [(ngModel)]="per.age" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="button-container col-md-3 offset-md-3">
+      <button type="submit" class="btn btn-success form-control">ACTUALIZAR</button>
+    </div>
+    <div class="button-container col-md-3 offset-md-3">
+      <button type="submit" class="btn btn-danger form-control mt-2" (click)="onDeleteClick()">ELIMINAR</button>
+    </div>
+  </div>
+
 </div>
