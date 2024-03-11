@@ -69,18 +69,17 @@ export class AdminStudentListComponent implements OnInit {
       course: this.form.get('course')?.value, 
     };
  
-     
+    let us_name=  this.form.get('user_name')?.value
 
-    this.id_person=localStorage.getItem("personID"); 
-    if (this.id_person !== null && this.id_person !== undefined) {
-      const parsedId = parseInt(this.id_person, 10); 
+    this.servicio.getUserByUserName(us_name).subscribe(respuesta => {
+ 
+      const parsedId = parseInt(respuesta[0].id_person, 10); 
       const formData = { ...this.form.getRawValue(), ...additionalData, id_person: parsedId };
 
       this.servicio.createStudent(formData).subscribe(respuesta => {
         alert("SE ASIGNO EL USUARIO CON EXITO");
-      });
-    } 
-
+      }); 
+    });
  
   
   }

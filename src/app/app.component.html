@@ -22,13 +22,17 @@
             <input type="text" formControlName="user_name_reg" id="login" class="fadeIn second" name="login" placeholder="Nombre de usuario">
             <input type="text" formControlName="password_reg" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
             <input type="text" formControlName="name_reg" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
-            <input type="text" formControlName="last_name_reg" id="apellido" class="fadeIn third" name="apellido" placeholder="Apellido">
-            <input type="text" formControlName="age_reg" id="edad" class="fadeIn third" name="edad" placeholder="Edad"> 
+            <input type="text" formControlName="last_name_reg" id="apellido" class="fadeIn third" name="apellido" placeholder="Apellido"> 
+            <input style="padding: 10px; background-color: #f6f6f6; border: none; margin-top: 10px;" 
+              type="number" formControlName="age_reg" id="edad" class="fadeIn third" name="edad" placeholder="Edad" 
+               onkeydown="return isNumber(event)">
           </div>
             <div class="teacher">
               <input type="text" formControlName="academic_degree_reg"  class="fadeIn third" name="titulo_academico" placeholder="Titulo"> 
               <input type="text" formControlName="specialization_reg" class="fadeIn third" name="especialidad" placeholder="Especialidad"> 
-              <input type="text" formControlName="work_experience_reg"  class="fadeIn third" name="experiencia" placeholder="Experiencia"> 
+              <input style="padding: 10px; background-color: #f6f6f6; border: none; margin-top: 10px;" 
+              type="number" formControlName="work_experience_reg" class="fadeIn third" name="experiencia" placeholder="Años de Experiencia" 
+               onkeydown="return isNumber(event)">
             </div>
         </div>
         
@@ -56,7 +60,7 @@
 <app-custom-alert></app-custom-alert>  
  
 <section id="sidebar">
-<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'true'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
+<div  *ngIf="loginInfo.isLogin && loginInfo.userType === 'estudiante'" class="main-menu"  [class.open]="loginInfo.openMenu" (click)="handleDrawerClose()">
   <app-perfilestudiante></app-perfilestudiante>
   </div> 
 

@@ -64,8 +64,12 @@
                     <ng-container *ngFor="let c of curs; let i = index">
                     <tr *ngIf="i < 6">
                       <td>{{ c.name }}</td> 
-                      <td class="with-margin">20</td>
-                      <td class="with-margin">{{ asig[i]?.name }}</td> 
+                      <td class="cant_students">20</td>
+                      <td class="with-margin">
+                        <select [ngModel]="asig[i]?.name" (ngModelChange)="onSelectChange($event, i)">
+                          <option *ngFor="let option of getSelectOptions(i)" [value]="option">{{ option }}</option>
+                        </select>
+                      </td>
                     </tr>
                 </ng-container>
                   </tbody>
@@ -90,11 +94,15 @@
                   </thead>
                   <tbody>
                     <ng-container *ngFor="let p of pers; let i = index">
-                    <tr *ngIf="i < 6">
-                      <td>{{ p.name + ' ' + p.last_name }}</td> 
-                      <td class="with-margin">{{ usteach[i]?.user_name }}</td>
-                      <td class="with-margin">{{ teachsubject[i]?.name }}</td> 
-                    </tr>
+                      <tr *ngIf="i < 6">
+                        <td>{{ p.name + ' ' + p.last_name }}</td>
+                        <td class="with-margin">{{ usteach[i]?.user_name }}</td> 
+                          <td class="with-margin">
+                            <div *ngFor="let t of todo; let j = index">
+                              <span *ngIf="usteach[i]?.id_us === t?.id_us">{{ t?.subject_name }}</span>
+                            </div>
+                          </td> 
+                      </tr>
                 </ng-container>
                   </tbody>
                 </table>

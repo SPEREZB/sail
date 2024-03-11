@@ -183,6 +183,10 @@ h2 {
 
 
 /* NAVBAR */
+.cant_students{
+ width: 10px;
+}
+
 #content nav {
 	height: 56px;
 	background: var(--light);
@@ -495,16 +499,19 @@ button {
 	border-collapse: collapse;
 }
 #content main .table-data .order table th {
-    width: 33.33%; 
+	width: 181px;
 	padding-bottom: 12px;
 	font-size: 13px;
 	text-align: left;
 	border-bottom: 1px solid var(--grey);
 }
-#content main .table-data .order table td {
-    width: 33.33%; 
+#content main .table-data .order table td { 
 	padding: 16px 0;
 } 
+#content main .table-data .order table th.students-header {
+	width: auto;
+	white-space: nowrap;
+  }
 #content main .table-data .order table tr td:first-child {
 	display: flex;
 	align-items: center;
@@ -595,8 +602,7 @@ button {
 
 
 .table-container {
-    display: inline-block;
-    margin-right: 15%; /* Ajusta el espacio entre las tablas según sea necesario */
+    display: inline-block; 
   }
     
 

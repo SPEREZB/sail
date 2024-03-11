@@ -22,6 +22,10 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/user");
   } 
 
+  getUserByUserName(us:any):Observable<any>{  
+    return this.clientehttp.get(this.api+"api/user/byUserName/"+us);
+  } 
+
   getAllUsOrder(persons:any):Observable<any>{  
     return this.clientehttp.post(this.api+"api/user", persons);
   } 
@@ -117,12 +121,16 @@ export class SailService {
     return this.clientehttp.get(this.api+"api/subject");
   } 
 
+  getSubjectOfTeacherOrder():Observable<any>{  
+    return this.clientehttp.get(this.api+"api/subject/teacher_order");
+  } 
+
   getAllSubjectTeacher(body:any):Observable<any>
   {  
     return this.clientehttp.post(this.api+"api/subject/teacher",body);
   }
 
-  getSubjectOfTeacher(body: { id_teacher: string }):Observable<any>{  
+  getSubjectOfTeacherById(body: { id_teacher: string }):Observable<any>{  
     return this.clientehttp.post(this.api+"api/subject/teacher/byId",body);
   } 
 

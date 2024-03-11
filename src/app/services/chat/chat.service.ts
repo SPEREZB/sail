@@ -155,12 +155,43 @@ export class ChatService {
 
     const observables: Observable<string | null>[] = [];
 
-    for (let i = 0; i < subjects.length; i++) { 
-      const id_subject = subjects[i].id_subject.toString();
+ 
 
+    for (let i = 0; i < subjects.length; i++) { 
+      const id= subjects[i].id_subject;
+      const id_subject = subjects[i].id_subject.toString();
+      let matchingFile:any="";
       const observable = folderRef.listAll().pipe(
         map(res => {
-          const matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0));
+          if(id<9)
+          {
+
+       
+          if(id==1) 
+          {
+            matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0) && item.name.substring(0,2) ==="1m");
+          } else if(id==2)
+          {
+            matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0) && item.name.substring(0,2) ==="2l");
+          } else if(id==3)
+          {
+            matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0) && item.name.substring(0,2) ==="3c");
+          } else{
+            matchingFile = res.items.find(item => item.name.charAt(0) === id_subject.charAt(0));
+          }
+        }else
+        {
+          for (const item of res.items) {
+            const firstTwoCharsIdSubject = id_subject.substring(0, 2);
+            const firstTwoCharsItemName = item.name.substring(0, 2);
+    
+            if (firstTwoCharsIdSubject === firstTwoCharsItemName) {
+              matchingFile = item as any; 
+              break;
+            }
+          } 
+        }
+          
           return matchingFile ? matchingFile.fullPath : null;
         })
       );

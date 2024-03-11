@@ -52,14 +52,14 @@ export class CustomAlertComponent implements OnInit {
     this.alertService.alert$.subscribe((message) => {
       this.message = message;
 
-      if(message=="¡DESAFIO COMPLETADO EXITOSAMENTE!") this.isSuccess=true;
+      if(message=="¡DESAFIO COMPLETADO EXITOSAMENTE!" || message=="¡REGISTRO EXISTOSO, POR FAVOR CONTACTESE CON LA AUTIRDAD DEL COLEGIO PARA SER ASIGNADO A UN CURSO!") this.isSuccess=true;
       else this.isSuccess=false;
       this.isVisible = !!message;
       this.cambiarFondo();
       if (this.isVisible) {
         setTimeout(() => {
           this.isVisible = false; 
-        }, 4000);
+        }, 5000);
       }
     });  
   }

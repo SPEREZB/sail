@@ -55,11 +55,12 @@ export class CourseMenuComponent implements OnInit {
   ngOnInit(): void {
     this.type= localStorage.getItem("userType"); 
     this.id_teach= localStorage.getItem("teacherID");
-    this.id_course= localStorage.getItem("studentID");
-
+    this.id_course= localStorage.getItem("courseID"); 
+    if(this.id_course!="null")
+    { 
     if(this.type=="profesor")
     {
-      this.servicio.getSubjectOfTeacher({ id_teacher: this.id_teach }).subscribe(subj=>{
+      this.servicio.getSubjectOfTeacherById({ id_teacher: this.id_teach }).subscribe(subj=>{
         this.subj=subj; 
         this.loadImg();
        });
@@ -71,6 +72,9 @@ export class CourseMenuComponent implements OnInit {
         this.loadImg();
        }); 
     } 
+  }else{
+
+  }
 
   }
 

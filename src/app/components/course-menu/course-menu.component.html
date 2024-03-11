@@ -4,7 +4,7 @@
 <ul class="grid-item-content">
   <div class="project-container">
     <li class="grid-item"  *ngFor="let s of subj; let i = index">
-      <div *ngIf="type==='true'" class="grid-item-content">
+      <div *ngIf="type==='estudiante'" class="grid-item-content">
         <img (click)="materiaestudiante(s, i)" [src]="cursos[i]" alt="Curso Icon">
         <h3 (click)="materiaestudiante(s, i)">{{ s.name }}</h3>
       </div>

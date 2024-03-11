@@ -21,6 +21,9 @@ export class AdminCourseComponent implements OnInit {
   teach:any;
   usteach:any;
 
+  //
+  todo:any;
+
   //cursos
   curs:any;
   asig:any;
@@ -58,13 +61,17 @@ export class AdminCourseComponent implements OnInit {
  
     
      //CURSO-ASIGNATURA
-     this.servicio.getAllCourse().subscribe(curs=>{
-      this.curs=curs;
-     });
+     const cursosOrdenados = [{name: '8vo Grado'}, {name: '9no Grado'}, {name: '10mo Grado'}, {name: '1er Bachillerato'}, {name: '2do Bachillerato'}, {name: '3er Bachillerato'}];
+     this.curs=cursosOrdenados; 
+   
 
      this.servicio.getAllSubject().subscribe(asig=>{
-      this.asig=asig; 
+      this.asig=asig;  
      });
+
+     this.servicio.getSubjectOfTeacherOrder().subscribe(subj=>{
+          this.todo= subj;
+     });  
 
      this.servicio.getAllPersonTeacher().subscribe(pers=>{
       this.pers=pers;
@@ -73,6 +80,22 @@ export class AdminCourseComponent implements OnInit {
        }); 
      });  
    
+  }
+
+  onSelectChange(selectedValue: string, index: number): void { 
+    this.asig[index].name = selectedValue;
+  }
+
+  getSelectOptions(index: number): string[] { 
+    const startIndex = index * 5; 
+    const endIndex = startIndex + 4;
+    const options: string[] = [];
+  
+    for (let j = startIndex; j <= endIndex; j++) {
+      options.push(`${this.asig[j].name}`);
+    }
+  
+    return options;
   }
 
   onAcceptClick()

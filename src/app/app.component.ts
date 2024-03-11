@@ -1,5 +1,6 @@
 import { Component, HostListener  } from '@angular/core'; 
 import { Dates } from './dates/dates';
+import { AlertService } from './services/alert/alert.service';
  
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
     this.loginInfo.openMenu = false;
   }
  
-  constructor(public dates:Dates) 
+  constructor(public dates:Dates, private alert:AlertService) 
     { 
     this.services = dates.getServices(); 
     this.loginInfo = dates.loginInfo;
@@ -133,7 +134,7 @@ export class AppComponent {
 
           if(this.loginInfo.userType=="admin") this.dates.getServices().router.navigate(['/admin']);
           else if(this.loginInfo.userType=="false") this.dates.getServices().router.navigate(['/profesor']);
-          else this.dates.getServices().router.navigate(['/true']);
+          else this.dates.getServices().router.navigate(['/estudiante']);
         }
          else  
          {
@@ -149,6 +150,13 @@ export class AppComponent {
     );  
   }
 
+    isNumber(event: any) { 
+    const allowedKeys = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 9];
+    if (!allowedKeys.includes(event.keyCode)) {
+      event.preventDefault();
+    }
+  }
+
   crearUs()
   {
     this.dates.getServices().servicio.createUs(this.appComponentInfo.form_reg.value).subscribe(
@@ -157,17 +165,17 @@ export class AppComponent {
         
         if(response.result.length >0)
         {
-          const firstUser = response.result[0];
-          this.appComponentInfo.idUs= firstUser.id_us; 
-          this.appComponentInfo.idPerson= firstUser.id_person; 
+          // const firstUser = response.result[0];
+          // this.appComponentInfo.idUs= firstUser.id_us; 
+          // this.appComponentInfo.idPerson= firstUser.id_person; 
 
-          this.services.authService.login();
-          this.loginInfo.isLogin=this.dates.getServices().authService.isAuthenticated();
-          this.services.authService.userType(this.loginInfo.userType);
-          this.services.authService.idUs(this.appComponentInfo.idUs);
-
-          if(this.loginInfo.userType=="profesor") this.dates.getServices().router.navigate(['/estudiante']);
-          else this.dates.getServices().router.navigate(['/estudiante']);
+          // this.services.authService.login();
+          // this.loginInfo.isLogin=this.dates.getServices().authService.isAuthenticated();
+          // this.services.authService.userType(this.loginInfo.userType);
+          // this.services.authService.idUs(this.appComponentInfo.idUs);
+          this.alert.showAlert("¡REGISTRO EXISTOSO, POR FAVOR CONTACTESE CON LA AUTIRDAD DEL COLEGIO PARA SER ASIGNADO A UN CURSO!")
+ 
+ 
         }
          else  
          {
